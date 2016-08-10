@@ -66,6 +66,7 @@ public class Gui {
 
         textArea =
                 new JTextArea(10,40);
+        textArea.setLineWrap(true);
 
         JScrollPane scrollPane = new JScrollPane(textArea);
 
