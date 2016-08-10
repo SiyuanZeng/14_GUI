@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ThoughtRecorder:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ThoughtRecorder_jar</output-path>
+    <root id="archive" name="ThoughtRecorder.jar">
+      <element id="module-output" name="ThoughtRecorder" />
+    </root>
+  </artifact>
+</component>
