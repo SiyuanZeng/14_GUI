@@ -2,15 +2,6 @@ package zeng.siyuan.howtoforgert;
 
 import java.io.*;
 
-/**
- * Example Swing GUI.
- * <p>
- * Inspired by <a href="http://www.java2s.com/Code/Java/Swing-JFC/GUIinvokedfromtheeventdispatchingthread.htm">
- *                      http://www.java2s.com/Code/Java/Swing-JFC/GUIinvokedfromtheeventdispatchingthread.htm</a>
- *
- * @author Greg Chabala
- * @since Sep 29, 2010
- */
 public class HowToForgert implements Serializable{
     private static final long serialVersionUID = 1L;
 
