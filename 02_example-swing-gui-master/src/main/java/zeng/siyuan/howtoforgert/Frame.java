@@ -2,8 +2,7 @@ package zeng.siyuan.howtoforgert;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -18,8 +17,9 @@ import java.util.Date;
  */
 public class Frame implements Serializable{
     private static final long serialVersionUID = 1L;
-    private static ArrayList<Ebbinghaus> ebbinghauses = new ArrayList<Ebbinghaus>();
-
+    private ArrayList<Ebbinghaus> ebbinghauses = new ArrayList<Ebbinghaus>();
+    private  transient TrayIcon trayIcon;
+    private  transient SystemTray tray;
     private static int count = 1;
     private static JFrame lastFrame = null;
     private JPanel controlPanel;
@@ -49,12 +49,12 @@ public class Frame implements Serializable{
         Frame.threadadd = threadadd;
     }
 
-    public static ArrayList<Ebbinghaus> getEbbinghauses() {
+    public  ArrayList<Ebbinghaus> getEbbinghauses() {
         return ebbinghauses;
     }
 
-    public static void setEbbinghauses(ArrayList<Ebbinghaus> ebbinghauses) {
-        Frame.ebbinghauses = ebbinghauses;
+    public void setEbbinghauses(ArrayList<Ebbinghaus> ebbinghauses) {
+        this.ebbinghauses = ebbinghauses;
     }
 
     public static int getCount() {
@@ -97,12 +97,12 @@ public class Frame implements Serializable{
         Frame.frame = frame;
     }
 
-    public static ArrayList<Task> getTasks() {
+    public ArrayList<Task> getTasks() {
         return tasks;
     }
 
-    public static void setTasks(ArrayList<Task> tasks) {
-        Frame.tasks = tasks;
+    public void setTasks(ArrayList<Task> tasks) {
+        this.tasks = tasks;
     }
 
     public static Display getD() {
@@ -167,12 +167,131 @@ public class Frame implements Serializable{
         setTextArea();
 
 
-        serializeBeforeCloseWindow();
+        setSerializeBeforeCloseWindow();
+
+
+        initSystemTray();
 
         frame.setVisible(true);
     }
 
-    private void serializeBeforeCloseWindow() {
+    private void initSystemTray() {
+        try{
+            System.out.println("setting look and feel");
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        }catch(Exception e){
+            System.out.println("Unable to set LookAndFeel");
+        }
+        if(SystemTray.isSupported()){
+            System.out.println("system tray supported");
+            tray=SystemTray.getSystemTray();
+
+            Image image=Toolkit.getDefaultToolkit().getImage("/img/bulb16x16.gif");
+            ActionListener exitListener=new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    System.out.println("Exiting....");
+                    System.exit(0);
+                }
+            };
+            PopupMenu popup=new PopupMenu();
+            MenuItem defaultItem=new MenuItem("Exit");
+            defaultItem.addActionListener(exitListener);
+            popup.add(defaultItem);
+            defaultItem=new MenuItem("Open");
+            defaultItem.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    frame.setVisible(true);
+                    frame.setExtendedState(JFrame.NORMAL);
+                }
+            });
+            popup.add(defaultItem);
+            trayIcon=new TrayIcon(image, "SystemTray Demo", popup);
+            trayIcon.setImageAutoSize(true);
+        }else{
+            System.out.println("system tray not supported");
+        }
+
+        trayIcon.setImageAutoSize(true);// Autosize icon base on space
+        // available on
+        // tray
+
+        MouseAdapter mouseAdapter = new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("omt click");
+                // This will display small popup message from System Tray
+                trayIcon.displayMessage("Real,",
+                        "how to gofort?",
+                        TrayIcon.MessageType.INFO);
+                frame.setVisible(true);
+                frame.setExtendedState(JFrame.NORMAL);
+            }
+        };
+
+        trayIcon.addMouseListener(mouseAdapter);
+
+
+        frame.addWindowStateListener(new WindowStateListener() {
+            public void windowStateChanged(WindowEvent e) {
+                if (e.getNewState() == frame.ICONIFIED) {
+                    try {
+                        tray.add(trayIcon);
+                        frame.setVisible(false);
+                        System.out.println("added to SystemTray");
+                    } catch (AWTException ex) {
+                        System.out.println("unable to add to tray");
+                    }
+                }
+                if (e.getNewState() == 7) {
+                    try {
+                        tray.add(trayIcon);
+                        frame.setVisible(false);
+                        System.out.println("added to SystemTray");
+                    } catch (AWTException ex) {
+                        System.out.println("unable to add to system tray");
+                    }
+                }
+                if (e.getNewState() == frame.MAXIMIZED_BOTH) {
+                    tray.remove(trayIcon);
+                    frame.setVisible(true);
+                    System.out.println("Tray icon removed");
+                }
+                if (e.getNewState() == frame.NORMAL) {
+                    tray.remove(trayIcon);
+                    frame.setVisible(true);
+                    System.out.println("Tray icon removed");
+                }
+            }
+        });
+
+        frame.setIconImage(Toolkit.getDefaultToolkit().getImage("/img/bulb16x16.gif"));
+    }
+
+    private void displayTask() {
+        for(Task t : getTasks()){
+            if (!t.isDone() && t.getDate().after(new Date())){
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(t.getDate());
+                long diff = calendar.getTimeInMillis()- Calendar.getInstance().getTimeInMillis();
+                if(diff>0)
+                    try {
+                        System.out.println("Before sleep");
+                        Thread.sleep(diff);
+                        System.out.println("After sleep");
+                        frame.repaint();
+                        frame.toFront();
+                        textArea.setText(t.getWord());
+                        t.setIsDone(true);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+            } else if (!t.isDone() && t.getDate().before(new Date())){
+                t.setIsDone(true);
+            }
+        }
+    }
+
+    private void setSerializeBeforeCloseWindow() {
         frame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
@@ -191,6 +310,7 @@ public class Frame implements Serializable{
     private void setTextArea() {
         textArea =
                 new JTextArea(10,40);
+        textArea.setLineWrap(true);
 
         textArea.addMouseListener(new MouseAdapter() {
             @Override
@@ -220,50 +340,28 @@ public class Frame implements Serializable{
         }
     }
 
-    public static void addWord(){
+    public void addWord(){
         Ebbinghaus ebbinghaus = new Ebbinghaus(textArea.getText());
-        ebbinghauses.add(ebbinghaus);
+        getEbbinghauses().add(ebbinghaus);
         textArea.setText("");
     }
 
-    public static void loadTask(){
-        for (Ebbinghaus e : ebbinghauses){
+    public void loadTask(){
+        for (Ebbinghaus e : getEbbinghauses()){
             ArrayList<Task> t = e.getTasks();
             for (Task task: t){
-                tasks.add(task);
+                getTasks().add(task);
             }
         }
-        Collections.sort(tasks, new Task());
+        Collections.sort(getTasks(), new Task());
     }
 
-    public static void popup(){
+    public void popup(){
         loadTask();
         displayTask();
     }
 
-    private static void displayTask() {
-        for(Task t : tasks){
-            if (!t.isDone() && t.getDate().after(new Date())){
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(t.getDate());
-                long diff = calendar.getTimeInMillis()- Calendar.getInstance().getTimeInMillis();
-                if(diff>0)
-                    try {
-                        System.out.println("Before sleep");
-                        Thread.sleep(diff);
-                        System.out.println("After sleep");
-                        frame.repaint();
-                        frame.toFront();
-                        textArea.setText(t.getWord());
-                        t.setIsDone(true);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-            } else if (!t.isDone() && t.getDate().before(new Date())){
-                t.setIsDone(true);
-            }
-        }
-    }
+
 
     private class BeepingButton extends JButton {
         BeepingButton(final String text) {
