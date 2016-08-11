@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="howtoforgert:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/howtoforgert_jar</output-path>
+    <root id="archive" name="howtoforgert.jar">
+      <element id="module-output" name="howtoforgert" />
+    </root>
+  </artifact>
+</component>
