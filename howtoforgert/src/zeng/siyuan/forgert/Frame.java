@@ -490,6 +490,7 @@ public class Frame implements Serializable{
         Ebbinghaus ebbinghaus = new Ebbinghaus(textArea1.getText(), textArea2.getText());
         getEbbinghauses().add(ebbinghaus);
         textArea1.setText("");
+        textArea2.setText("");
     }
 
     public void loadTask(){
