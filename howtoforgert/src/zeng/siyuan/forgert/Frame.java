@@ -268,6 +268,7 @@ public class Frame implements Serializable{
             try {
                 if (null != getCurrentTask()) {
                     markGotIt(currentTask);
+                    textArea2.setText(currentTask.getAnswer());
                 }
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -282,6 +283,7 @@ public class Frame implements Serializable{
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(currentTask.getDate());
         long diff = calendar.getTimeInMillis();
+        textArea2.setText(currentTask.getAnswer());
         currentTask.setDate(new Date(diff + (20 * ONE_MINUTE_IN_MILLIS)));
         restartPopThread();
     }
@@ -396,7 +398,6 @@ public class Frame implements Serializable{
                         frame.repaint();
                         frame.toFront();
                         textArea1.setText(t.getQuestion());
-                        textArea2.setText(t.getQuestion());
                         currentTask = t;
                     } catch (InterruptedException e) {
                         e.printStackTrace();
