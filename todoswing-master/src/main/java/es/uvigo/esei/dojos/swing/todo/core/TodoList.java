@@ -1,10 +1,11 @@
 package es.uvigo.esei.dojos.swing.todo.core;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class TodoList implements Iterable<String>{
+public class TodoList implements Iterable<String>, Serializable {
 
 	private List<String> list = new LinkedList<>();
 

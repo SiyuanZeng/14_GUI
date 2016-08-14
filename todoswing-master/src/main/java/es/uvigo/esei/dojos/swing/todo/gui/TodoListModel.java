@@ -1,10 +1,11 @@
 package es.uvigo.esei.dojos.swing.todo.gui;
 
-import javax.swing.AbstractListModel;
-
 import es.uvigo.esei.dojos.swing.todo.core.TodoList;
 
-public class TodoListModel extends AbstractListModel<String> {
+import javax.swing.*;
+import java.io.Serializable;
+
+public class TodoListModel extends AbstractListModel<String>  implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private TodoList list;

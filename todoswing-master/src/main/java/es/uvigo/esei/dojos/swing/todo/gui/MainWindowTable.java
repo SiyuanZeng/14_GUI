@@ -1,27 +1,15 @@
 package es.uvigo.esei.dojos.swing.todo.gui;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.table.AbstractTableModel;
-
 import es.uvigo.esei.dojos.swing.todo.core.TodoList;
 
-public class MainWindowTable extends JFrame{
+import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.Serializable;
+
+public class MainWindowTable extends JFrame  implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	public JPanel mainContentPane;

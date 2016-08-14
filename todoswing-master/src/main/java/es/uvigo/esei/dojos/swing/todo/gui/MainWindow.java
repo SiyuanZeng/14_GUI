@@ -1,32 +1,23 @@
 package es.uvigo.esei.dojos.swing.todo.gui;
 
-import static javax.swing.BorderFactory.createEmptyBorder;
-import static javax.swing.Box.createVerticalStrut;
-import static java.lang.Math.*;
-
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-import javax.swing.BoxLayout;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.event.ListDataEvent;
-import javax.swing.event.ListDataListener;
-
 import es.uvigo.esei.dojos.swing.todo.core.TodoList;
 
-public class MainWindow extends JFrame{
+import javax.swing.*;
+import javax.swing.event.ListDataEvent;
+import javax.swing.event.ListDataListener;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.Serializable;
+
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+import static javax.swing.BorderFactory.createEmptyBorder;
+import static javax.swing.Box.createVerticalStrut;
+
+public class MainWindow extends JFrame implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel mainContentPane;
@@ -246,4 +237,6 @@ public class MainWindow extends JFrame{
 				getClass().
 				getResource("/"+iconfilename));
 	}
+
+
 }
