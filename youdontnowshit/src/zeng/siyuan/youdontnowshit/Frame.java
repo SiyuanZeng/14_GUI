@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Created by SiyuanZeng's on 8/9/2016.
@@ -209,12 +210,14 @@ public class Frame implements Serializable{
     // just like what the guy did to create a software that can load the gwd
     // stro
     private void load() {
-        final String[] aEach = textArea3.getText().split("\\?");
-
-        for(String str:aEach ){
-            String n = str + "?";
-            Shit shit = new Shit(n);
-            shits.add(shit);
+        Scanner in = null;
+        in = new Scanner(textArea3.getText());
+        while(in.hasNext()) {
+            String line = in.nextLine();
+            if (line.contains("?") && line.endsWith("?")) {
+                Shit shit = new Shit(line);
+                shits.add(shit);
+            }
         }
 
         textArea1.setText(shits.get(0).getQuestion());
