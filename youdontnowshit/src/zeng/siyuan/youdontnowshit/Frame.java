@@ -408,7 +408,7 @@ public class Frame implements Serializable{
             String line = in.nextLine();
             if (line.contains("?") && line.endsWith("?")) {
                 Shit shit = new Shit(line);
-                shits.add(shit);
+                shits.add(idx, shit);
             }
         }
 
