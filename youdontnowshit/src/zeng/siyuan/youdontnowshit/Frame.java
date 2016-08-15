@@ -623,12 +623,12 @@ public class Frame implements Serializable{
                 directory.mkdir();
             }
             FileOutputStream fileOut =
-                    new FileOutputStream(String.format("c:/c1/youdontnowshit/%s/youdontnowshit.ser", subject));
+                    new FileOutputStream(String.format("c:/c1/youdontnowshit/%s/youdontnowshit%d.ser", subject, shitAnInt));
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(this);
             out.close();
             fileOut.close();
-            System.out.printf(String.format("c:/c1/youdontnowshit/%s/youdontnowshit.ser", subject));
+            System.out.printf(String.format("c:/c1/youdontnowshit/%s/youdontnowshit%d.ser", subject, shitAnInt));
 
 
         }catch(IOException i)
@@ -638,7 +638,7 @@ public class Frame implements Serializable{
     }
 
     private void writeToText() throws IOException {
-        FileWriter writer = new FileWriter(String.format("c:/c1/youdontnowshit/%s/youdontnowshit.txt", subject));
+        FileWriter writer = new FileWriter(String.format("c:/c1/youdontnowshit/%s/youdontnowshit%d.txt", subject, shitAnInt));
         for(Shit shit: shits) {
             writer.write(shit.getQuestion());
             writer.write(System.getProperty( "line.separator" ));
@@ -690,7 +690,7 @@ public class Frame implements Serializable{
 
     public void addQuestion(){
         Shit shit = new Shit(textArea3.getText());
-        getShits().add(shit);
+        getShits().add(idx, shit);
     }
 
 

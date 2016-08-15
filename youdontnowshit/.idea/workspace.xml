@@ -13,7 +13,6 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../techmemygodbabygodnessbodyboy/src/forgert/Ebbinghaus.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../techmemygodbabygodnessbodyboy/src/forgert/Frame.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../techmemygodbabygodnessbodyboy/src/forgert/HowToForgert.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../techmemygodbabygodnessbodyboy/src/forgert/Task.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../dononething/.idea/compiler.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../idon'tknow/.idea/compiler.xml" />
@@ -61,7 +60,6 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../knowleldgeaceptsfacetsapspects/.idea/workspace.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../letustalkteachmetalkhowshoulditalkiwanttotalksmarteriamthebesttealkertealkabouttechnonogy/.idea/workspace.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../techmemygodbabygodnessbodyboy/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/youdontnowshit_jar.xml" />
       <change type="DELETED" beforePath="C:\Development_Base\14_GUI\ToDo-List-master\.classpath" afterPath="" />
       <change type="DELETED" beforePath="C:\Development_Base\14_GUI\ToDo-List-master\.idea\.name" afterPath="" />
       <change type="DELETED" beforePath="C:\Development_Base\14_GUI\ToDo-List-master\.idea\compiler.xml" afterPath="" />
@@ -116,9 +114,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ThoughtRecorder/out/artifacts/ThoughtRecorder_jar/ThoughtRecorder.jar" afterPath="$PROJECT_DIR$/../ThoughtRecorder/out/artifacts/ThoughtRecorder_jar/ThoughtRecorder.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zeng/siyuan/youdontnowshit/Frame.java" afterPath="$PROJECT_DIR$/src/zeng/siyuan/youdontnowshit/Frame.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ThoughtRecorder/src/Gui.java" afterPath="$PROJECT_DIR$/../ThoughtRecorder/src/Gui.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zeng/siyuan/youdontnowshit/YouDontNowShit.java" afterPath="$PROJECT_DIR$/src/zeng/siyuan/youdontnowshit/YouDontNowShit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ThoughtRecorder/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../ThoughtRecorder/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ToDo-List-master/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../ToDo-List-master/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../howtoforgert/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../howtoforgert/.idea/workspace.xml" />
@@ -173,8 +168,8 @@
       <file leaf-file-name="Frame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/zeng/siyuan/youdontnowshit/Frame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1418144">
-              <caret line="604" column="5" selection-start-line="604" selection-start-column="5" selection-end-line="604" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.10430107">
+              <caret line="655" column="11" selection-start-line="655" selection-start-column="11" selection-end-line="655" selection-end-column="11" />
               <folding>
                 <element signature="e#485#491#0" expanded="true" />
                 <element signature="e#560#566#0" expanded="true" />
@@ -664,7 +659,7 @@
       <option name="number" value="Default" />
       <updated>1471142894672</updated>
       <workItem from="1471142901951" duration="20803000" />
-      <workItem from="1471236776324" duration="92000" />
+      <workItem from="1471236776324" duration="4124000" />
     </task>
     <task id="LOCAL-00001" summary="init youdontnowshit">
       <created>1471153071190</created>
@@ -678,11 +673,17 @@
       <option name="project" value="LOCAL" />
       <updated>1471153985511</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fix bugs and add functionality tasty shitter">
+      <created>1471236876289</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1471236876289</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20895000" />
+    <option name="totallyTimeSpent" value="24927000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1790" height="1096" extended-state="6" />
@@ -690,6 +691,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -704,7 +706,6 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -729,7 +730,8 @@
     <MESSAGE value="init youdontnowshit" />
     <MESSAGE value="read all text and save only equestions" />
     <MESSAGE value="fix bugs and add functionality tasty shitter" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bugs and add functionality tasty shitter" />
+    <MESSAGE value="insert question" />
+    <option name="LAST_COMMIT_MESSAGE" value="insert question" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -840,8 +842,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/zeng/siyuan/youdontnowshit/Frame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1418144">
-          <caret line="604" column="5" selection-start-line="604" selection-start-column="5" selection-end-line="604" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.10430107">
+          <caret line="655" column="11" selection-start-line="655" selection-start-column="11" selection-end-line="655" selection-end-column="11" />
           <folding>
             <element signature="e#485#491#0" expanded="true" />
             <element signature="e#560#566#0" expanded="true" />
