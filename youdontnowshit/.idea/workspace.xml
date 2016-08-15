@@ -168,34 +168,14 @@
       <file leaf-file-name="Frame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/zeng/siyuan/youdontnowshit/Frame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.56666666">
-              <caret line="405" column="46" selection-start-line="405" selection-start-column="46" selection-end-line="405" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.36989248">
+              <caret line="559" column="21" selection-start-line="559" selection-start-column="21" selection-end-line="559" selection-end-column="21" />
               <folding>
                 <element signature="e#485#491#0" expanded="true" />
                 <element signature="e#560#566#0" expanded="true" />
-                <element signature="e#18538#18539#0" expanded="true" />
-                <element signature="e#18591#18592#0" expanded="true" />
+                <element signature="e#18622#18623#0" expanded="true" />
+                <element signature="e#18675#18676#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="File.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/src.zip!/java/io/File.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1315" column="25" selection-start-line="1315" selection-start-column="25" selection-end-line="1315" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileSystem.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/src.zip!/java/io/FileSystem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="180" column="7" selection-start-line="180" selection-start-column="7" selection-end-line="180" selection-end-column="7" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -661,7 +641,7 @@
       <option name="number" value="Default" />
       <updated>1471142894672</updated>
       <workItem from="1471142901951" duration="20803000" />
-      <workItem from="1471236776324" duration="4646000" />
+      <workItem from="1471236776324" duration="7620000" />
     </task>
     <task id="LOCAL-00001" summary="init youdontnowshit">
       <created>1471153071190</created>
@@ -687,11 +667,17 @@
       <option name="project" value="LOCAL" />
       <updated>1471281127811</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="insert question fix save button">
+      <created>1471281665193</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1471281665193</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25449000" />
+    <option name="totallyTimeSpent" value="28423000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1790" height="1096" extended-state="6" />
@@ -739,7 +725,8 @@
     <MESSAGE value="read all text and save only equestions" />
     <MESSAGE value="fix bugs and add functionality tasty shitter" />
     <MESSAGE value="insert question" />
-    <option name="LAST_COMMIT_MESSAGE" value="insert question" />
+    <MESSAGE value="insert question fix save button" />
+    <option name="LAST_COMMIT_MESSAGE" value="insert question fix save button" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -791,8 +778,8 @@
           <folding>
             <element signature="e#485#491#0" expanded="true" />
             <element signature="e#560#566#0" expanded="true" />
-            <element signature="e#18538#18539#0" expanded="true" />
-            <element signature="e#18591#18592#0" expanded="true" />
+            <element signature="e#18622#18623#0" expanded="true" />
+            <element signature="e#18675#18676#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -852,13 +839,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/zeng/siyuan/youdontnowshit/Frame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56666666">
-          <caret line="405" column="46" selection-start-line="405" selection-start-column="46" selection-end-line="405" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.36989248">
+          <caret line="559" column="21" selection-start-line="559" selection-start-column="21" selection-end-line="559" selection-end-column="21" />
           <folding>
             <element signature="e#485#491#0" expanded="true" />
             <element signature="e#560#566#0" expanded="true" />
-            <element signature="e#18538#18539#0" expanded="true" />
-            <element signature="e#18591#18592#0" expanded="true" />
+            <element signature="e#18622#18623#0" expanded="true" />
+            <element signature="e#18675#18676#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -546,15 +546,17 @@ public class Frame implements Serializable{
                         JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
                     try {
                         writeToText();
-                        if(null != tastyShiter){
-                            writeToTexttastyShiter();
-                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                     serialize();
                     if(null != tastyShiter){
-                        serializetastyShiter();
+                        try {
+                            writeToTexttastyShiter();
+                            serializetastyShiter();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                     System.exit(0);
                 }
