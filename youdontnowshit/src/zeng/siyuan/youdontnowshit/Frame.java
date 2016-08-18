@@ -41,6 +41,7 @@ public class Frame implements Serializable {
     Insets insets = temp.getInsets();
     private Dimension dimension = new Dimension(insets.left + insets.right + 700,
                   insets.top + insets.bottom + 900);
+
     private Dimension buttonDesimon = new Dimension(100,20);
 
     public ArrayList<Shit> getTastyShiter() {
@@ -502,17 +503,11 @@ public class Frame implements Serializable {
         gotIt.setFont(font);
         gotIt.addActionListener((e) -> {
             try {
-                if (idx == 0) {
-                    shits.get(idx).setQuestion(textArea1.getText());
+                if (idx >= 0 && idx <= shits.size()) {
+                    shits.get(idx ).setQuestion(textArea1.getText());
                     shits.get(idx).setAnswer(textArea2.getText());
-                    if(textArea_answer.getText() != ""){
-                        shits.get(idx).originalAnswer= textArea_answer.getText();
-                    }
-                } else if (idx - 1 >= 0 && idx <= shits.size()) {
-                    shits.get(idx - 1).setQuestion(textArea1.getText());
-                    shits.get(idx - 1).setAnswer(textArea2.getText());
                     if(textArea_answer.getText() != "") {
-                        shits.get(idx - 1).originalAnswer = textArea_answer.getText();
+                        shits.get(idx).originalAnswer = textArea_answer.getText();
                     }
                 }
                 if (idx >= 0 && idx < shits.size() - 1) {
@@ -747,6 +742,8 @@ public class Frame implements Serializable {
             writer.write(shit.getAnswer());
             writer.write(System.getProperty("line.separator"));
             writer.write(System.getProperty("line.separator"));
+            writer.write(System.getProperty("Origianl answer......"));
+            writer.write(System.getProperty(shit.originalAnswer));
         }
         writer.close();
     }
@@ -784,6 +781,9 @@ public class Frame implements Serializable {
             writer.write(shit.getAnswer());
             writer.write(System.getProperty("line.separator"));
             writer.write(System.getProperty("line.separator"));
+
+            writer.write(System.getProperty("Origianl answer......"));
+            writer.write(System.getProperty(shit.originalAnswer));
         }
         writer.close();
     }
