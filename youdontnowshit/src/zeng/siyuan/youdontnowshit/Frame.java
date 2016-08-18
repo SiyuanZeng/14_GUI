@@ -12,14 +12,16 @@ import java.util.Scanner;
 /**
  * Created by SiyuanZeng's on 8/9/2016.
  */
-public class Frame implements Serializable{
+public class Frame implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    public static final int TEXT_AREA_ROWS = 100;
+    public static final int TEXT_AREA_COLUMNS = 40;
     private static Frame serializedFrame;
     private ArrayList<Shit> shits = new ArrayList<Shit>();
     private transient ArrayList<Shit> tastyShiter = new ArrayList<Shit>();
-    private  transient TrayIcon trayIcon;
-    private  transient SystemTray tray;
+    private transient TrayIcon trayIcon;
+    private transient SystemTray tray;
     private static int count = 1;
     private static JFrame lastFrame = null;
     private JPanel controlPanel;
@@ -31,6 +33,14 @@ public class Frame implements Serializable{
     private static int idx;
     private static String subject;
     private int shitAnInt;
+    private Font font = new Font("Serif", Font.PLAIN, 20);
+
+    // set size
+    JFrame temp = new JFrame();
+    Insets insets = temp.getInsets();
+    private Dimension dimension = new Dimension(insets.left + insets.right + 700,
+                  insets.top + insets.bottom + 900);
+    private Dimension buttonDesimon = new Dimension(100,20);
 
     public ArrayList<Shit> getTastyShiter() {
         return tastyShiter;
@@ -112,7 +122,7 @@ public class Frame implements Serializable{
         Frame.textArea2 = textArea2;
     }
 
-    public  ArrayList<Shit> getShits() {
+    public ArrayList<Shit> getShits() {
         return shits;
     }
 
@@ -172,7 +182,6 @@ public class Frame implements Serializable{
     }
 
 
-
     private static void configureLookAndFeel() {
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -184,7 +193,8 @@ public class Frame implements Serializable{
                     UIManager.setLookAndFeel(info.getClassName());
                 }
             }
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
     }
 
 
@@ -192,11 +202,14 @@ public class Frame implements Serializable{
         frame = new JFrame("Beeper " + count++);
 
         Container content = frame.getContentPane();
-        content.setLayout(new GridLayout(12, 1));
+        BoxLayout boxLayout = new BoxLayout(frame.getContentPane(), BoxLayout.PAGE_AXIS); // top to bottom
+        frame.setLayout(boxLayout);
+//        content.setLayout(new GridLayout(12, 1));
         Border border = LineBorder.createGrayLineBorder();
 
         JLabel label0 = new JLabel("Real, you dont know fuckign shit!!!!!!!!!!");
-        label0 .setBorder(border);
+        label0.setBorder(border);
+        label0.setFont(font);
         content.add(label0);
 
         frame.pack();
@@ -239,34 +252,37 @@ public class Frame implements Serializable{
 
         initSystemTray();
 
+
+        textArea1.setFont(font);
+        textArea2.setFont(font);
+        textArea3.setFont(font);
+
         frame.setVisible(true);
-        if(null !=shits && shits.size()>0) {
+        if (null != shits && shits.size() > 0) {
             textArea1.setText(shits.get(idx).getQuestion());
             textArea2.setText(shits.get(idx).getAnswer());
         }
 
     }
-    public void deserialize(String subject, int shitAnInt){
-        try
-        {
+
+    public void deserialize(String subject, int shitAnInt) {
+        try {
             this.subject = subject;
-            this.shitAnInt =shitAnInt;
-            FileInputStream fileIn = new FileInputStream(String.format("c:/c1/youdontnowshit/%s/youdontnowshit%d.ser", subject, shitAnInt) );
+            this.shitAnInt = shitAnInt;
+            FileInputStream fileIn = new FileInputStream(String.format("c:/c1/youdontnowshit/%s/youdontnowshit%d.ser", subject, shitAnInt));
             ObjectInputStream in = new ObjectInputStream(fileIn);
             serializedFrame = (Frame) in.readObject();
             in.close();
             fileIn.close();
-        } catch (FileNotFoundException f){
+        } catch (FileNotFoundException f) {
             System.out.println("File not found");
             serializedFrame = new Frame();
             f.printStackTrace();
             return;
-        } catch(IOException i)
-        {
+        } catch (IOException i) {
             i.printStackTrace();
             return;
-        } catch(ClassNotFoundException c)
-        {
+        } catch (ClassNotFoundException c) {
             System.out.println("Employee class not found");
             serializedFrame = new Frame();
             c.printStackTrace();
@@ -274,9 +290,12 @@ public class Frame implements Serializable{
         }
         System.out.println("Deserialized Employee...");
     }
+
     private void settastyshiterButton(Container content, Border border) {
         BeepingButton beep = new BeepingButton("Tastyshiter!!!!");
-        beep.setSize(new Dimension(100, 100));
+        beep.setSize(buttonDesimon);
+        beep.setMinimumSize(buttonDesimon);
+        beep.setFont(font);
         beep.addActionListener((e) -> {
             try {
                 tastyShiter();
@@ -291,12 +310,14 @@ public class Frame implements Serializable{
 
     private void setDeserializeButton(Container content, Border border) {
         BeepingButton beep = new BeepingButton("Let's begin and play!!!!");
-        beep.setSize(new Dimension(100, 100));
+        beep.setSize(buttonDesimon);
+        beep.setMinimumSize(buttonDesimon);
+        beep.setFont(font);
         beep.addActionListener((e) -> {
             try {
 
-                if (textArea3.getText().split(" ").length == 1){
-                    deserialize(textArea3.getText().split(" ")[0],0);
+                if (textArea3.getText().split(" ").length == 1) {
+                    deserialize(textArea3.getText().split(" ")[0], 0);
                 } else {
                     deserialize(textArea3.getText().split(" ")[0], Integer.parseInt(textArea3.getText().split(" ")[1]));
                 }
@@ -315,10 +336,12 @@ public class Frame implements Serializable{
 
     private void setendofworldButton(Container content, Border border) {
         BeepingButton beep = new BeepingButton("endo fo world");
-        beep.setSize(new Dimension(100, 100));
+        beep.setSize(buttonDesimon);
+        beep.setMinimumSize(buttonDesimon);
+        beep.setFont(font);
         beep.addActionListener((e) -> {
             try {
-                idx=shits.size()-1;
+                idx = shits.size() - 1;
                 textArea1.setText(shits.get(idx).getQuestion());
                 textArea2.setText(shits.get(idx).getAnswer());
             } catch (Exception e1) {
@@ -331,12 +354,14 @@ public class Frame implements Serializable{
 
     private void setoriginofeverythingButton(Container content, Border border) {
         BeepingButton beep = new BeepingButton("origin of everythig");
-        beep.setSize(new Dimension(100, 100));
+        beep.setSize(buttonDesimon);
+        beep.setMinimumSize(buttonDesimon);
+        beep.setFont(font);
         beep.addActionListener((e) -> {
             try {
-                idx=0;
-                    textArea1.setText(shits.get(idx).getQuestion());
-                    textArea2.setText(shits.get(idx).getAnswer());
+                idx = 0;
+                textArea1.setText(shits.get(idx).getQuestion());
+                textArea2.setText(shits.get(idx).getAnswer());
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -347,7 +372,10 @@ public class Frame implements Serializable{
 
     private void setSaveButton(Container content, Border border) {
         BeepingButton beep = new BeepingButton("Save");
-        beep.setSize(new Dimension(100, 100));
+        beep.setSize(buttonDesimon);
+        beep.setMinimumSize(buttonDesimon);
+        beep.setFont(font);
+
         beep.addActionListener((e) -> {
             try {
                 load();
@@ -364,26 +392,27 @@ public class Frame implements Serializable{
         temp.pack();
         Insets insets = temp.getInsets();
         temp = null;
-        frame.setSize(new Dimension(insets.left + insets.right + 500,
-                insets.top + insets.bottom + 700));
+        frame.setSize(dimension);
         frame.setResizable(false);
     }
 
     private void setIforgertButton(Container content, Border border) {
-        BeepingButton previous= new BeepingButton("OMG!!!  I forgert!");
-        previous.setSize(new Dimension(100, 100));
+        BeepingButton previous = new BeepingButton("OMG!!!  I forgert!");
+        previous.setSize(buttonDesimon);
+        previous.setMinimumSize(buttonDesimon);
         previous.setBorder(border);
+        previous.setFont(font);
         previous.addActionListener((e) -> {
             try {
                 shits.get(idx).setQuestion(textArea1.getText());
                 shits.get(idx).setAnswer(textArea2.getText());
 
-                if (idx==0) {
+                if (idx == 0) {
                     textArea1.setText(shits.get(idx).getQuestion());
                     textArea2.setText(shits.get(idx).getAnswer());
                 }
 
-                if (idx-1 >=0) {
+                if (idx - 1 >= 0) {
                     textArea1.setText(shits.get(--idx).getQuestion());
                     textArea2.setText(shits.get(idx).getAnswer());
                 }
@@ -402,14 +431,36 @@ public class Frame implements Serializable{
     // just like what the guy did to create a software that can load the gwd
     // stro
     private void load() {
+
+        if (idx == 0 && null != shits && shits.size() > 0) {
+            shits.get(idx).setQuestion(textArea1.getText());
+            shits.get(idx).setAnswer(textArea2.getText());
+        } else if (idx - 1 >= 0 && null != shits && shits.size() > 0 && idx <= shits.size()) {
+            shits.get(idx - 1).setQuestion(textArea1.getText());
+            shits.get(idx - 1).setAnswer(textArea2.getText());
+        }
+
         Scanner in = null;
+
         in = new Scanner(textArea3.getText());
-        while(in.hasNext()) {
-            String line = in.nextLine();
-            if (line.contains("?") && line.endsWith("?")) {
-                Shit shit = new Shit(line);
-                shits.add(idx, shit);
+        if (null == shits || shits.size() == 0) {
+            while (in.hasNext()) {
+                String line = in.nextLine();
+                if (line.contains("?") && line.endsWith("?")) {
+                    Shit shit = new Shit(line);
+                    shits.add(shit);
+                }
             }
+
+        } else {
+            while (in.hasNext()) {
+                String line = in.nextLine();
+                if (line.contains("?") && line.endsWith("?")) {
+                    Shit shit = new Shit(line);
+                    shits.add(idx, shit);
+                }
+            }
+
         }
 
         textArea1.setText(shits.get(idx).getQuestion());
@@ -420,22 +471,24 @@ public class Frame implements Serializable{
 
 
     private BeepingButton setNextButton(Container content, Border border) {
-        BeepingButton gotIt= new BeepingButton("Bring it on!!! Baby!!!");
-        gotIt.setSize(new Dimension(100, 100));
+        BeepingButton gotIt = new BeepingButton("Bring it on!!! Baby!!!");
+        gotIt.setSize(buttonDesimon);
+        gotIt.setMinimumSize(buttonDesimon);
         gotIt.setBorder(border);
+        gotIt.setFont(font);
         gotIt.addActionListener((e) -> {
             try {
-                if(idx==0){
+                if (idx == 0) {
                     shits.get(idx).setQuestion(textArea1.getText());
                     shits.get(idx).setAnswer(textArea2.getText());
-                } else if(idx-1>=0 && idx <= shits.size()){
-                    shits.get(idx-1).setQuestion(textArea1.getText());
-                    shits.get(idx-1).setAnswer(textArea2.getText());
+                } else if (idx - 1 >= 0 && idx <= shits.size()) {
+                    shits.get(idx - 1).setQuestion(textArea1.getText());
+                    shits.get(idx - 1).setAnswer(textArea2.getText());
                 }
-                if (idx >=0 && idx < shits.size()-1){
+                if (idx >= 0 && idx < shits.size() - 1) {
                     textArea1.setText(shits.get(++idx).getQuestion());
                     textArea2.setText(shits.get(idx).getAnswer());
-            }
+                }
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -445,28 +498,28 @@ public class Frame implements Serializable{
     }
 
     private void initSystemTray() {
-        try{
+        try {
             System.out.println("setting look and feel");
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Unable to set LookAndFeel");
         }
-        if(SystemTray.isSupported()){
+        if (SystemTray.isSupported()) {
             System.out.println("system tray supported");
-            tray=SystemTray.getSystemTray();
+            tray = SystemTray.getSystemTray();
 
-            Image image=Toolkit.getDefaultToolkit().getImage("/img/bulb16x16.gif");
-            ActionListener exitListener=new ActionListener() {
+            Image image = Toolkit.getDefaultToolkit().getImage("/img/bulb16x16.gif");
+            ActionListener exitListener = new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     System.out.println("Exiting....");
                     System.exit(0);
                 }
             };
-            PopupMenu popup=new PopupMenu();
-            MenuItem defaultItem=new MenuItem("Exit");
+            PopupMenu popup = new PopupMenu();
+            MenuItem defaultItem = new MenuItem("Exit");
             defaultItem.addActionListener(exitListener);
             popup.add(defaultItem);
-            defaultItem=new MenuItem("Open");
+            defaultItem = new MenuItem("Open");
             defaultItem.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     frame.setVisible(true);
@@ -474,9 +527,9 @@ public class Frame implements Serializable{
                 }
             });
             popup.add(defaultItem);
-            trayIcon=new TrayIcon(image, "SystemTray Demo", popup);
+            trayIcon = new TrayIcon(image, "SystemTray Demo", popup);
             trayIcon.setImageAutoSize(true);
-        }else{
+        } else {
             System.out.println("system tray not supported");
         }
 
@@ -543,14 +596,14 @@ public class Frame implements Serializable{
                 if (JOptionPane.showConfirmDialog(frame,
                         "Are you sure to close this window?", "Really Closing?",
                         JOptionPane.YES_NO_OPTION,
-                        JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+                        JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
                     try {
                         writeToText();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                     serialize();
-                    if(null != tastyShiter){
+                    if (null != tastyShiter) {
                         try {
                             writeToTexttastyShiter();
                             serializetastyShiter();
@@ -566,10 +619,12 @@ public class Frame implements Serializable{
 
     private void setTextArea1(Border border, Container content) {
         textArea1 =
-                new JTextArea(10,40);
+                new JTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS);
         textArea1.setLineWrap(true);
 
-        JScrollPane scrollPane = new JScrollPane(textArea1);
+        JScrollPane scrollPane = new JScrollPane(textArea1,
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
         scrollPane.setBorder(border);
         content.add(scrollPane);
@@ -578,7 +633,7 @@ public class Frame implements Serializable{
 
     private void setTextArea2(Border border, Container content) {
         textArea2 =
-                new JTextArea(10,40);
+                new JTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS);
         textArea2.setLineWrap(true);
 
         JScrollPane scrollPane = new JScrollPane(textArea2);
@@ -590,7 +645,7 @@ public class Frame implements Serializable{
 
     private void setTextArea3(Border border, Container content) {
         textArea3 =
-                new JTextArea(10,40);
+                new JTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS);
         textArea3.setLineWrap(true);
 
         textArea3.addMouseListener(new MouseAdapter() {
@@ -616,12 +671,11 @@ public class Frame implements Serializable{
     }
 
 
-    public void serialize(){
-        try
-        {
+    public void serialize() {
+        try {
             String PATH = String.format("c:/c1/youdontnowshit/%s/", subject);
             File directory = new File(String.valueOf(PATH));
-            if (! directory.exists()){
+            if (!directory.exists()) {
                 directory.mkdir();
             }
             FileOutputStream fileOut =
@@ -633,46 +687,43 @@ public class Frame implements Serializable{
             System.out.printf(String.format("c:/c1/youdontnowshit/%s/youdontnowshit%d.ser", subject, shitAnInt));
 
 
-        }catch(IOException i)
-        {
+        } catch (IOException i) {
             i.printStackTrace();
         }
     }
 
     private void writeToText() throws IOException {
         FileWriter writer = new FileWriter(String.format("c:/c1/youdontnowshit/%s/youdontnowshit%d.txt", subject, shitAnInt));
-        for(Shit shit: shits) {
+        for (Shit shit : shits) {
             writer.write(shit.getQuestion());
-            writer.write(System.getProperty( "line.separator" ));
+            writer.write(System.getProperty("line.separator"));
             writer.write(shit.getAnswer());
-            writer.write(System.getProperty( "line.separator" ));
-            writer.write(System.getProperty( "line.separator" ));
+            writer.write(System.getProperty("line.separator"));
+            writer.write(System.getProperty("line.separator"));
         }
         writer.close();
     }
 
 
     // next tastyShitter
-    public void serializetastyShiter(){
+    public void serializetastyShiter() {
         shits = tastyShiter;
-        try
-        {
+        try {
             String PATH = String.format("c:/c1/youdontnowshit/%s/", subject);
             File directory = new File(String.valueOf(PATH));
-            if (! directory.exists()){
+            if (!directory.exists()) {
                 directory.mkdir();
             }
             FileOutputStream fileOut =
-                    new FileOutputStream(String.format("c:/c1/youdontnowshit/%s/youdontnowshit%d.ser", subject,shitAnInt));
+                    new FileOutputStream(String.format("c:/c1/youdontnowshit/%s/youdontnowshit%d.ser", subject, shitAnInt));
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(this);
             out.close();
             fileOut.close();
-            System.out.printf(String.format("c:/c1/youdontnowshit/%s/youdontnowshit%d.ser", subject,shitAnInt));
+            System.out.printf(String.format("c:/c1/youdontnowshit/%s/youdontnowshit%d.ser", subject, shitAnInt));
 
 
-        }catch(IOException i)
-        {
+        } catch (IOException i) {
             i.printStackTrace();
         }
     }
@@ -680,23 +731,23 @@ public class Frame implements Serializable{
     private void writeToTexttastyShiter() throws IOException {
         shitAnInt++;
         FileWriter writer = new FileWriter(String.format("c:/c1/youdontnowshit/%s/youdontnowshit%d.txt", subject, shitAnInt));
-        for(Shit shit: tastyShiter) {
+        for (Shit shit : tastyShiter) {
             writer.write(shit.getQuestion());
-            writer.write(System.getProperty( "line.separator" ));
+            writer.write(System.getProperty("line.separator"));
             writer.write(shit.getAnswer());
-            writer.write(System.getProperty( "line.separator" ));
-            writer.write(System.getProperty( "line.separator" ));
+            writer.write(System.getProperty("line.separator"));
+            writer.write(System.getProperty("line.separator"));
         }
         writer.close();
     }
 
-    public void addQuestion(){
+    public void addQuestion() {
         Shit shit = new Shit(textArea3.getText());
         getShits().add(idx, shit);
     }
 
 
-    public void tastyShiter(){
+    public void tastyShiter() {
         tastyShiter.add(shits.get(idx));
     }
 }
