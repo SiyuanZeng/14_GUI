@@ -505,11 +505,15 @@ public class Frame implements Serializable {
                 if (idx == 0) {
                     shits.get(idx).setQuestion(textArea1.getText());
                     shits.get(idx).setAnswer(textArea2.getText());
-                    shits.get(idx).originalAnswer= textArea_answer.getText();
+                    if(textArea_answer.getText() != ""){
+                        shits.get(idx).originalAnswer= textArea_answer.getText();
+                    }
                 } else if (idx - 1 >= 0 && idx <= shits.size()) {
                     shits.get(idx - 1).setQuestion(textArea1.getText());
                     shits.get(idx - 1).setAnswer(textArea2.getText());
-                    shits.get(idx - 1).originalAnswer= textArea_answer.getText();
+                    if(textArea_answer.getText() != "") {
+                        shits.get(idx - 1).originalAnswer = textArea_answer.getText();
+                    }
                 }
                 if (idx >= 0 && idx < shits.size() - 1) {
                     textArea1.setText(shits.get(++idx).getQuestion());
