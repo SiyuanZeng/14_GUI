@@ -742,8 +742,10 @@ public class Frame implements Serializable {
             writer.write(shit.getAnswer());
             writer.write(System.getProperty("line.separator"));
             writer.write(System.getProperty("line.separator"));
-            writer.write(System.getProperty("Origianl answer......"));
-            writer.write(System.getProperty(shit.originalAnswer));
+            writer.write("Origianl answer......");
+            writer.write(System.getProperty("line.separator"));
+            writer.write(shit.originalAnswer);
+            writer.write(System.getProperty("line.separator"));
         }
         writer.close();
     }
@@ -782,8 +784,10 @@ public class Frame implements Serializable {
             writer.write(System.getProperty("line.separator"));
             writer.write(System.getProperty("line.separator"));
 
-            writer.write(System.getProperty("Origianl answer......"));
-            writer.write(System.getProperty(shit.originalAnswer));
+            writer.write("Origianl answer......");
+            writer.write(System.getProperty("line.separator"));
+            writer.write(shit.originalAnswer);
+            writer.write(System.getProperty("line.separator"));
         }
         writer.close();
     }
