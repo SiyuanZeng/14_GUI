@@ -28,6 +28,7 @@ public class Frame implements Serializable {
     private static JTextArea textArea1;
     private static JTextArea textArea2;
     private static JTextArea textArea3;
+    private static JTextArea textArea_answer;
     private static JFrame frame;
     static public final String WITH_DELIMITER = "((?<=%1$s)|(?=%1$s))";
     private static int idx;
@@ -229,7 +230,9 @@ public class Frame implements Serializable {
 
         setTextArea1(border, content);
         setTextArea2(border, content);
+        setTextArea_Answer(border, content);
 
+        setShowMeButton(content, border);
 
         BeepingButton gotIt = setNextButton(content, border);
 
@@ -253,9 +256,7 @@ public class Frame implements Serializable {
         initSystemTray();
 
 
-        textArea1.setFont(font);
-        textArea2.setFont(font);
-        textArea3.setFont(font);
+
 
         frame.setVisible(true);
         if (null != shits && shits.size() > 0) {
@@ -263,6 +264,22 @@ public class Frame implements Serializable {
             textArea2.setText(shits.get(idx).getAnswer());
         }
 
+    }
+
+    private void setShowMeButton(Container content, Border border) {
+        BeepingButton beep = new BeepingButton("Show me your pussy!!!!");
+        beep.setSize(buttonDesimon);
+        beep.setMinimumSize(buttonDesimon);
+        beep.setFont(font);
+        beep.addActionListener((e) -> {
+            try {
+                textArea_answer.setText(shits.get(idx).originalAnswer);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
+        beep.setBorder(border);
+        content.add(beep);
     }
 
     public void deserialize(String subject, int shitAnInt) {
@@ -435,14 +452,20 @@ public class Frame implements Serializable {
         if (idx == 0 && null != shits && shits.size() > 0) {
             shits.get(idx).setQuestion(textArea1.getText());
             shits.get(idx).setAnswer(textArea2.getText());
+            shits.get(idx).originalAnswer = textArea_answer.getText();
         } else if (idx - 1 >= 0 && null != shits && shits.size() > 0 && idx <= shits.size()) {
             shits.get(idx - 1).setQuestion(textArea1.getText());
             shits.get(idx - 1).setAnswer(textArea2.getText());
+            shits.get(idx - 1).originalAnswer = textArea_answer.getText();
+
         }
 
         Scanner in = null;
 
+        if (null != textArea3 && !("".equalsIgnoreCase(textArea3.getText()))){
+
         in = new Scanner(textArea3.getText());
+
         if (null == shits || shits.size() == 0) {
             while (in.hasNext()) {
                 String line = in.nextLine();
@@ -463,9 +486,10 @@ public class Frame implements Serializable {
 
         }
 
-        textArea1.setText(shits.get(idx).getQuestion());
-        textArea2.setText("");
-        textArea3.setText("");
+            textArea1.setText(shits.get(idx).getQuestion());
+            textArea2.setText("");
+            textArea3.setText("");
+        }
 
     }
 
@@ -481,13 +505,16 @@ public class Frame implements Serializable {
                 if (idx == 0) {
                     shits.get(idx).setQuestion(textArea1.getText());
                     shits.get(idx).setAnswer(textArea2.getText());
+                    shits.get(idx).originalAnswer= textArea_answer.getText();
                 } else if (idx - 1 >= 0 && idx <= shits.size()) {
                     shits.get(idx - 1).setQuestion(textArea1.getText());
                     shits.get(idx - 1).setAnswer(textArea2.getText());
+                    shits.get(idx - 1).originalAnswer= textArea_answer.getText();
                 }
                 if (idx >= 0 && idx < shits.size() - 1) {
                     textArea1.setText(shits.get(++idx).getQuestion());
                     textArea2.setText(shits.get(idx).getAnswer());
+                    textArea_answer.setText("");
                 }
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -622,12 +649,15 @@ public class Frame implements Serializable {
                 new JTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS);
         textArea1.setLineWrap(true);
 
+
         JScrollPane scrollPane = new JScrollPane(textArea1,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        textArea1.setFont(font);
 
         scrollPane.setBorder(border);
         content.add(scrollPane);
+
     }
 
 
@@ -637,16 +667,29 @@ public class Frame implements Serializable {
         textArea2.setLineWrap(true);
 
         JScrollPane scrollPane = new JScrollPane(textArea2);
-
+        textArea2.setFont(font);
         scrollPane.setBorder(border);
         content.add(scrollPane);
     }
 
 
+
+    private void setTextArea_Answer(Border border, Container content) {
+        textArea_answer =
+                new JTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS);
+        textArea_answer.setLineWrap(true);
+
+        JScrollPane scrollPane = new JScrollPane(textArea_answer);
+        textArea_answer.setFont(font);
+        scrollPane.setBorder(border);
+        content.add(scrollPane);
+    }
+
     private void setTextArea3(Border border, Container content) {
         textArea3 =
                 new JTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS);
         textArea3.setLineWrap(true);
+        textArea3.setFont(font);
 
         textArea3.addMouseListener(new MouseAdapter() {
             @Override
