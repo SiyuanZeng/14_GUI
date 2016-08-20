@@ -230,6 +230,10 @@ public class Frame implements Serializable {
         }
         lastFrame = frame;
 
+        BeepingButton gotIt = setNextButton(content, border);
+
+
+        setIforgertButton(content, border);
         setTextArea1(border, content);
 
         JLabel labe2 = new JLabel(sybject);
@@ -251,27 +255,23 @@ public class Frame implements Serializable {
         labe4.setBorder(border);
         labe4.setFont(font);
         content.add(labe4);
+        setShowMeButton(content, border);
 
         setTextArea_Answer(border, content);
 
 
-        BeepingButton gotIt = setNextButton(content, border);
-
-
-        setIforgertButton(content, border);
 
         settastyshiterButton(content, border);
         setendofworldButton(content, border);
         setoriginofeverythingButton(content, border);
 
-        setShowMeButton(content, border);
 
         setSerializeBeforeCloseWindow();
 
 
-        setSaveButton(content, border);
-
         setTextArea3(border, content);
+
+
 
         setDeserializeButton(content, border);
 
@@ -426,24 +426,6 @@ public class Frame implements Serializable {
         content.add(beep);
     }
 
-    private void setSaveButton(Container content, Border border) {
-        BeepingButton beep = new BeepingButton("Save");
-        beep.setSize(buttonDesimon);
-        beep.setMinimumSize(buttonDesimon);
-        beep.setFont(font);
-        beep.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        beep.addActionListener((e) -> {
-            try {
-                load();
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
-        });
-        beep.setBorder(border);
-        content.add(beep);
-    }
-
     private void setDimension() {
         JFrame temp = new JFrame();
         temp.pack();
@@ -528,7 +510,7 @@ public class Frame implements Serializable {
 
         }
 
-            textArea1.setText(shits.get(idx).getQuestion());
+            textArea1.setText(null == shits.get(idx).getQuestion()?"":shits.get(idx).getQuestion());
             textArea2.setText("");
             textArea3.setText("");
             textArea_missing.setText("");
@@ -742,6 +724,14 @@ public class Frame implements Serializable {
             @Override
             public void mouseClicked(MouseEvent e) {
                 textArea3.setText("");
+            }
+        });
+
+        textArea3.addFocusListener(new FocusListener() {
+            public void focusGained(FocusEvent e) {
+            };
+            public void focusLost(FocusEvent e) {
+                load();
             }
         });
 

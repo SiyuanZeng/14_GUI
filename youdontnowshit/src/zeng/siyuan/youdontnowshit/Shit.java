@@ -6,8 +6,10 @@ import java.io.Serializable;
  * Created by SiyuanZeng's on 8/8/2016.
  */
 public class Shit implements Serializable {
-    String question;
-    String answer;
+    String question ="";
+    String answer ="";
+    String originalAnswer ="";
+    public String missing;
 
     public Shit(String question) {
         this.question = question;
