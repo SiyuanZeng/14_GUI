@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -41,7 +43,7 @@ public class TeelMeReal {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         frame.setLayout(new FlowLayout());
-        frame.add(new JLabel("Teel me Real, what did you just learn?"));
+        frame.add(new JLabel("Teel me... Real, what did you just learn?"));
         frame.add(new BeepingButton("Save"));
         frame.pack();
 
@@ -67,9 +69,14 @@ public class TeelMeReal {
         controlPanel.setLayout(new FlowLayout());
         frame.add(controlPanel);
 
-        textArea =
-                new JTextArea(10, 40);
+        textArea = new JTextArea(10, 40);
 
+        textArea.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                textArea.setText("");
+            }
+        });
         JScrollPane scrollPane = new JScrollPane(textArea);
 
         controlPanel.add(scrollPane);
@@ -124,6 +131,7 @@ public class TeelMeReal {
                                public void run() {
                                    frame.repaint();
                                    frame.toFront();
+                                   textArea.setText("Real, tell me, what did you just learnt?");
                                }
                            },
                     // starting now
