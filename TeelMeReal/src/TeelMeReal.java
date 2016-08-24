@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -29,6 +31,7 @@ public class TeelMeReal {
     private JPanel controlPanel;
     private static JTextArea textArea;
     private static JFrame frame;
+    private static Font font = new Font("Serif", Font.PLAIN, 20);
 
     public static void main(String[] args) {
         new TeelMeReal();
@@ -43,8 +46,9 @@ public class TeelMeReal {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         frame.setLayout(new FlowLayout());
-        frame.add(new JLabel("Teel me... Real, what did you just learn?"));
-        frame.add(new BeepingButton("Save"));
+        JLabel label = new JLabel("Teel me... Real, what did you just learn?");
+        label.setFont(font);
+        frame.add(label);
         frame.pack();
 
         JFrame temp = new JFrame();
@@ -70,11 +74,26 @@ public class TeelMeReal {
         frame.add(controlPanel);
 
         textArea = new JTextArea(10, 40);
+        textArea.setFont(font);
 
         textArea.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 textArea.setText("");
+            }
+        });
+
+        textArea.addFocusListener(new FocusListener() {
+            public void focusGained(FocusEvent e) {
+            };
+            public void focusLost(FocusEvent e) {
+                try {
+                    insert();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                } catch (ParseException e1) {
+                    e1.printStackTrace();
+                }
             }
         });
         JScrollPane scrollPane = new JScrollPane(textArea);
@@ -83,20 +102,7 @@ public class TeelMeReal {
         frame.setVisible(true);
     }
 
-    private static class BeepingButton extends JButton {
-        BeepingButton(final String text) {
-            super(text);
-            setPreferredSize(new Dimension(140, 60));
-            addActionListener((e) -> {
-                try {
-                    insert();
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
-            });
-        }
-
-        public static void insert() throws IOException, ParseException {
+   public void insert() throws IOException, ParseException {
             DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             Date today = new Date();
             Date todayWithZeroTime = formatter.parse(formatter.format(today));
@@ -132,6 +138,7 @@ public class TeelMeReal {
                                    frame.repaint();
                                    frame.toFront();
                                    textArea.setText("Real, tell me, what did you just learnt?");
+                                   textArea.setFont(font);
                                }
                            },
                     // starting now
@@ -139,12 +146,5 @@ public class TeelMeReal {
                     // 15 minutes
                     900000
             );
-
-
         }
-
-
-    }
-
-
 }
