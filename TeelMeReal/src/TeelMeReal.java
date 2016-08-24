@@ -32,7 +32,7 @@ public class TeelMeReal {
     private static JTextArea textArea;
     private static JFrame frame;
     private static Font font = new Font("Serif", Font.PLAIN, 20);
-
+    private static Timer timer = new Timer();
     public static void main(String[] args) {
         new TeelMeReal();
     }
@@ -49,6 +49,7 @@ public class TeelMeReal {
         JLabel label = new JLabel("Teel me... Real, what did you just learn?");
         label.setFont(font);
         frame.add(label);
+
         frame.pack();
 
         JFrame temp = new JFrame();
@@ -73,8 +74,9 @@ public class TeelMeReal {
         controlPanel.setLayout(new FlowLayout());
         frame.add(controlPanel);
 
-        textArea = new JTextArea(10, 40);
+        textArea = new JTextArea(10, 36);
         textArea.setFont(font);
+        textArea.setLineWrap(true);
 
         textArea.addMouseListener(new MouseAdapter() {
             @Override
@@ -85,7 +87,11 @@ public class TeelMeReal {
 
         textArea.addFocusListener(new FocusListener() {
             public void focusGained(FocusEvent e) {
-            };
+            }
+
+
+            ;
+
             public void focusLost(FocusEvent e) {
                 try {
                     insert();
@@ -102,7 +108,7 @@ public class TeelMeReal {
         frame.setVisible(true);
     }
 
-   public void insert() throws IOException, ParseException {
+        public static void insert() throws IOException, ParseException {
             DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             Date today = new Date();
             Date todayWithZeroTime = formatter.parse(formatter.format(today));
@@ -129,22 +135,21 @@ public class TeelMeReal {
             textArea.setText("");
             // Your code goes here.
 
-            Timer timer = new Timer();
-
             timer.schedule(new TimerTask() {
 
                                @Override
                                public void run() {
+                                   textArea.setText("Real, tell me, what did you just learnt?");
+                                   frame.show();
                                    frame.repaint();
                                    frame.toFront();
-                                   textArea.setText("Real, tell me, what did you just learnt?");
-                                   textArea.setFont(font);
                                }
                            },
                     // starting now
-                    new Date(),
+                    new Date(new Date().getTime() + 900000),
                     // 15 minutes
                     900000
             );
+            frame.hide();
         }
 }
