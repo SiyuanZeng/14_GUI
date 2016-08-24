@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -25,6 +27,9 @@ public class Gui {
     private JPanel controlPanel;
     private static JTextArea textArea;
     private static JFrame frame;
+    private static Font font = new Font("Serif", Font.PLAIN, 20);
+
+
     public static void main(String[] args) {
         new Gui();
     }
@@ -38,8 +43,11 @@ public class Gui {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         frame.setLayout(new FlowLayout());
-        frame.add(new JLabel("Hello World"));
-        frame.add(new BeepingButton("Save"));
+        frame.setTitle("ThoughtRecorder");
+        frame.setFont(font);
+        JLabel label = new JLabel("Surreal, What are you thinking.....");
+        label.setFont(font);
+        frame.add(label);
         frame.pack();
 
         JFrame temp = new JFrame();
@@ -64,29 +72,30 @@ public class Gui {
         controlPanel.setLayout(new FlowLayout());
         frame.add(controlPanel);
 
-        textArea =
-                new JTextArea(10,40);
+        textArea = new JTextArea(10,40);
         textArea.setLineWrap(true);
+        textArea.setFont(font);
+        textArea.addFocusListener(new FocusListener() {
+            public void focusGained(FocusEvent e) {
+            };
+
+            public void focusLost(FocusEvent e) {
+                try {
+                    Tone.sound(2000, 150);
+                    insert();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                } catch (ParseException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
 
         JScrollPane scrollPane = new JScrollPane(textArea);
 
         controlPanel.add(scrollPane);
         frame.setVisible(true);
     }
-
-    private static class BeepingButton extends JButton {
-        BeepingButton(final String text) {
-            super(text);
-            setPreferredSize(new Dimension(140, 60));
-            addActionListener((e) -> {
-                try {
-                    Tone.sound(2000, 150);
-                    insert();
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
-            });
-        }
 
         public static void insert() throws IOException, ParseException {
             DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -114,9 +123,4 @@ public class Gui {
             System.out.println("Done");
             frame.dispose();
         }
-
-
-    }
-
-
 }
