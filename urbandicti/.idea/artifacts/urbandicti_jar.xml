@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="urbandicti:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/urbandicti_jar</output-path>
+    <root id="archive" name="urbandicti.jar">
+      <element id="module-output" name="urbandicti" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="c1comehere:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/c1comehere_jar</output-path>
+    <root id="archive" name="c1comehere.jar">
+      <element id="module-output" name="c1comehere" />
+    </root>
+  </artifact>
+</component>

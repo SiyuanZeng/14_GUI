@@ -510,7 +510,7 @@ public class Frame implements Serializable {
 
         }
 
-            textArea1.setText(null == shits.get(idx).getQuestion()?"":shits.get(idx).getQuestion());
+            textArea1.setText(null==shits || 0 == shits.size() ||null == shits.get(idx).getQuestion()?"":shits.get(idx).getQuestion());
             textArea2.setText("");
             textArea3.setText("");
             textArea_missing.setText("");

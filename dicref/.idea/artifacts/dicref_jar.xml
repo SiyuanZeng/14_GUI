@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="dicref:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/dicref_jar</output-path>
+    <root id="archive" name="dicref.jar">
+      <element id="module-output" name="dicref" />
+    </root>
+  </artifact>
+</component>
