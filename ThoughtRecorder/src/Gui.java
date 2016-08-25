@@ -72,7 +72,7 @@ public class Gui {
         controlPanel.setLayout(new FlowLayout());
         frame.add(controlPanel);
 
-        textArea = new JTextArea(10,40);
+        textArea = new JTextArea(10,36);
         textArea.setLineWrap(true);
         textArea.setFont(font);
         textArea.addFocusListener(new FocusListener() {
@@ -98,12 +98,20 @@ public class Gui {
     }
 
         public static void insert() throws IOException, ParseException {
+
+
+            String PATH = String.format("c:/c1/c1comehere/diary");
+            File directory = new File(String.valueOf(PATH));
+            if (!directory.exists()) {
+                directory.mkdir();
+            }
+
             DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             Date today = new Date();
             Date todayWithZeroTime = formatter.parse(formatter.format(today));
 
-            RandomAccessFile r = new RandomAccessFile(new File("c:\\diary\\"+formatter.format(today)+".txt"), "rw");
-            RandomAccessFile rtemp = new RandomAccessFile(new File("c:\\diary\\"+formatter.format(today)+".txt" + "~"), "rw");
+            RandomAccessFile r = new RandomAccessFile(new File("c:/c1/c1comehere/diary"+formatter.format(today)+".txt"), "rw");
+            RandomAccessFile rtemp = new RandomAccessFile(new File("c:/c1/c1comehere/diary"+formatter.format(today)+".txt" + "~"), "rw");
             long fileSize = r.length();
             FileChannel sourceChannel = r.getChannel();
             FileChannel targetChannel = rtemp.getChannel();
