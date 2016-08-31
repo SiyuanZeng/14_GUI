@@ -41,6 +41,15 @@ public class Ebbinghaus implements Serializable {
         fifth = new Task(new Date(curTimeInMs + (2*24*60 * ONE_MINUTE_IN_MILLIS)), question, answer );
         sixth = new Task(new Date(curTimeInMs + (6*24*60 * ONE_MINUTE_IN_MILLIS)), question, answer );
         seventh = new Task(new Date(curTimeInMs + (31*24*60 * ONE_MINUTE_IN_MILLIS)), question, answer );
+
+        first = new Task(new Date(curTimeInMs + (1 * ONE_MINUTE_IN_MILLIS)), question, answer);
+        second = new Task(new Date(curTimeInMs + (2 * ONE_MINUTE_IN_MILLIS)), question, answer );
+        third = new Task(new Date(curTimeInMs + (3 * ONE_MINUTE_IN_MILLIS)), question, answer );
+        fourth = new Task(new Date(curTimeInMs + (4 * ONE_MINUTE_IN_MILLIS)), question, answer );
+        fifth = new Task(new Date(curTimeInMs + (5 * ONE_MINUTE_IN_MILLIS)), question, answer );
+        sixth = new Task(new Date(curTimeInMs + (6 * ONE_MINUTE_IN_MILLIS)), question, answer );
+        seventh = new Task(new Date(curTimeInMs + (7 * ONE_MINUTE_IN_MILLIS)), question, answer );
+
         tasks.add(first);
         tasks.add(second);
         tasks.add(third);

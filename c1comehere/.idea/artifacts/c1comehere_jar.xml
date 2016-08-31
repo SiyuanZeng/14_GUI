@@ -3,6 +3,10 @@
     <output-path>$PROJECT_DIR$/out/artifacts/c1comehere_jar</output-path>
     <root id="archive" name="c1comehere.jar">
       <element id="module-output" name="c1comehere" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../ThoughtRecorder/out/artifacts/ThoughtRecorder_jar/ThoughtRecorder.v3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../jars/selenium-java-3.0.0-beta2/client-combined-3.0.0-beta2-nodeps.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/related jar/selenium-java-2.0b1.jar/selenium-java-2.0b1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/related jar/gson-2.7.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
