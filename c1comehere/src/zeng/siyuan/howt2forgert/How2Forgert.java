@@ -10,6 +10,7 @@ import zeng.siyuan.C1comehere.C1comehere;
 import javax.swing.*;
 import java.io.*;
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 //Created by Real
@@ -17,7 +18,7 @@ public class How2Forgert implements Serializable {
     public transient C1comehere c1comehere;
     public transient JTextArea textArea;
     public transient static final long serialVersionUID = 1L;
-    public transient static ArrayList<Ebbinghaus> ebbinghauses;
+    public transient static Map<UUID, Ebbinghaus> ebbinghauses;
     public transient ArrayList<Task> tasks = new ArrayList<Task>();
     public transient Task currentTask = new Task();
     public transient Display d;
@@ -35,7 +36,55 @@ public class How2Forgert implements Serializable {
         return serialVersionUID;
     }
 
-    private void displayTask() {
+    public void updatetask(){
+        StringBuilder stringBuilder = new StringBuilder();
+        Date date = new Date();
+
+        Calendar c = Calendar.getInstance();
+
+        c.set(2013, Calendar.MARCH, 10, 1, 58);
+
+        SimpleDateFormat format = new SimpleDateFormat("EEE, MMM d, yyyy 'at' hh:mm");
+
+        System.out.println(format.format(c.getTime()));
+
+        c.add(Calendar.HOUR_OF_DAY, 1);
+
+        System.out.println(format.format(c.getTime()));
+
+
+        int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
+
+        if (timeOfDay >= 0 && timeOfDay < 12) {
+            stringBuilder.append("Good Morning C1 world, ");
+        } else if (timeOfDay >= 12 && timeOfDay < 16) {
+            stringBuilder.append("Good Afternoon C1 world, ");
+        } else if (timeOfDay >= 16 && timeOfDay < 21) {
+            stringBuilder.append("Good Evening C1 world, ");
+        } else if (timeOfDay >= 21 && timeOfDay < 24) {
+            stringBuilder.append("Good Night C1 world, ");
+        }
+
+        stringBuilder.append(format.format(c.getTime()));
+
+        if (timeOfDay >= 0 && timeOfDay < 12) {
+            stringBuilder.append(" am");
+            stringBuilder.append(System.getProperty("line.separator"));
+            stringBuilder.append(textArea.getText().substring(textArea.getText().indexOf(ebbinghauses.get(currentTask.Javauuid).question) + 1));
+            stringBuilder.append(System.getProperty("line.separator"));
+            stringBuilder.append(ebbinghauses.get(currentTask.Javauuid).question);
+        } else if (timeOfDay >= 12 && timeOfDay < 24) {
+            stringBuilder.append(" pm");
+            stringBuilder.append(System.getProperty("line.separator"));
+            stringBuilder.append(textArea.getText().substring(textArea.getText().indexOf(ebbinghauses.get(currentTask.Javauuid).question) + 1));
+            stringBuilder.append(System.getProperty("line.separator"));
+            stringBuilder.append(ebbinghauses.get(currentTask.Javauuid).question);
+        }
+
+        ebbinghauses.get(currentTask.Javauuid).question =  stringBuilder.toString();
+    }
+
+    public void displayTask() {
         try {
             for (Task t : tasks) {
                 if (!t.isDone() && t.getDate().after(new Date())) {
@@ -48,16 +97,25 @@ public class How2Forgert implements Serializable {
                         System.out.println("After sleep");
                         frame.repaint();
                         frame.toFront();
-                        textArea.setText(t.getQuestion());
                         currentTask = t;
+                        String inntuitive = ("fgtu ");
+                        inntuitive += System.getProperty("line.separator");
+                        inntuitive += ebbinghauses.get(currentTask.Javauuid).question;
+                        inntuitive += System.getProperty("line.separator");
+                        textArea.setText(inntuitive);
                         currentTask.setIsDone(true);
+
                     } else {
                         System.out.println("Before sleep.....");
                         System.out.println("After sleep.....");
                         frame.repaint();
                         frame.toFront();
-                        textArea.setText(t.getQuestion());
                         currentTask = t;
+                        String inntuitive = ("fgtu ");
+                        inntuitive += System.getProperty("line.separator");
+                        inntuitive += ebbinghauses.get(currentTask.Javauuid).question;
+                        inntuitive += System.getProperty("line.separator");
+                        textArea.setText(inntuitive);
                         currentTask.setIsDone(true);
                         Thread.sleep(10000);
                     }
@@ -98,7 +156,7 @@ public class How2Forgert implements Serializable {
     }
 
     public static void deserialize() {
-        final Type REVIEW_TYPE = new TypeToken<List<Ebbinghaus>>() {
+        final Type REVIEW_TYPE = new TypeToken<Map<UUID, Ebbinghaus>>() {
         }.getType();
         Gson gson = new Gson();
         JsonReader reader = null;
@@ -113,17 +171,18 @@ public class How2Forgert implements Serializable {
     }
 
     public void addWord(String word, String answer) {
-        ebbinghauses = null != ebbinghauses ? ebbinghauses : new ArrayList<Ebbinghaus>();
+        ebbinghauses = null != ebbinghauses ? ebbinghauses : new HashMap<UUID, Ebbinghaus>();
         Ebbinghaus ebbinghaus = new Ebbinghaus(word, answer);
-        ebbinghauses.add(ebbinghaus);
+        ebbinghauses.put(ebbinghaus.javauid, ebbinghaus);
         textArea.setText("");
     }
 
     public void loadTask() {
-        ebbinghauses = null != ebbinghauses ? ebbinghauses : new ArrayList<Ebbinghaus>();
+        ebbinghauses = null != ebbinghauses ? ebbinghauses : new HashMap<UUID, Ebbinghaus>();
         tasks = new ArrayList<Task>();
-        for (Ebbinghaus e : ebbinghauses) {
-            ArrayList<Task> t = e.tasks;
+        for (Map.Entry<UUID, Ebbinghaus> e : ebbinghauses.entrySet()) {
+            e.getValue().setUUID();
+            ArrayList<Task> t = e.getValue().tasks;
             for (Task task : t) {
                 tasks.add(task);
             }

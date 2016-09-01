@@ -122,7 +122,7 @@ public class C1comehere implements Serializable {
         frame.setLayout(new FlowLayout());
         frame.setTitle("c1comeherec1");
         frame.setFont(font);
-        JLabel label = new JLabel("c1, com ehere , c1, come to me here.....");
+        JLabel label = new JLabel("c1, com ehere , c1, come to me here.....myself MYSELF Hi meeeee....");
         label.setFont(font);
         frame.add(label);
         frame.pack();
@@ -169,6 +169,7 @@ public class C1comehere implements Serializable {
                         String key = text.substring(0, 3);
                         boolean isThoughtRecorderCommand = key.equalsIgnoreCase("rec");
                         boolean isHow2ForegertCommand = key.equalsIgnoreCase("fgt");
+                        boolean isHow2ForegertCommand_u = key.equalsIgnoreCase("fgtu");
                         boolean isShowCommand = key.equalsIgnoreCase("sho");// shw
                         Search search = null;
                         if (searchEngines.containsKey(key)) {
@@ -184,6 +185,11 @@ public class C1comehere implements Serializable {
                         } else if (isHow2ForegertCommand) {
                             //init
                             how2Forgert.inster(text.substring(4), "");
+                            textArea.setText("");
+                            How2Forgert.serialize();
+                        } else if (isHow2ForegertCommand_u) {
+                            //init
+                            how2Forgert.updatetask();
                             textArea.setText("");
                             How2Forgert.serialize();
                         } else if (isShowCommand) {

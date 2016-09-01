@@ -5,33 +5,60 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by SiyuanZeng's on 8/8/2016.
  */
 public class Ebbinghaus implements Serializable {
+    String question;
+    String answer;
 
     Date date;
     String word;
+
     ArrayList<Task> tasks = new ArrayList<Task>();
 
     //        20 minutes
-    private Task first;// 20 munites
+    public Task first;// 20 munites
     //        1 hour
-    private Task second; // 1 hour
+    public Task second; // 1 hour
     //        9 hours
-    private Task third;
+    public Task third;
     //        1 day
-    private Task fourth;
+    public Task fourth;
     //        2 sdays
-    private Task fifth;
+    public Task fifth;
     //        6 days
-    private Task sixth;
+    public Task sixth;
     //        31 days
-    private Task seventh;
+    public Task seventh;
 
+    public UUID javauid;
+
+    public Ebbinghaus() {
+
+    }
+
+    public void setUUID() {
+        if (null == javauid) {
+            this.javauid = java.util.UUID.randomUUID();
+            first.Javauuid = javauid;
+            second.Javauuid = javauid;
+            third.Javauuid = javauid;
+            fourth.Javauuid = javauid;
+            fifth.Javauuid = javauid;
+            sixth.Javauuid = javauid;
+            seventh.Javauuid = javauid;
+        }
+    }
 
     public Ebbinghaus(String question, String answer) {
+        this.question = question;
+        this.answer = answer;
+        this.javauid = java.util.UUID.randomUUID();
+
+
         StringBuilder stringBuilder = new StringBuilder();
         this.date = new Date();
 
@@ -61,25 +88,28 @@ public class Ebbinghaus implements Serializable {
         }
 
         stringBuilder.append(format.format(c.getTime()));
-        stringBuilder.append(System.getProperty("line.separator"));
 
         if (timeOfDay >= 0 && timeOfDay < 12) {
-            stringBuilder.append(question + " am");
+            stringBuilder.append(" am");
+            stringBuilder.append(System.getProperty("line.separator"));
+            stringBuilder.append(question);
         } else if (timeOfDay >= 12 && timeOfDay < 24) {
-            stringBuilder.append(question + " pm");
+            stringBuilder.append(" pm");
+            stringBuilder.append(System.getProperty("line.separator"));
+            stringBuilder.append(question);
         }
 
 
         final long ONE_MINUTE_IN_MILLIS = 60000;//millisecs
 
         long curTimeInMs = date.getTime();
-        first = new Task(new Date(curTimeInMs + (20 * ONE_MINUTE_IN_MILLIS)), stringBuilder.toString(), answer);
-        second = new Task(new Date(curTimeInMs + (60 * ONE_MINUTE_IN_MILLIS)), stringBuilder.toString(), answer);
-        third = new Task(new Date(curTimeInMs + (540 * ONE_MINUTE_IN_MILLIS)), stringBuilder.toString(), answer);
-        fourth = new Task(new Date(curTimeInMs + (24 * 60 * ONE_MINUTE_IN_MILLIS)), stringBuilder.toString(), answer);
-        fifth = new Task(new Date(curTimeInMs + (2 * 24 * 60 * ONE_MINUTE_IN_MILLIS)), stringBuilder.toString(), answer);
-        sixth = new Task(new Date(curTimeInMs + (6 * 24 * 60 * ONE_MINUTE_IN_MILLIS)), stringBuilder.toString(), answer);
-        seventh = new Task(new Date(curTimeInMs + (31 * 24 * 60 * ONE_MINUTE_IN_MILLIS)), stringBuilder.toString(), answer);
+        first = new Task(new Date(curTimeInMs + (20 * ONE_MINUTE_IN_MILLIS)), javauid);
+        second = new Task(new Date(curTimeInMs + (60 * ONE_MINUTE_IN_MILLIS)), javauid);
+        third = new Task(new Date(curTimeInMs + (540 * ONE_MINUTE_IN_MILLIS)), javauid);
+        fourth = new Task(new Date(curTimeInMs + (24 * 60 * ONE_MINUTE_IN_MILLIS)), javauid);
+        fifth = new Task(new Date(curTimeInMs + (2 * 24 * 60 * ONE_MINUTE_IN_MILLIS)), javauid);
+        sixth = new Task(new Date(curTimeInMs + (6 * 24 * 60 * ONE_MINUTE_IN_MILLIS)), javauid);
+        seventh = new Task(new Date(curTimeInMs + (31 * 24 * 60 * ONE_MINUTE_IN_MILLIS)), javauid);
 
         tasks.add(first);
         tasks.add(second);

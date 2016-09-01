@@ -3,23 +3,24 @@ package zeng.siyuan.howt2forgert;
 import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by SiyuanZeng's on 8/9/2016.
  */
 public class Task implements Comparator<Task>, Serializable {
     Date date;
-    String question;
-    String answer;
-    private boolean isDone = false;// 20 munites
 
+    public boolean isDone = false;// 20 munites
+    public UUID Javauuid;
     public Task() {}
 
+    public Ebbinghaus relatecebbinhause;
 
-    public Task(Date date, String question, String answer) {
+
+    public Task(Date date, UUID javauid) {
         this.date = date;
-        this.question = question;
-        this.answer = answer;
+        this.Javauuid =  javauid;
     }
 
 
@@ -56,21 +57,5 @@ public class Task implements Comparator<Task>, Serializable {
 
     public void setIsDone(boolean isDone) {
         this.isDone = isDone;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
     }
 }
