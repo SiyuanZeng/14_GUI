@@ -225,7 +225,6 @@ public class C1comehere implements Serializable {
 
         controlPanel.add(scrollPane);
 
-        How2Forgert.deserialize();
 
         frame.setVisible(true);
 

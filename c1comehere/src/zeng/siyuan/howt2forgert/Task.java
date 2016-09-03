@@ -1,5 +1,8 @@
 package zeng.siyuan.howt2forgert;
 
+import com.datastax.driver.mapping.annotations.Field;
+import com.datastax.driver.mapping.annotations.UDT;
+
 import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Date;
@@ -8,14 +11,17 @@ import java.util.UUID;
 /**
  * Created by SiyuanZeng's on 8/9/2016.
  */
+@UDT(keyspace = "keyspace1", name = "type4")
 public class Task implements Comparator<Task>, Serializable {
+//    @Field
+    @Field(name="date")
     Date date;
-
+    @Field(name="isdone")
     public boolean isDone = false;// 20 munites
+    @Field(name="javauuid")
     public UUID Javauuid;
-    public Task() {}
 
-    public Ebbinghaus relatecebbinhause;
+
 
 
     public Task(Date date, UUID javauid) {
@@ -51,11 +57,34 @@ public class Task implements Comparator<Task>, Serializable {
         this.date = date;
     }
 
-    public boolean isDone() {
+    public boolean getIsDone() {
         return isDone;
     }
 
     public void setIsDone(boolean isDone) {
         this.isDone = isDone;
     }
+
+    public UUID getJavauuid() {
+        return Javauuid;
+    }
+
+    public void setJavauuid(UUID javauuid) {
+        Javauuid = javauuid;
+    }
+
+    public Task(Date date, boolean isDone, UUID javauuid) {
+        this.date = date;
+        this.isDone = isDone;
+        Javauuid = javauuid;
+    }
+
+    public Task() {}
+
+    public Task(boolean isDone, UUID javauuid) {
+        this.isDone = isDone;
+        Javauuid = javauuid;
+    }
 }
+
+

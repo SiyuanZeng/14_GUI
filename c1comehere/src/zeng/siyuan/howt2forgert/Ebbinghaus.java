@@ -1,40 +1,60 @@
 package zeng.siyuan.howt2forgert;
 
+ import com.datastax.driver.mapping.annotations.*;
+
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
+
 
 /**
  * Created by SiyuanZeng's on 8/8/2016.
  */
+
+
+@Table(keyspace = "keyspace1", name = "ebbinhance6",
+        readConsistency = "QUORUM",
+        writeConsistency = "QUORUM",
+        caseSensitiveKeyspace = false,
+        caseSensitiveTable = false)
+
 public class Ebbinghaus implements Serializable {
+    // column name does not match field name
+//    @Column(name = "question")
+
+    @PartitionKey
+    @Column(name = "id")
+    public UUID javauid;
+
+    @Column(name = "question")
     String question;
-    String answer;
 
-    Date date;
-    String word;
-
-    ArrayList<Task> tasks = new ArrayList<Task>();
+    @FrozenValue
+    @Column(name = "tasks")
+    Set<Task> tasks;
 
     //        20 minutes
+    @Transient
     public Task first;// 20 munites
     //        1 hour
+    @Transient
     public Task second; // 1 hour
     //        9 hours
+    @Transient
     public Task third;
     //        1 day
+    @Transient
     public Task fourth;
     //        2 sdays
+    @Transient
     public Task fifth;
     //        6 days
+    @Transient
     public Task sixth;
     //        31 days
+    @Transient
     public Task seventh;
 
-    public UUID javauid;
 
     public Ebbinghaus() {
 
@@ -55,12 +75,11 @@ public class Ebbinghaus implements Serializable {
 
     public Ebbinghaus(String question, String answer) {
         this.question = question;
-        this.answer = answer;
         this.javauid = java.util.UUID.randomUUID();
 
+        tasks = new HashSet<Task>();
 
         StringBuilder stringBuilder = new StringBuilder();
-        this.date = new Date();
 
         Calendar c = Calendar.getInstance();
 
@@ -102,7 +121,7 @@ public class Ebbinghaus implements Serializable {
 
         final long ONE_MINUTE_IN_MILLIS = 60000;//millisecs
 
-        long curTimeInMs = date.getTime();
+        long curTimeInMs = new Date().getTime();
         first = new Task(new Date(curTimeInMs + (20 * ONE_MINUTE_IN_MILLIS)), javauid);
         second = new Task(new Date(curTimeInMs + (60 * ONE_MINUTE_IN_MILLIS)), javauid);
         third = new Task(new Date(curTimeInMs + (540 * ONE_MINUTE_IN_MILLIS)), javauid);
@@ -119,15 +138,58 @@ public class Ebbinghaus implements Serializable {
         tasks.add(sixth);
         tasks.add(seventh);
 
-        this.word = question;
+
     }
 
 
-    public ArrayList<Task> getTasks() {
+    public Ebbinghaus(String question, HashSet<Task> tasks, Task first, Task second, Task third, Task fourth, Task fifth, Task sixth, Task seventh, UUID javauid) {
+        this.question = question;
+        this.tasks = tasks;
+        this.first = first;
+        this.second = second;
+        this.third = third;
+        this.fourth = fourth;
+        this.fifth = fifth;
+        this.sixth = sixth;
+        this.seventh = seventh;
+        this.javauid = javauid;
+    }
+
+
+    public Ebbinghaus(String question, UUID javauid, HashSet<Task> tasks, Task first, Task second, Task third, Task fourth, Task fifth, Task sixth, Task seventh) {
+        this.question = question;
+        this.javauid = javauid;
+        this.tasks = tasks;
+        this.first = first;
+        this.second = second;
+        this.third = third;
+        this.fourth = fourth;
+        this.fifth = fifth;
+        this.sixth = sixth;
+        this.seventh = seventh;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public UUID getJavauid() {
+        return javauid;
+    }
+
+    public void setJavauid(UUID javauid) {
+        this.javauid = javauid;
+    }
+
+    public Set<Task> getTasks() {
         return tasks;
     }
 
-    public void setTasks(ArrayList<Task> tasks) {
+    public void setTasks(Set<Task> tasks) {
         this.tasks = tasks;
     }
 
@@ -186,22 +248,4 @@ public class Ebbinghaus implements Serializable {
     public void setSeventh(Task seventh) {
         this.seventh = seventh;
     }
-
-    public Date getDate() {
-
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public String getWord() {
-        return word;
-    }
-
-    public void setWord(String word) {
-        this.word = word;
-    }
-
 }

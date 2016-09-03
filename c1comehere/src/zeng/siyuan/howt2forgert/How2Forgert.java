@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import zeng.siyuan.C1comehere.C1comehere;
+import zeng.siyuan.mappingmanager.mappingmanager;
 
 import javax.swing.*;
 import java.io.*;
@@ -17,26 +18,23 @@ import java.util.*;
 public class How2Forgert implements Serializable {
     public transient C1comehere c1comehere;
     public transient JTextArea textArea;
-    public transient static final long serialVersionUID = 1L;
-    public transient static Map<UUID, Ebbinghaus> ebbinghauses;
+    public transient static Set<Ebbinghaus> ebbinghauses;
     public transient ArrayList<Task> tasks = new ArrayList<Task>();
     public transient Task currentTask = new Task();
     public transient Display d;
     public transient Thread threadD;
     public transient JFrame frame;
+    public mappingmanager m;
 
     public How2Forgert(C1comehere c1comehere, JTextArea textArea, JFrame frame) {
         this.c1comehere = c1comehere;
         this.textArea = textArea;
         this.frame = frame;
+        m = new mappingmanager();
+        ebbinghauses = m.get();
     }
 
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public void updatetask(){
+    public void updatetask() {
         StringBuilder stringBuilder = new StringBuilder();
         Date date = new Date();
 
@@ -67,27 +65,31 @@ public class How2Forgert implements Serializable {
 
         stringBuilder.append(format.format(c.getTime()));
 
-        if (timeOfDay >= 0 && timeOfDay < 12) {
-            stringBuilder.append(" am");
-            stringBuilder.append(System.getProperty("line.separator"));
-            stringBuilder.append(textArea.getText().substring(textArea.getText().indexOf(ebbinghauses.get(currentTask.Javauuid).question) + 1));
-            stringBuilder.append(System.getProperty("line.separator"));
-            stringBuilder.append(ebbinghauses.get(currentTask.Javauuid).question);
-        } else if (timeOfDay >= 12 && timeOfDay < 24) {
-            stringBuilder.append(" pm");
-            stringBuilder.append(System.getProperty("line.separator"));
-            stringBuilder.append(textArea.getText().substring(textArea.getText().indexOf(ebbinghauses.get(currentTask.Javauuid).question) + 1));
-            stringBuilder.append(System.getProperty("line.separator"));
-            stringBuilder.append(ebbinghauses.get(currentTask.Javauuid).question);
+        for (Ebbinghaus e : ebbinghauses) {
+            if (e.getJavauid() == currentTask.getJavauuid()) {
+                if (timeOfDay >= 0 && timeOfDay < 12) {
+                    stringBuilder.append(" am");
+                    stringBuilder.append(System.getProperty("line.separator"));
+                    stringBuilder.append(textArea.getText().substring(textArea.getText().indexOf(e.question) + 1));
+                    stringBuilder.append(System.getProperty("line.separator"));
+                    stringBuilder.append(e.question);
+                } else if (timeOfDay >= 12 && timeOfDay < 24) {
+                    stringBuilder.append(" pm");
+                    stringBuilder.append(System.getProperty("line.separator"));
+                    stringBuilder.append(textArea.getText().substring(textArea.getText().indexOf(e.question) + 1));
+                    stringBuilder.append(System.getProperty("line.separator"));
+                    stringBuilder.append(e.question);
+                }
+                e.question = stringBuilder.toString();
+                m.update(e);
+            }
         }
-
-        ebbinghauses.get(currentTask.Javauuid).question =  stringBuilder.toString();
     }
 
     public void displayTask() {
         try {
             for (Task t : tasks) {
-                if (!t.isDone() && t.getDate().after(new Date())) {
+                if (!t.getIsDone() && t.getDate().after(new Date())) {
                     Calendar calendar = Calendar.getInstance();
                     calendar.setTime(t.getDate());
                     long diff = calendar.getTimeInMillis() - Calendar.getInstance().getTimeInMillis();
@@ -100,7 +102,11 @@ public class How2Forgert implements Serializable {
                         currentTask = t;
                         String inntuitive = ("fgtu ");
                         inntuitive += System.getProperty("line.separator");
-                        inntuitive += ebbinghauses.get(currentTask.Javauuid).question;
+                        for (Ebbinghaus e : ebbinghauses) {
+                            if (e.getJavauid() == currentTask.getJavauuid()) {
+                                inntuitive += e.question;
+                            }
+                        }
                         inntuitive += System.getProperty("line.separator");
                         textArea.setText(inntuitive);
                         currentTask.setIsDone(true);
@@ -113,32 +119,37 @@ public class How2Forgert implements Serializable {
                         currentTask = t;
                         String inntuitive = ("fgtu ");
                         inntuitive += System.getProperty("line.separator");
-                        inntuitive += ebbinghauses.get(currentTask.Javauuid).question;
+                        for (Ebbinghaus e : ebbinghauses) {
+                            if (e.getJavauid() == currentTask.getJavauuid()) {
+                                inntuitive += e.question;
+                            }
+                        }
                         inntuitive += System.getProperty("line.separator");
                         textArea.setText(inntuitive);
                         currentTask.setIsDone(true);
                         Thread.sleep(10000);
                     }
-                } else if (!t.isDone() && t.getDate().before(new Date())) {
+                } else if (!t.getIsDone() && t.getDate().before(new Date())) {
                     t.setIsDone(true);
                 }
             }
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static class MyCustomExclusionStrategy implements ExclusionStrategy {
 
-        public boolean shouldSkipClass(Class<?> arg0) {
-            return false;
-        }
+private static class MyCustomExclusionStrategy implements ExclusionStrategy {
 
-        public boolean shouldSkipField(FieldAttributes f) {
-            return (f.getDeclaringClass() == Ebbinghaus.class && f.getName().equals("changes"));
-        }
-
+    public boolean shouldSkipClass(Class<?> arg0) {
+        return false;
     }
+
+    public boolean shouldSkipField(FieldAttributes f) {
+        return (f.getDeclaringClass() == Ebbinghaus.class && f.getName().equals("changes"));
+    }
+
+}
 
     public static void serialize() {
         Gson gson = new Gson();
@@ -155,34 +166,19 @@ public class How2Forgert implements Serializable {
         }
     }
 
-    public static void deserialize() {
-        final Type REVIEW_TYPE = new TypeToken<Map<UUID, Ebbinghaus>>() {
-        }.getType();
-        Gson gson = new Gson();
-        JsonReader reader = null;
-
-        try {
-            reader = new JsonReader(new FileReader("C:\\c1\\c1comehere\\ebbinghauses.txt"));
-            ebbinghauses = gson.fromJson(reader, REVIEW_TYPE); // contains the whole reviews list
-            System.out.println("Hello");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void addWord(String word, String answer) {
-        ebbinghauses = null != ebbinghauses ? ebbinghauses : new HashMap<UUID, Ebbinghaus>();
         Ebbinghaus ebbinghaus = new Ebbinghaus(word, answer);
-        ebbinghauses.put(ebbinghaus.javauid, ebbinghaus);
+        mappingmanager mappingmanager = new mappingmanager();
+        mappingmanager.store(ebbinghaus);
+        ebbinghauses.add(ebbinghaus);
         textArea.setText("");
     }
 
     public void loadTask() {
-        ebbinghauses = null != ebbinghauses ? ebbinghauses : new HashMap<UUID, Ebbinghaus>();
+        ebbinghauses = m.get();
         tasks = new ArrayList<Task>();
-        for (Map.Entry<UUID, Ebbinghaus> e : ebbinghauses.entrySet()) {
-            e.getValue().setUUID();
-            ArrayList<Task> t = e.getValue().tasks;
+        for (Ebbinghaus e : ebbinghauses) {
+            Set<Task> t = e.tasks;
             for (Task task : t) {
                 tasks.add(task);
             }
@@ -197,6 +193,7 @@ public class How2Forgert implements Serializable {
 
     public void inster(String word, String answer) throws IOException {
         addWord(word, answer);
+        loadTask();
         restartPopThread();
     }
 
@@ -211,13 +208,10 @@ public class How2Forgert implements Serializable {
 
 
     public void init() {
-        deserialize();
         loadTask();
         d = new Display(this);
         threadD = new Thread(d);
         threadD.start();
     }
-
-
 }
 
