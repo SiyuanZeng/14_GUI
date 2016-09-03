@@ -3,14 +3,13 @@ package zeng.siyuan.howt2forgert;
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
 import zeng.siyuan.C1comehere.C1comehere;
 import zeng.siyuan.mappingmanager.mappingmanager;
 
 import javax.swing.*;
-import java.io.*;
-import java.lang.reflect.Type;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -66,20 +65,15 @@ public class How2Forgert implements Serializable {
         stringBuilder.append(format.format(c.getTime()));
 
         for (Ebbinghaus e : ebbinghauses) {
-            if (e.getJavauid() == currentTask.getJavauuid()) {
+            if (e.getJavauid().toString().equalsIgnoreCase(currentTask.getJavauuid().toString())) {
                 if (timeOfDay >= 0 && timeOfDay < 12) {
                     stringBuilder.append(" am");
-                    stringBuilder.append(System.getProperty("line.separator"));
-                    stringBuilder.append(textArea.getText().substring(textArea.getText().indexOf(e.question) + 1));
-                    stringBuilder.append(System.getProperty("line.separator"));
-                    stringBuilder.append(e.question);
                 } else if (timeOfDay >= 12 && timeOfDay < 24) {
                     stringBuilder.append(" pm");
-                    stringBuilder.append(System.getProperty("line.separator"));
-                    stringBuilder.append(textArea.getText().substring(textArea.getText().indexOf(e.question) + 1));
-                    stringBuilder.append(System.getProperty("line.separator"));
-                    stringBuilder.append(e.question);
                 }
+                stringBuilder.append(System.getProperty("line.separator"));
+                stringBuilder.append(textArea.getText().replace(" ufgt ",""));
+                stringBuilder.append(System.getProperty("line.separator"));
                 e.question = stringBuilder.toString();
                 m.update(e);
             }
@@ -100,37 +94,58 @@ public class How2Forgert implements Serializable {
                         frame.repaint();
                         frame.toFront();
                         currentTask = t;
-                        String inntuitive = ("fgtu ");
+                        String inntuitive = System.getProperty("line.separator");
+                        inntuitive += (" ufgt ");
                         inntuitive += System.getProperty("line.separator");
                         for (Ebbinghaus e : ebbinghauses) {
-                            if (e.getJavauid() == currentTask.getJavauuid()) {
-                                inntuitive += e.question;
+                            if (e.getJavauid().toString().equalsIgnoreCase(currentTask.getJavauuid().toString())) {
+                                for (Task ct : e.getTasks()) {
+                                    if (ct.getDate().getTime() == currentTask.getDate().getTime()) {
+                                        ct.setIsDone(true);
+                                        inntuitive += e.question;
+                                        m.update(e);
+                                    }
+                                }
                             }
                         }
                         inntuitive += System.getProperty("line.separator");
                         textArea.setText(inntuitive);
-                        currentTask.setIsDone(true);
-
                     } else {
                         System.out.println("Before sleep.....");
                         System.out.println("After sleep.....");
                         frame.repaint();
                         frame.toFront();
                         currentTask = t;
-                        String inntuitive = ("fgtu ");
+                        String inntuitive = System.getProperty("line.separator");
+                        inntuitive += ( "ufgt ");
                         inntuitive += System.getProperty("line.separator");
                         for (Ebbinghaus e : ebbinghauses) {
-                            if (e.getJavauid() == currentTask.getJavauuid()) {
-                                inntuitive += e.question;
+                            if (e.getJavauid().toString().equalsIgnoreCase(currentTask.getJavauuid().toString())) {
+                                for (Task ct : e.getTasks()) {
+                                    if (ct.getDate().getTime() == currentTask.getDate().getTime()) {
+                                        ct.setIsDone(true);
+                                        inntuitive += e.question;
+                                        m.update(e);
+                                    }
+                                }
                             }
                         }
                         inntuitive += System.getProperty("line.separator");
                         textArea.setText(inntuitive);
-                        currentTask.setIsDone(true);
                         Thread.sleep(10000);
                     }
                 } else if (!t.getIsDone() && t.getDate().before(new Date())) {
-                    t.setIsDone(true);
+                    for (Ebbinghaus e : ebbinghauses) {
+                        if (e.getJavauid().toString().equalsIgnoreCase(t.getJavauuid().toString())) {
+                            for (Task ct : e.getTasks()) {
+                                if (ct.getDate().getTime() == t.getDate().getTime()) {
+                                    ct.setIsDone(true);
+                                    m.update(e);
+                                }
+                            }
+                        }
+                    }
+
                 }
             }
         } catch (Exception e) {
@@ -139,17 +154,17 @@ public class How2Forgert implements Serializable {
     }
 
 
-private static class MyCustomExclusionStrategy implements ExclusionStrategy {
+    private static class MyCustomExclusionStrategy implements ExclusionStrategy {
 
-    public boolean shouldSkipClass(Class<?> arg0) {
-        return false;
+        public boolean shouldSkipClass(Class<?> arg0) {
+            return false;
+        }
+
+        public boolean shouldSkipField(FieldAttributes f) {
+            return (f.getDeclaringClass() == Ebbinghaus.class && f.getName().equals("changes"));
+        }
+
     }
-
-    public boolean shouldSkipField(FieldAttributes f) {
-        return (f.getDeclaringClass() == Ebbinghaus.class && f.getName().equals("changes"));
-    }
-
-}
 
     public static void serialize() {
         Gson gson = new Gson();

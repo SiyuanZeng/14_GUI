@@ -74,7 +74,6 @@ public class Ebbinghaus implements Serializable {
     }
 
     public Ebbinghaus(String question, String answer) {
-        this.question = question;
         this.javauid = java.util.UUID.randomUUID();
 
         tasks = new HashSet<Task>();
@@ -118,6 +117,7 @@ public class Ebbinghaus implements Serializable {
             stringBuilder.append(question);
         }
 
+        this.question = stringBuilder.toString();
 
         final long ONE_MINUTE_IN_MILLIS = 60000;//millisecs
 
@@ -129,6 +129,7 @@ public class Ebbinghaus implements Serializable {
         fifth = new Task(new Date(curTimeInMs + (2 * 24 * 60 * ONE_MINUTE_IN_MILLIS)), javauid);
         sixth = new Task(new Date(curTimeInMs + (6 * 24 * 60 * ONE_MINUTE_IN_MILLIS)), javauid);
         seventh = new Task(new Date(curTimeInMs + (31 * 24 * 60 * ONE_MINUTE_IN_MILLIS)), javauid);
+
 
         tasks.add(first);
         tasks.add(second);

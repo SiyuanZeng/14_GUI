@@ -169,7 +169,7 @@ public class C1comehere implements Serializable {
                         String key = text.substring(0, 3);
                         boolean isThoughtRecorderCommand = key.equalsIgnoreCase("rec");
                         boolean isHow2ForegertCommand = key.equalsIgnoreCase("fgt");
-                        boolean isHow2ForegertCommand_u = key.equalsIgnoreCase("fgtu");
+                        boolean isHow2ForegertCommand_u = textArea.getText().contains(" ufgt ");
                         boolean isShowCommand = key.equalsIgnoreCase("sho");// shw
                         Search search = null;
                         if (searchEngines.containsKey(key)) {

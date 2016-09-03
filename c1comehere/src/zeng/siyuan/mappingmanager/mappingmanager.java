@@ -38,9 +38,13 @@ public class mappingmanager {
     }
 
     public void update(Ebbinghaus s) {
-        session.execute(String.format("update keyspace1.ebbinhance6 set quesiton = '%s' where id = %s", s.getQuestion(), s.getJavauid()));
+        deleteTask(s);
+        store(s);
     }
 
+    public void deleteTask(Ebbinghaus s) {
+        session.execute(String.format("delete from keyspace1.ebbinhance6 WHERE id=%s", s.getJavauid()));
+    }
 
     public void store(Ebbinghaus s) {
         mapper.save(s);
