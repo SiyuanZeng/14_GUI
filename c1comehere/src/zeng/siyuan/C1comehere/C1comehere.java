@@ -45,30 +45,45 @@ public class C1comehere implements Serializable {
         });
 
 
-
     }
 
 
     public void c1come2melater(String c1, String c1Path) {
 
         OutputStream output = null;
-
+        OutputStream output_solr = null;
         try {
 
             output = new FileOutputStream("C:\\c1\\c1comehere\\c1s.txt");
-
+            c1 = c1.replace(" ", "\\ ");
             // set the properties value
             prop.setProperty(c1, c1Path);
 
             // save properties to project root folder
             prop.store(output, null);
 
+
+            output_solr = new FileOutputStream("C:\\c1\\c1comehere\\c1s_solr.txt");
+
+            int count = 0;
+            for (Map.Entry<Object, Object> e : prop.entrySet()) {
+                String key = ((String) e.getKey()).replace(" ", "\\ ");
+                String v = (String) e.getValue();
+                output_solr.write(String.valueOf(count).getBytes());
+                output_solr.write(',');
+                output_solr.write(key.getBytes());
+                output_solr.write(',');
+                output_solr.write(v.getBytes());
+                output_solr.write(System.getProperty("line.separator").getBytes());
+                count++;
+            }
         } catch (IOException io) {
             io.printStackTrace();
         } finally {
             if (output != null) {
                 try {
                     output.close();
+                    output_solr.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -99,10 +114,10 @@ public class C1comehere implements Serializable {
     }
 
 
-
     // takeC1toMe
     public String takeC1toMe(String str) {
-            return prop.getProperty(str);
+        str = str.replace(" ", "\\ ");
+        return prop.getProperty(str);
     }
 
     private static void configureLookAndFeel() {
