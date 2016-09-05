@@ -55,7 +55,7 @@ public class C1comehere implements Serializable {
         try {
 
             output = new FileOutputStream("C:\\c1\\c1comehere\\c1s.txt");
-            c1 = c1.replace(" ", "\\ ");
+            c1 = c1.replace(" ", "%20");
             // set the properties value
             prop.setProperty(c1, c1Path);
 
@@ -67,7 +67,7 @@ public class C1comehere implements Serializable {
 
             int count = 0;
             for (Map.Entry<Object, Object> e : prop.entrySet()) {
-                String key = ((String) e.getKey()).replace(" ", "\\ ");
+                String key = ((String) e.getKey()).replace("%20", " ");
                 String v = (String) e.getValue();
                 output_solr.write(String.valueOf(count).getBytes());
                 output_solr.write(',');
@@ -93,12 +93,22 @@ public class C1comehere implements Serializable {
 
     public void c1s() {
         prop = new Properties();
+        Properties temprop = new Properties();
         InputStream input = null;
 
         try {
             input = new FileInputStream("C:\\c1\\c1comehere\\c1s.txt");
             // load a properties file
-            prop.load(input);
+            temprop.load(input);
+
+
+            for (Map.Entry<Object, Object> e : temprop.entrySet()) {
+                String key = ((String) e.getKey()).replace("%20", " ");
+                String v = (String) e.getValue();
+                prop.put(key, v);
+            }
+            System.out.println("Done Propertiesy loading");
+
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
@@ -116,7 +126,7 @@ public class C1comehere implements Serializable {
 
     // takeC1toMe
     public String takeC1toMe(String str) {
-        str = str.replace(" ", "\\ ");
+//        str = str.replace(" ", "%20");
         return prop.getProperty(str);
     }
 
@@ -343,7 +353,7 @@ public class C1comehere implements Serializable {
                     c1come2melater(key.toLowerCase(), text);
                 } else {
 
-                    if (!prop.containsKey(text) && !text.contains(".")) {
+                    if (!prop.containsKey(text.trim()) && !text.contains(".")) {
                         for (Object e : prop.keySet()) {
                             String tem = (String) e;
                             if (tem.startsWith(text)) {
@@ -351,7 +361,7 @@ public class C1comehere implements Serializable {
                             }
                         }
                     } else {
-                        path = (String) prop.get(text.replace(".", ""));
+                        path = (String) prop.get(text.trim().replace(".", ""));
                     }
 
                     if (path.contains("http://") || path.contains("https://")) {
