@@ -1,5 +1,6 @@
 package zeng.siyuan.C1comehere;
 
+import zeng.siyuan.autocomplete.JTextAreaExample;
 import zeng.siyuan.howt2forgert.How2Forgert;
 import zeng.siyuan.youknowwhat.YouKnowWhat;
 
@@ -22,9 +23,9 @@ import java.util.Properties;
 
 public class C1comehere implements Serializable {
     public transient JFrame lastFrame = null;
-    public transient JPanel controlPanel;
-    public transient JTextArea textArea;
-    public transient JFrame frame;
+    public static JPanel controlPanel;
+    public static transient JTextArea textArea;
+    public static JFrame frame;
     public How2Forgert how2Forgert;
     public static C1comehere c1comehere;
     public static Font font = new Font("Serif", Font.PLAIN, 20);
@@ -36,6 +37,15 @@ public class C1comehere implements Serializable {
         configureLookAndFeel();
         c1comehere = new C1comehere();
         c1comehere.showFrame();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new JTextAreaExample(frame, textArea, controlPanel);
+            }
+        });
+
+
+
     }
 
 
