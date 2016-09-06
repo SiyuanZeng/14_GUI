@@ -177,13 +177,14 @@ class AutoSuggestor {
     }
 
     private void checkForAndShowSuggestions() {
-        if (textComp.getText().length() > 3) {
-            String text = textComp.getText();
+        String text1 = textComp.getText();
+        if (text1.length() > 3 && text1.split(" ").length < 5) {
+            String text = text1;
             boolean deleteCommand = text.contains("delete") && text.contains("=");
             String key = text.substring(0, 3);
             boolean isThoughtRecorderCommand = key.equalsIgnoreCase("rec");
             boolean isHow2ForegertCommand = key.equalsIgnoreCase("fgt");
-            boolean isHow2ForegertCommand_u = textComp.getText().contains(" ufgt ");
+            boolean isHow2ForegertCommand_u = text1.contains(" ufgt ");
             boolean isShowCommand = key.equalsIgnoreCase("sho");// shw
             if (deleteCommand || isThoughtRecorderCommand || isHow2ForegertCommand || isHow2ForegertCommand_u || isShowCommand) {
                 // exclude these scenaarios

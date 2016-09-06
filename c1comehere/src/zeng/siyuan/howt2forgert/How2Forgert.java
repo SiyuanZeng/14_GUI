@@ -76,6 +76,7 @@ public class How2Forgert implements Serializable {
                 stringBuilder.append(System.getProperty("line.separator"));
                 e.question = stringBuilder.toString();
                 m.update(e);
+                System.out.println("updates");
             }
         }
     }
@@ -170,7 +171,6 @@ public class How2Forgert implements Serializable {
         Gson gson = new Gson();
         try {
             String str = gson.toJson(ebbinghauses);
-            System.out.println(gson.toJson(ebbinghauses));
 
             FileWriter writer = new FileWriter("C:\\c1\\c1comehere\\ebbinghauses.txt");
             writer.write(str);

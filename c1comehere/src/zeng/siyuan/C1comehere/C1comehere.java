@@ -1,6 +1,7 @@
 package zeng.siyuan.C1comehere;
 
 import zeng.siyuan.autocomplete.JTextAreaExample;
+import zeng.siyuan.button.untoggle;
 import zeng.siyuan.howt2forgert.How2Forgert;
 import zeng.siyuan.youknowwhat.YouKnowWhat;
 
@@ -15,10 +16,7 @@ import java.nio.channels.FileChannel;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 
 public class C1comehere implements Serializable {
@@ -29,6 +27,7 @@ public class C1comehere implements Serializable {
     public How2Forgert how2Forgert;
     public static C1comehere c1comehere;
     public static Font font = new Font("Serif", Font.PLAIN, 20);
+    public static untoggle untoggle;
     public transient Properties prop;
     public transient static Map<String, Search> searchEngines = new HashMap<String, Search>();
 
@@ -44,7 +43,9 @@ public class C1comehere implements Serializable {
             }
         });
 
-
+//        SwingUtilities.invokeLater(() -> new buttons());
+        untoggle untog = new untoggle(frame);
+        untoggle = untog;
     }
 
 
@@ -126,7 +127,7 @@ public class C1comehere implements Serializable {
 
     // takeC1toMe
     public String takeC1toMe(String str) {
-//        str = str.replace(" ", "%20");
+        str = str.trim();
         return prop.getProperty(str);
     }
 
@@ -199,42 +200,50 @@ public class C1comehere implements Serializable {
                     e.consume();
                     Beep.sound(2000, 150);
                     try {
-                        String text = textArea.getText();
-                        boolean deleteCommand = text.contains("delete") && text.contains("=");
-                        String key = text.substring(0, 3);
-                        boolean isThoughtRecorderCommand = key.equalsIgnoreCase("rec");
-                        boolean isHow2ForegertCommand = key.equalsIgnoreCase("fgt");
+                        String buttonSelected ="";
+                        for (Enumeration<AbstractButton> buttons = untoggle.bg.getElements(); buttons.hasMoreElements();) {
+                            AbstractButton button = buttons.nextElement();
+
+                            if (button.isSelected()) {
+                                buttonSelected=button.getText();
+                            }
+                        }
+
+                        boolean deleteCommand = buttonSelected.contains("delete");
+                        String key = textArea.getText().substring(0, 3);
+                        boolean isThoughtRecorderCommand = buttonSelected.equalsIgnoreCase("rec");
+                        boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("fgt");
                         boolean isHow2ForegertCommand_u = textArea.getText().contains(" ufgt ");
-                        boolean isShowCommand = key.equalsIgnoreCase("sho");// shw
+                        boolean isShowCommand = buttonSelected.equalsIgnoreCase("sho");// shw
                         Search search = null;
                         if (searchEngines.containsKey(key)) {
                             search = searchEngines.get(key);
                         }
 
                         if (deleteCommand) {
-                            prop.remove(text.split("=")[1]);
+                            prop.remove(textArea.getText());
                             textArea.setText("");
                         } else if (isThoughtRecorderCommand) {
-                            YouKnowWhat.insert(text.substring(4));
+                            YouKnowWhat.insert(textArea.getText());
                             textArea.setText("");
-                        } else if (isHow2ForegertCommand) {
-                            //init
-                            how2Forgert.inster(text.substring(4), "");
-                            textArea.setText("");
-                            How2Forgert.serialize();
                         } else if (isHow2ForegertCommand_u) {
                             //init
                             how2Forgert.updatetask();
                             textArea.setText("");
                             How2Forgert.serialize();
+                        } else if (isHow2ForegertCommand) {
+                            //init
+                            how2Forgert.inster(textArea.getText(), "");
+                            textArea.setText("");
+                            How2Forgert.serialize();
                         } else if (isShowCommand) {
                             System.out.println("Before sleep.....");
                             System.out.println("After sleep.....");
-                            textArea.setText(takeC1toMe(text.substring(4)));
+                            textArea.setText(takeC1toMe(textArea.getText()));
                             frame.repaint();
                             frame.toFront();
                         } else if (null != search) {
-                            search.setURI(text);
+                            search.setURI(textArea.getText());
                             Desktop.getDesktop().browse(search.getURI());
                             logDictionary(search.searchName, search.keywords, search.getURIString());
                             textArea.setText("");
