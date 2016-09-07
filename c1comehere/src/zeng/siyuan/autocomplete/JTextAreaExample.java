@@ -20,14 +20,14 @@ import java.util.ArrayList;
  */
 public class JTextAreaExample {
 
-    public JTextAreaExample(JFrame frame, JTextArea f, JPanel p) {
+    public JTextAreaExample(JFrame frame, JTextArea textArea, JPanel p) {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //JTextField f = new JTextField(10);
-        //JEditorPane f = new JEditorPane();
+        //JTextField textArea = new JTextField(10);
+        //JEditorPane textArea = new JEditorPane();
 
         //create words for dictionary could also use null as parameter for AutoSuggestor(..,..,null,..,..,..,..) and than call AutoSuggestor#setDictionary after AutoSuggestr insatnce has been created
-        AutoSuggestor autoSuggestor = new AutoSuggestor(f, frame, null, Color.WHITE.brighter(), Color.BLUE, Color.RED, 0.75f) {
+        AutoSuggestor autoSuggestor = new AutoSuggestor(textArea, frame, null, Color.WHITE.brighter(), Color.BLUE, Color.RED, 0.75f) {
             @Override
             boolean wordTyped(String typedWord) {
                 System.out.println(typedWord);
@@ -35,18 +35,12 @@ public class JTextAreaExample {
             }
         };
 
-        p.add(f);
-
-        frame.add(p);
-
-        frame.pack();
-        frame.setVisible(true);
     }
 }
 
 class AutoSuggestor {
 
-    private final JTextComponent textComp;
+    private final JTextArea textArea;
     private final Window container;
     private JPanel suggestionsPanel;
     private JWindow autoSuggestionPopUpWindow;
@@ -72,12 +66,12 @@ class AutoSuggestor {
     private final Color suggestionsTextColor;
     private final Color suggestionFocusedColor;
 
-    public AutoSuggestor(JTextComponent textComp, Window mainWindow, ArrayList<String> words, Color popUpBackground, Color textColor, Color suggestionFocusedColor, float opacity) {
-        this.textComp = textComp;
+    public AutoSuggestor(JTextArea textArea, Window mainWindow, ArrayList<String> words, Color popUpBackground, Color textColor, Color suggestionFocusedColor, float opacity) {
+        this.textArea = textArea;
         this.suggestionsTextColor = textColor;
         this.container = mainWindow;
         this.suggestionFocusedColor = suggestionFocusedColor;
-        this.textComp.getDocument().addDocumentListener(documentListener);
+        this.textArea.getDocument().addDocumentListener(documentListener);
 
         setDictionary(words);
 
@@ -97,8 +91,8 @@ class AutoSuggestor {
     }
 
     private void addKeyBindingToRequestFocusInPopUpWindow() {
-        textComp.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0, true), "Down released");
-        textComp.getActionMap().put("Down released", new AbstractAction() {
+        textArea.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0, true), "Down released");
+        textArea.getActionMap().put("Down released", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent ae) {//focuses the first label on popwindow
                 for (int i = 0; i < suggestionsPanel.getComponentCount(); i++) {
@@ -162,7 +156,7 @@ class AutoSuggestor {
     private void setFocusToTextField() {
         container.toFront();
         container.requestFocusInWindow();
-        textComp.requestFocusInWindow();
+        textArea.requestFocusInWindow();
     }
 
     public ArrayList<SuggestionLabel> getAddedSuggestionLabels() {
@@ -177,8 +171,8 @@ class AutoSuggestor {
     }
 
     private void checkForAndShowSuggestions() {
-        String text1 = textComp.getText();
-        if (text1.length() > 3 && text1.split(" ").length < 5) {
+        String text1 = textArea.getText();
+        if (text1.length() >= 3 && text1.split(" ").length < 5) {
             String text = text1;
             boolean deleteCommand = text.contains("delete") && text.contains("=");
             String key = text.substring(0, 3);
@@ -229,7 +223,7 @@ class AutoSuggestor {
     }
 
     public String getCurrentlyTypedWord() {//get newest word after last white spaceif any or the first word if no white spaces
-        String text = textComp.getText();
+        String text = textArea.getText();
         String wordBeingTyped = "";
         text = text.replaceAll("(\\r|\\n)", " ");
         if (text.contains(" ")) {
@@ -255,24 +249,24 @@ class AutoSuggestor {
 
     private void showPopUpWindow() {
         autoSuggestionPopUpWindow.getContentPane().add(suggestionsPanel);
-        autoSuggestionPopUpWindow.setMinimumSize(new Dimension(textComp.getWidth(), 30));
+        autoSuggestionPopUpWindow.setMinimumSize(new Dimension(textArea.getWidth(), 30));
         autoSuggestionPopUpWindow.setSize(tW, tH);
         autoSuggestionPopUpWindow.setVisible(true);
 
         int windowX = 0;
         int windowY = 0;
 
-        if (textComp instanceof JTextField) {//calculate x and y for JWindow at bottom of JTextField
-            windowX = container.getX() + textComp.getX() + 5;
+        if (textArea instanceof JTextArea) {//calculate x and y for JWindow at bottom of JTextField
+            windowX = container.getX() + textArea.getX() + 5;
             if (suggestionsPanel.getHeight() > autoSuggestionPopUpWindow.getMinimumSize().height) {
-                windowY = container.getY() + textComp.getY() + textComp.getHeight() + autoSuggestionPopUpWindow.getMinimumSize().height;
+                windowY = container.getY() + textArea.getY() + textArea.getHeight() + autoSuggestionPopUpWindow.getMinimumSize().height;
             } else {
-                windowY = container.getY() + textComp.getY() + textComp.getHeight() + autoSuggestionPopUpWindow.getHeight();
+                windowY = container.getY() + textArea.getY() + textArea.getHeight() + autoSuggestionPopUpWindow.getHeight();
             }
         } else {//calculate x and y for JWindow on any JTextComponent using the carets position
             Rectangle rect = null;
             try {
-                rect = textComp.getUI().modelToView(textComp, textComp.getCaret().getDot());//get carets position
+                rect = textArea.getUI().modelToView(textArea, textArea.getCaret().getDot());//get carets position
             } catch (BadLocationException ex) {
                 ex.printStackTrace();
             }
@@ -283,7 +277,7 @@ class AutoSuggestor {
 
         //show the pop up
         autoSuggestionPopUpWindow.setLocation(windowX, windowY);
-        autoSuggestionPopUpWindow.setMinimumSize(new Dimension(textComp.getWidth(), 30));
+        autoSuggestionPopUpWindow.setMinimumSize(new Dimension(textArea.getWidth(), 30));
         autoSuggestionPopUpWindow.revalidate();
         autoSuggestionPopUpWindow.repaint();
 
@@ -308,7 +302,7 @@ class AutoSuggestor {
     }
 
     public JTextComponent getTextField() {
-        return textComp;
+        return textArea;
     }
 
     public void addToDictionary(String word) {
@@ -336,7 +330,7 @@ class SuggestionLabel extends JLabel {
 
     private boolean focused = false;
     private final JWindow autoSuggestionsPopUpWindow;
-    private final JTextComponent textComponent;
+    private final JTextComponent textAreaonent;
     private final AutoSuggestor autoSuggestor;
     private Color suggestionsTextColor, suggestionBorderColor;
 
@@ -345,7 +339,7 @@ class SuggestionLabel extends JLabel {
 
         this.suggestionsTextColor = suggestionsTextColor;
         this.autoSuggestor = autoSuggestor;
-        this.textComponent = autoSuggestor.getTextField();
+        this.textAreaonent = autoSuggestor.getTextField();
         this.suggestionBorderColor = borderColor;
         this.autoSuggestionsPopUpWindow = autoSuggestor.getAutoSuggestionPopUpWindow();
 
@@ -393,10 +387,10 @@ class SuggestionLabel extends JLabel {
 
     private void replaceWithSuggestedText() {
         String suggestedWord = getText();
-        String text = textComponent.getText();
+        String text = textAreaonent.getText();
         String typedWord = autoSuggestor.getCurrentlyTypedWord();
         String t = text.substring(0, text.lastIndexOf(typedWord));
         String tmp = t + text.substring(text.lastIndexOf(typedWord)).replace(typedWord, suggestedWord);
-        textComponent.setText(tmp + " ");
+        textAreaonent.setText(tmp + " ");
     }
 }

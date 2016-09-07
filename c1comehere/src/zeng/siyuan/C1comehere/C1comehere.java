@@ -44,7 +44,7 @@ public class C1comehere implements Serializable {
         });
 
 //        SwingUtilities.invokeLater(() -> new buttons());
-        untoggle untog = new untoggle(frame);
+        untoggle untog = new untoggle(frame, controlPanel);
         untoggle = untog;
     }
 
@@ -78,6 +78,8 @@ public class C1comehere implements Serializable {
                 output_solr.write(System.getProperty("line.separator").getBytes());
                 count++;
             }
+
+            c1s();
         } catch (IOException io) {
             io.printStackTrace();
         } finally {
@@ -183,7 +185,6 @@ public class C1comehere implements Serializable {
 
         controlPanel = new JPanel();
         controlPanel.setLayout(new FlowLayout());
-        frame.add(controlPanel);
 
         textArea = new JTextArea(10, 36);
         textArea.setLineWrap(true);
@@ -210,14 +211,13 @@ public class C1comehere implements Serializable {
                         }
 
                         boolean deleteCommand = buttonSelected.contains("delete");
-                        String key = textArea.getText().substring(0, 3);
                         boolean isThoughtRecorderCommand = buttonSelected.equalsIgnoreCase("rec");
                         boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("fgt");
                         boolean isHow2ForegertCommand_u = textArea.getText().contains(" ufgt ");
                         boolean isShowCommand = buttonSelected.equalsIgnoreCase("sho");// shw
                         Search search = null;
-                        if (searchEngines.containsKey(key)) {
-                            search = searchEngines.get(key);
+                        if (searchEngines.containsKey(buttonSelected)) {
+                            search = searchEngines.get(buttonSelected);
                         }
 
                         if (deleteCommand) {
@@ -265,12 +265,10 @@ public class C1comehere implements Serializable {
             }
         });
 
-        JScrollPane scrollPane = new JScrollPane(textArea);
-
-        controlPanel.add(scrollPane);
-
-
-        frame.setVisible(true);
+        JScrollPane scroll = new JScrollPane (textArea);
+        scroll.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
+        //Add Textarea in to middle panel
+        controlPanel.add(scroll);
 
         //init
         c1s();
@@ -334,7 +332,7 @@ public class C1comehere implements Serializable {
     public void insert() throws IOException, ParseException {
 
         String textUpcase = new StringBuilder(textArea.getText()).toString();
-        String text = textArea.getText().toLowerCase();
+        String text = textArea.getText();
         String path = "";
         String key = "";
 

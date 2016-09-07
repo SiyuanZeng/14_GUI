@@ -72,10 +72,12 @@ public class How2Forgert implements Serializable {
                     stringBuilder.append(" pm");
                 }
                 stringBuilder.append(System.getProperty("line.separator"));
-                stringBuilder.append(textArea.getText().replace(" ufgt ",""));
+                stringBuilder.append(textArea.getText().replace(" ufgt ", ""));
                 stringBuilder.append(System.getProperty("line.separator"));
                 e.question = stringBuilder.toString();
-                m.update(e);
+                Ebbinghaus e1 = new Ebbinghaus(e.question, "");
+                m.deleteTask(e.getJavauid());
+                m.store(e1);
                 System.out.println("updates");
             }
         }
@@ -91,6 +93,9 @@ public class How2Forgert implements Serializable {
                     if (diff > 0) {
                         System.out.println("Before sleep");
                         Thread.sleep(diff);
+                        while (!textArea.getText().trim().isEmpty()) {
+                            Thread.sleep(10000);
+                        }
                         System.out.println("After sleep");
                         frame.repaint();
                         frame.toFront();
@@ -104,7 +109,8 @@ public class How2Forgert implements Serializable {
                                     if (ct.getDate().getTime() == currentTask.getDate().getTime()) {
                                         ct.setIsDone(true);
                                         inntuitive += e.question;
-                                        m.update(e);
+                                        m.deleteTask(e.getJavauid());
+                                        m.store(e);
                                     }
                                 }
                             }
@@ -114,11 +120,14 @@ public class How2Forgert implements Serializable {
                     } else {
                         System.out.println("Before sleep.....");
                         System.out.println("After sleep.....");
+                        while (!textArea.getText().trim().isEmpty()) {
+                            Thread.sleep(10000);
+                        }
                         frame.repaint();
                         frame.toFront();
                         currentTask = t;
                         String inntuitive = System.getProperty("line.separator");
-                        inntuitive += ( "ufgt ");
+                        inntuitive += ("ufgt ");
                         inntuitive += System.getProperty("line.separator");
                         for (Ebbinghaus e : ebbinghauses) {
                             if (e.getJavauid().toString().equalsIgnoreCase(currentTask.getJavauuid().toString())) {
@@ -126,7 +135,8 @@ public class How2Forgert implements Serializable {
                                     if (ct.getDate().getTime() == currentTask.getDate().getTime()) {
                                         ct.setIsDone(true);
                                         inntuitive += e.question;
-                                        m.update(e);
+                                        m.deleteTask(e.getJavauid());
+                                        m.store(e);
                                     }
                                 }
                             }
@@ -141,7 +151,8 @@ public class How2Forgert implements Serializable {
                             for (Task ct : e.getTasks()) {
                                 if (ct.getDate().getTime() == t.getDate().getTime()) {
                                     ct.setIsDone(true);
-                                    m.update(e);
+                                    m.deleteTask(e.getJavauid());
+                                    m.store(e);
                                 }
                             }
                         }

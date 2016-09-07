@@ -10,13 +10,14 @@ import zeng.siyuan.howt2forgert.Ebbinghaus;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 /**
  * Created by SiyuanZeng's on 9/1/2016.
  */
 public class mappingmanager {
     Cluster cluster;
-    Session session;
+    static Session session;
     MappingManager manager;
     Mapper<Ebbinghaus> mapper;
 
@@ -37,16 +38,18 @@ public class mappingmanager {
         return set;
     }
 
-    public void update(Ebbinghaus s) {
-        deleteTask(s);
-        store(s);
-    }
-
-    public void deleteTask(Ebbinghaus s) {
-        session.execute(String.format("delete from keyspace1.ebbinhance6 WHERE id=%s", s.getJavauid()));
+    public static void deleteTask(UUID s) {
+        session.execute(String.format("delete from keyspace1.ebbinhance6 WHERE id=%s", s));
     }
 
     public void store(Ebbinghaus s) {
         mapper.save(s);
     }
+
+    public static void main(String[] args) {
+        mappingmanager m = new mappingmanager();
+        m.deleteTask(UUID.fromString("43abb0cf-b0fa-4cff-82ff-ee2b6b0cc682"));
+    }
+
+
 }
