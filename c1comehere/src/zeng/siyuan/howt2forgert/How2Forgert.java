@@ -21,7 +21,7 @@ public class How2Forgert implements Serializable {
     public transient ArrayList<Task> tasks = new ArrayList<Task>();
     public transient Task currentTask = new Task();
     public transient Display d;
-    public transient Thread threadD;
+    public transient Thread reloadandDisplayThread;
     public transient JFrame frame;
     public mappingmanager m;
 
@@ -77,9 +77,7 @@ public class How2Forgert implements Serializable {
                 m.deleteTask(e.getJavauid());
                 m.store(e1);
                 System.out.println("updates");
-                loadTask();
-                restartPopThread();
-
+                reloadTAskandrestartPopThread();
             }
         }
     }
@@ -92,12 +90,10 @@ public class How2Forgert implements Serializable {
                     calendar.setTime(t.getDate());
                     long diff = calendar.getTimeInMillis() - Calendar.getInstance().getTimeInMillis();
                     if (diff > 0) {
-                        System.out.println("Before sleep");
                         Thread.sleep(diff);
                         while (!textArea.getText().trim().isEmpty()) {
                             Thread.sleep(10000);
                         }
-                        System.out.println("After sleep");
                         frame.repaint();
                         frame.toFront();
                         currentTask = t;
@@ -119,8 +115,6 @@ public class How2Forgert implements Serializable {
                         inntuitive += System.getProperty("line.separator");
                         textArea.setText(inntuitive);
                     } else {
-                        System.out.println("Before sleep.....");
-                        System.out.println("After sleep.....");
                         while (!textArea.getText().trim().isEmpty()) {
                             Thread.sleep(10000);
                         }
@@ -147,7 +141,6 @@ public class How2Forgert implements Serializable {
                         Thread.sleep(10000);
                     }
                 } else if (!t.getIsDone() && t.getDate().before(new Date())) {
-
                     while (!textArea.getText().trim().isEmpty()) {
                         Thread.sleep(10000);
                     }
@@ -175,6 +168,16 @@ public class How2Forgert implements Serializable {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void deltask() {
+        for (Ebbinghaus e : ebbinghauses) {
+            if (e.getJavauid().toString().equalsIgnoreCase(currentTask.getJavauuid().toString())) {
+                m.deleteTask(e.getJavauid());
+                System.out.println("delet the " + e.getQuestion());
+                reloadTAskandrestartPopThread();
+            }
         }
     }
 
@@ -225,32 +228,30 @@ public class How2Forgert implements Serializable {
         Collections.sort(tasks, new Task());
     }
 
-    public void popup() {
+    public void reloadandDiskplaypopup() {
         loadTask();
         displayTask();
     }
 
     public void inster(String word, String answer) throws IOException {
         addWord(word, answer);
-        loadTask();
-        restartPopThread();
+        reloadTAskandrestartPopThread();
     }
 
-    private void restartPopThread() {
-        if (null != threadD || threadD.isAlive()) {
-            threadD.interrupt();
+    private void reloadTAskandrestartPopThread() {
+        if (null != reloadandDisplayThread || reloadandDisplayThread.isAlive()) {
+            reloadandDisplayThread.interrupt();
         }
         d = new Display(this);
-        threadD = new Thread(d);
-        threadD.start();
+        reloadandDisplayThread = new Thread(d);
+        reloadandDisplayThread.start();
     }
 
 
     public void init() {
-        loadTask();
         d = new Display(this);
-        threadD = new Thread(d);
-        threadD.start();
+        reloadandDisplayThread = new Thread(d);
+        reloadandDisplayThread.start();
     }
 }
 

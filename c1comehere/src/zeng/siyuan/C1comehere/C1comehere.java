@@ -211,6 +211,7 @@ public class C1comehere implements Serializable {
                         }
 
                         boolean deleteCommand = buttonSelected.contains("delete");
+                        boolean deleteCommand2 = buttonSelected.contains("deldiary");
                         boolean isThoughtRecorderCommand = buttonSelected.equalsIgnoreCase("rec");
                         boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("fgt");
                         boolean isHow2ForegertCommand_u = textArea.getText().contains(" ufgt ");
@@ -225,6 +226,9 @@ public class C1comehere implements Serializable {
                             textArea.setText("");
                         } else if (isThoughtRecorderCommand) {
                             YouKnowWhat.insert(textArea.getText());
+                            textArea.setText("");
+                        } else if (deleteCommand2) {
+                            how2Forgert.deltask();
                             textArea.setText("");
                         } else if (isHow2ForegertCommand_u) {
                             //init

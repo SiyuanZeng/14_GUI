@@ -39,7 +39,7 @@ public class Display implements Runnable {
                 if (f.tasks.size()==0){
                     running = false;
                 }
-                f.popup();
+                f.reloadandDiskplaypopup();
             } catch (Exception e) {
                 running = false;
             }

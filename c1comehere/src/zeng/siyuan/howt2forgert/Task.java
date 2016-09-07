@@ -33,17 +33,14 @@ public class Task implements Comparator<Task>, Serializable {
     @Override
     public int compare(Task o1, Task o2) {
         if(o1.getDate().after(o2.getDate())){
-            System.out.println("Date1 is after Date2");
             return 1;
         }
 
         if(o1.getDate().before(o2.getDate())){
-            System.out.println("Date1 is before Date2");
             return -1;
         }
 
         if(o1.getDate().equals(o2.getDate())){
-            System.out.println("Date1 is equal Date2");
             return 0;
         }
         return 0;

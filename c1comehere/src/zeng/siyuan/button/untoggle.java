@@ -16,6 +16,7 @@ public class untoggle {
     public JToggleButton btn4 = new JToggleButton("ufgt");
     public JToggleButton btn5 = new JToggleButton("sho");
     public JToggleButton btn6 = new JToggleButton("add");
+    public JToggleButton btn7 = new JToggleButton("deldiary");
 
     public static void main(String[] args) {
 //        new untoggle();
@@ -43,6 +44,7 @@ public class untoggle {
                 bg.add(btn4);
                 bg.add(btn5);
                 bg.add(btn6);
+                bg.add(btn7);
 
                 panel.add(btn1);
                 panel.add(btn3);
@@ -50,6 +52,7 @@ public class untoggle {
                 panel.add(btn4);
                 panel.add(btn5);
                 panel.add(btn6);
+                panel.add(btn7);
 
 
 
