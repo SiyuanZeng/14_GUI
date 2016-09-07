@@ -39,8 +39,6 @@ public class How2Forgert implements Serializable {
 
         Calendar c = Calendar.getInstance();
 
-        c.set(2013, Calendar.MARCH, 10, 1, 58);
-
         SimpleDateFormat format = new SimpleDateFormat("EEE, MMM d, yyyy 'at' hh:mm");
 
         System.out.println(format.format(c.getTime()));
@@ -79,6 +77,9 @@ public class How2Forgert implements Serializable {
                 m.deleteTask(e.getJavauid());
                 m.store(e1);
                 System.out.println("updates");
+                loadTask();
+                restartPopThread();
+
             }
         }
     }
@@ -127,7 +128,7 @@ public class How2Forgert implements Serializable {
                         frame.toFront();
                         currentTask = t;
                         String inntuitive = System.getProperty("line.separator");
-                        inntuitive += ("ufgt ");
+                        inntuitive += (" ufgt ");
                         inntuitive += System.getProperty("line.separator");
                         for (Ebbinghaus e : ebbinghauses) {
                             if (e.getJavauid().toString().equalsIgnoreCase(currentTask.getJavauuid().toString())) {
@@ -146,18 +147,30 @@ public class How2Forgert implements Serializable {
                         Thread.sleep(10000);
                     }
                 } else if (!t.getIsDone() && t.getDate().before(new Date())) {
+
+                    while (!textArea.getText().trim().isEmpty()) {
+                        Thread.sleep(10000);
+                    }
+                    frame.repaint();
+                    frame.toFront();
+                    currentTask = t;
+                    String inntuitive = System.getProperty("line.separator");
+                    inntuitive += (" ufgt ");
+                    inntuitive += System.getProperty("line.separator");
                     for (Ebbinghaus e : ebbinghauses) {
-                        if (e.getJavauid().toString().equalsIgnoreCase(t.getJavauuid().toString())) {
+                        if (e.getJavauid().toString().equalsIgnoreCase(currentTask.getJavauuid().toString())) {
                             for (Task ct : e.getTasks()) {
-                                if (ct.getDate().getTime() == t.getDate().getTime()) {
+                                if (ct.getDate().getTime() == currentTask.getDate().getTime()) {
                                     ct.setIsDone(true);
+                                    inntuitive += e.question;
                                     m.deleteTask(e.getJavauid());
                                     m.store(e);
                                 }
                             }
                         }
                     }
-
+                    inntuitive += System.getProperty("line.separator");
+                    textArea.setText(inntuitive);
                 }
             }
         } catch (Exception e) {

@@ -82,8 +82,6 @@ public class Ebbinghaus implements Serializable {
 
         Calendar c = Calendar.getInstance();
 
-        c.set(2013, Calendar.MARCH, 10, 1, 58);
-
         SimpleDateFormat format = new SimpleDateFormat("EEE, MMM d, yyyy 'at' hh:mm");
 
         System.out.println(format.format(c.getTime()));
