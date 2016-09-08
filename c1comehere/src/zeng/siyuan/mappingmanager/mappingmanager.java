@@ -43,10 +43,12 @@ public class mappingmanager {
     }
 
     public static void deleteTask(UUID s) {
+        System.out.println("delete task: " + s.toString());
         session.execute(String.format("delete from keyspace1.ebbinhance6 WHERE id=%s", s));
     }
 
     public void store(Ebbinghaus s) {
+        System.out.println("add task: " + s.getJavauid().toString()+" : " + s.getQuestion());
         mapper.save(s);
     }
 
