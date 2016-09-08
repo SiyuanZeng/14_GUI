@@ -120,11 +120,11 @@ public class How2Forgert implements Serializable {
                                 buttonSelected=button.getText();
                             }
                         }
-                        boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("fgt");
+                        boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt");
 
 
 
-                        while (!textArea.getText().trim().isEmpty() || isHow2ForegertCommand) {
+                        while (!textArea.getText().trim().isEmpty() || !isHow2ForegertCommand) {
                             Thread.sleep(10000);
                             for (Enumeration<AbstractButton> buttons = c1comehere.untoggle.bg.getElements(); buttons.hasMoreElements();) {
                                 AbstractButton button = buttons.nextElement();
@@ -133,7 +133,7 @@ public class How2Forgert implements Serializable {
                                     buttonSelected=button.getText();
                                 }
                             }
-                            isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("fgt");
+                            isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt");
 
 
 
@@ -169,11 +169,11 @@ public class How2Forgert implements Serializable {
                                 buttonSelected=button.getText();
                             }
                         }
-                        boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("fgt");
+                        boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt");
 
 
 
-                        while (!textArea.getText().trim().isEmpty() || isHow2ForegertCommand) {
+                        while (!textArea.getText().trim().isEmpty() || !isHow2ForegertCommand) {
                             Thread.sleep(10000);
 
                             for (Enumeration<AbstractButton> buttons = c1comehere.untoggle.bg.getElements(); buttons.hasMoreElements();) {
@@ -183,7 +183,7 @@ public class How2Forgert implements Serializable {
                                     buttonSelected=button.getText();
                                 }
                             }
-                            isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("fgt");
+                            isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt");
 
                         }
                         frame.repaint();
@@ -218,11 +218,11 @@ public class How2Forgert implements Serializable {
                             buttonSelected=button.getText();
                         }
                     }
-                    boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("fgt");
+                    boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt");
 
 
 
-                    while (!textArea.getText().trim().isEmpty() || isHow2ForegertCommand) {
+                    while (!textArea.getText().trim().isEmpty() || !isHow2ForegertCommand) {
                         Thread.sleep(10000);
                         for (Enumeration<AbstractButton> buttons = c1comehere.untoggle.bg.getElements(); buttons.hasMoreElements();) {
                             AbstractButton button = buttons.nextElement();
@@ -231,7 +231,7 @@ public class How2Forgert implements Serializable {
                                 buttonSelected=button.getText();
                             }
                         }
-                        isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("fgt");
+                        isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt");
 
                     }
                     frame.repaint();
