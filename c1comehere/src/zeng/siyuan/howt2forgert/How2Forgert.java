@@ -310,9 +310,13 @@ public class How2Forgert implements Serializable {
         ebbinghauses = m.get();
         tasks = new ArrayList<Task>();
         for (Ebbinghaus e : ebbinghauses) {
-            Set<Task> t = e.tasks;
-            for (Task task : t) {
-                tasks.add(task);
+            if (e.getQuestion().replace("ufgt","").trim().isEmpty()){
+                m.deleteTask(e.getJavauid());
+            } else {
+                Set<Task> t = e.tasks;
+                for (Task task : t) {
+                    tasks.add(task);
+                }
             }
         }
         Collections.sort(tasks, new Task());
