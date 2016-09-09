@@ -197,7 +197,7 @@ public class C1comehere implements Serializable {
             }
 
             public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                if (e.getModifiers() == KeyEvent.CTRL_MASK && e.getKeyChar() == KeyEvent.VK_ENTER) {
                     e.consume();
                     Beep.sound(2000, 150);
                     try {
