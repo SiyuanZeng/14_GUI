@@ -1,5 +1,7 @@
 package zeng.siyuan.C1comehere;
 
+import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.findthebestexample;
+
 import javax.swing.*;
 import java.net.URI;
 import java.net.URL;
@@ -10,7 +12,7 @@ import java.net.URL;
 public class Search {
     public static final String SPACE = " ";
     public static final String EMPTY_STRING = "";
-    private JTextArea textArea;
+    private static JTextArea textArea;
     public String searchEngine;
     public String spaceHolder;
     public String searchName;
@@ -110,41 +112,36 @@ I dont want&50
          */
         String textStr[] = textTrs.split("\\r\\n|\\n|\\r");
         String intext = "+intext:";
-        String c1cometome = textStr[0].trim().replace("how to","").replace("How to", "").replace("(optional)First step 1:c1cometome:this is what yourwelcome want:", "intext:").replace(SPACE, "+AND"+intext);
-        String datatypes = textStr[1].trim().replace("datatypeps:(", "intext:").replace(SPACE, "+AND"+intext);
-        String idontwant = textStr[2].trim().replace("I dont want&", "+-").replace(SPACE, "+AND"+"+-");
-        String datatypes1 = textStr[3].trim().replace("parameters$", intext).replace(SPACE, "+AND"+intext);
-        String datatypes2 = textStr[4].trim().replace("variables#", intext).replace(SPACE, "+AND"+intext);
-        String datatypes3 = textStr[5].trim().replace("actions%", intext).replace(SPACE, "+AND"+intext);
-        String iomport = textStr[6].trim().replace("impport*", intext).replace(SPACE, "+AND"+intext);
+        String datatypes = textStr[0].trim().replace("datatypeps:(", "intext:").replace(SPACE, "+AND"+intext);
+        String idontwant = textStr[1].trim().replace("I dont want&", "+-").replace(SPACE, "+AND"+"+-");
+        String datatypes1 = textStr[2].trim().replace("parameters$", intext).replace(SPACE, "+AND"+intext);
+        String datatypes2 = textStr[3].trim().replace("variables#", intext).replace(SPACE, "+AND"+intext);
+        String datatypes3 = textStr[4].trim().replace("actions%", intext).replace(SPACE, "+AND"+intext);
+        String iomport = textStr[5].trim().replace("impport*", intext).replace(SPACE, "+AND"+intext);
+        String c1cometome1 = textStr[6].trim().replace("how to","").replace("How to", "").replace("(optionalstackoverflow)First step 1:c1cometome:this is what yourwelcome want:", "intext:").replace(SPACE, "+AND"+intext);
+        String c1cometome2 = textStr[7].trim().replace("how to","").replace("How to", "").replace("(optional documentation)First step 1:c1cometome:this is what yourwelcome want:", "intext:").replace(SPACE, "+AND"+intext);
+        String c1cometome3 = textStr[8].trim().replace("how to","").replace("How to", "").replace("(optional everywhere)First step 1:c1cometome:this is what yourwelcome want:", "intext:").replace(SPACE, "+AND"+intext);
 
         String combinedstring = iomport + datatypes + datatypes1 + datatypes2 + datatypes3 + idontwant;
 
         try {
-            if (!c1cometome.equalsIgnoreCase("intext:")){
+            if (!c1cometome1.equalsIgnoreCase("intext:")){
                 //"http://www.google.com/#tbs=li:1&q=related:www.github.com+AND+site:www.github.com+AND+intext:public+AND+intext:class+%s"
-                searchEngine= "http://www.google.com/#tbs=li:1&q=site:www.stackoverflow.com+AND+intext:documentation+AND+%s";
+                searchEngine= "http://www.google.com/#tbs=li:1&q=site:www.stackoverflow.com+AND+%s";
 
+                findthebestexample.resetfiles();
 
-                String  inntuitive = "(optional)First step 1:c1cometome:this is what yourwelcome want:";
-                inntuitive += "\n";
-                inntuitive += "datatypeps:(";
-                inntuitive += "\n";
-                inntuitive += "I dont want&";
-                inntuitive += "\n";
-                inntuitive += "parameters$";
-                inntuitive += "\n";
-                inntuitive += "variables#";
-                inntuitive += "\n";
-                inntuitive += "actions%";
-                inntuitive += "\n";
-                inntuitive += "impport*";
-                textArea.setText(inntuitive);
-
-
-
-
-                return new URL(String.format(searchEngine, c1cometome)).toURI();
+                return new URL(String.format(searchEngine, c1cometome1)).toURI();
+            } else if (!c1cometome2.equalsIgnoreCase("intext:")){
+                //"http://www.google.com/#tbs=li:1&q=related:www.github.com+AND+site:www.github.com+AND+intext:public+AND+intext:class+%s"
+                searchEngine= "http://www.google.com/#tbs=li:1&q=intext:documentation+AND+%s";
+                findthebestexample.resetfiles();
+                return new URL(String.format(searchEngine, c1cometome2)).toURI();
+            } else if (!c1cometome3.equalsIgnoreCase("intext:")){
+                //"http://www.google.com/#tbs=li:1&q=related:www.github.com+AND+site:www.github.com+AND+intext:public+AND+intext:class+%s"
+                searchEngine= "http://www.google.com/#tbs=li:1&q=%s";
+                findthebestexample.resetfiles();
+                return new URL(String.format(searchEngine, c1cometome2)).toURI();
             } else {
                 textArea.setText("");
                 //"http://www.google.com/#tbs=li:1&q=related:www.github.com+AND+site:www.github.com+AND+intext:public+AND+intext:class+%s"
@@ -155,6 +152,8 @@ I dont want&50
         }
         return null;
     }
+
+
 }
 
 

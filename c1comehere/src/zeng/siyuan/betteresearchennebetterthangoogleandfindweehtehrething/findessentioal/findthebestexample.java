@@ -1,4 +1,4 @@
-package zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething;
+package zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal;
 
 import zeng.siyuan.C1comehere.Search;
 
@@ -256,7 +256,9 @@ You can use hacker news intext:ycombinator to get results with ycombinator in th
 
          */
 
-        String  inntuitive = "(optional)First step 1:c1cometome:this is what yourwelcome want:";
+        String  inntuitive = "(optionalstackoverflow)First step 1:c1cometome:this is what yourwelcome want:";
+        inntuitive += "\n";
+        inntuitive += "(optional documentation)First step 1:c1cometome:this is what yourwelcome want:";
         inntuitive += "\n";
         inntuitive += "datatypeps:(";
         inntuitive += "\n";
