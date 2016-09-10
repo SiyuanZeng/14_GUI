@@ -256,9 +256,11 @@ You can use hacker news intext:ycombinator to get results with ycombinator in th
 
          */
 
-        String  inntuitive = "impport*";
+        String  inntuitive = "(optional)First step 1:c1cometome:this is what yourwelcome want:";
         inntuitive += "\n";
         inntuitive += "datatypeps:(";
+        inntuitive += "\n";
+        inntuitive += "I dont want&";
         inntuitive += "\n";
         inntuitive += "parameters$";
         inntuitive += "\n";
@@ -266,7 +268,7 @@ You can use hacker news intext:ycombinator to get results with ycombinator in th
         inntuitive += "\n";
         inntuitive += "actions%";
         inntuitive += "\n";
-        inntuitive += "I dont want&";
+        inntuitive += "impport*";
         textArea.setText(inntuitive);
     }
 
@@ -275,7 +277,7 @@ You can use hacker news intext:ycombinator to get results with ycombinator in th
         try {
             Search searchEngines = null;
             if (null != textArea && !("".equalsIgnoreCase(textArea.getText().trim()))) {
-                searchEngines = new Search("Google", "sg ", "http://www.google.com/#tbs=li:1&q=related:www.github.com+AND+site:www.github.com+AND+intext:public+AND+intext:class+%s", "+", textArea.getText().trim());
+                searchEngines = new Search(textArea, "Google", "sg ", "http://www.google.com/#tbs=li:1&q=related:www.github.com+AND+site:www.github.com+AND+intext:public+AND+intext:class+%s", "+", textArea.getText().trim());
                 // https://www.google.com/#tbs=li:1&q=related:www.github.com+site:www.github.com+intext:public+intext:class+
                 Desktop.getDesktop().browse(searchEngines.getURIforgethebsetresultexample());
             }

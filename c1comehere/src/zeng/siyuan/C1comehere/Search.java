@@ -1,5 +1,6 @@
 package zeng.siyuan.C1comehere;
 
+import javax.swing.*;
 import java.net.URI;
 import java.net.URL;
 
@@ -9,6 +10,7 @@ import java.net.URL;
 public class Search {
     public static final String SPACE = " ";
     public static final String EMPTY_STRING = "";
+    private JTextArea textArea;
     public String searchEngine;
     public String spaceHolder;
     public String searchName;
@@ -30,6 +32,15 @@ public class Search {
         this.key = key;
         this.searchEngine = searchEngine;
         this.spaceHolder = spaceHolder;
+    }
+
+    public Search(JTextArea textArea, String searchName, String key, String searchEngine, String spaceHolder, String textStr) {
+        this.searchName = searchName;
+        this.key = key;
+        this.searchEngine = searchEngine;
+        this.spaceHolder = spaceHolder;
+        this.textTrs = textStr;
+        this.textArea=textArea;
     }
 
     public URI getURI() {
@@ -99,17 +110,44 @@ I dont want&50
          */
         String textStr[] = textTrs.split("\\r\\n|\\n|\\r");
         String intext = "+intext:";
-        String iomport = textStr[0].trim().replace("impport*", "intext:").replace(SPACE, "+AND"+intext);
-        String datatypes = textStr[1].trim().replace("datatypeps:(", intext).replace(SPACE, "+AND"+intext);
-        String datatypes1 = textStr[2].trim().replace("parameters$", intext).replace(SPACE, "+AND"+intext);
-        String datatypes2 = textStr[3].trim().replace("variables#", intext).replace(SPACE, "+AND"+intext);
-        String datatypes3 = textStr[4].trim().replace("actions%", intext).replace(SPACE, "+AND"+intext);
-        String idontwant = textStr[5].trim().replace("I dont want&", "+-").replace(SPACE, "+AND"+"+-");
+        String c1cometome = textStr[0].trim().replace("how to","").replace("How to", "").replace("(optional)First step 1:c1cometome:this is what yourwelcome want:", "intext:").replace(SPACE, "+AND"+intext);
+        String datatypes = textStr[1].trim().replace("datatypeps:(", "intext:").replace(SPACE, "+AND"+intext);
+        String idontwant = textStr[2].trim().replace("I dont want&", "+-").replace(SPACE, "+AND"+"+-");
+        String datatypes1 = textStr[3].trim().replace("parameters$", intext).replace(SPACE, "+AND"+intext);
+        String datatypes2 = textStr[4].trim().replace("variables#", intext).replace(SPACE, "+AND"+intext);
+        String datatypes3 = textStr[5].trim().replace("actions%", intext).replace(SPACE, "+AND"+intext);
+        String iomport = textStr[6].trim().replace("impport*", intext).replace(SPACE, "+AND"+intext);
 
         String combinedstring = iomport + datatypes + datatypes1 + datatypes2 + datatypes3 + idontwant;
 
         try {
-            return new URL(String.format(searchEngine, combinedstring)).toURI();
+            if (!c1cometome.equalsIgnoreCase("intext:")){
+                searchEngine= "http://www.google.com/#tbs=li:1&q=intext:documentation+AND+%s";
+
+
+                String  inntuitive = "(optional)First step 1:c1cometome:this is what yourwelcome want:";
+                inntuitive += "\n";
+                inntuitive += "datatypeps:(";
+                inntuitive += "\n";
+                inntuitive += "I dont want&";
+                inntuitive += "\n";
+                inntuitive += "parameters$";
+                inntuitive += "\n";
+                inntuitive += "variables#";
+                inntuitive += "\n";
+                inntuitive += "actions%";
+                inntuitive += "\n";
+                inntuitive += "impport*";
+                textArea.setText(inntuitive);
+
+
+
+
+                return new URL(String.format(searchEngine, c1cometome)).toURI();
+            } else {
+                textArea.setText("");
+                return new URL(String.format(searchEngine, combinedstring)).toURI();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
