@@ -4,26 +4,29 @@ package zeng.siyuan.button;
  * Created by SiyuanZeng's on 9/5/2016.
  */
 
+import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findthebestexample;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class untoggle {
-    public ButtonGroup bg = new ButtonGroup();
+    public static ButtonGroup bg = new ButtonGroup();
 
-    public JToggleButton btn1 = new JToggleButton("delete");
-    public JToggleButton btn3 = new JToggleButton("fgt");
-    public JToggleButton btn2 = new JToggleButton("sg ");
-    public JToggleButton btn4 = new JToggleButton("ufgt");
-    public JToggleButton btn5 = new JToggleButton("sho");
-    public JToggleButton btn6 = new JToggleButton("add");
-    public JToggleButton btn7 = new JToggleButton("deldiary");
-    public JToggleButton btn8 = new JToggleButton("laod");
+    public static JToggleButton btn1 = new JToggleButton("delete");
+    public static JToggleButton btn3 = new JToggleButton("fgt");
+    public static JToggleButton btn2 = new JToggleButton("sg ");
+    public static JToggleButton btn4 = new JToggleButton("ufgt");
+    public static JToggleButton btn5 = new JToggleButton("sho");
+    public static JToggleButton btn6 = new JToggleButton("add");
+    public static JToggleButton btn7 = new JToggleButton("deldiary");
+    public static JToggleButton btn8 = new JToggleButton("laod");
+    public static JToggleButton btn9 = new JToggleButton("codeja");
 
     public static void main(String[] args) {
 //        new untoggle();
     }
 
-    public untoggle(JFrame frame, JPanel panel) {
+    public untoggle(JFrame frame, JPanel panel, JTextArea jTextArea) {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -48,6 +51,13 @@ public class untoggle {
                 bg.add(btn7);
                 bg.add(btn8);
 
+// i need to textarea but i odn't have so i have to pass the parameter helel ot here
+                btn9.addActionListener(e -> {
+                    findthebestexample f = new findthebestexample(jTextArea);
+                    f.returnshowsearchquetsry();
+                });
+                bg.add(btn9);
+
                 panel.add(btn1);
                 panel.add(btn3);
                 panel.add(btn2);
@@ -56,6 +66,7 @@ public class untoggle {
                 panel.add(btn6);
                 panel.add(btn7);
                 panel.add(btn8);
+                panel.add(btn9);
 
 
 

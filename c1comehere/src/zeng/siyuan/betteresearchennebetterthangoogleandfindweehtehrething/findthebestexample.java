@@ -1,9 +1,21 @@
 package zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething;
 
+import zeng.siyuan.C1comehere.Search;
+
+import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
+
 /**
  * Created by SiyuanZeng's on 9/8/2016.
  */
 public class findthebestexample {
+    public JTextArea textArea;
+
+    public findthebestexample(JTextArea textArea) {
+        this.textArea = textArea;
+    }
+
 
     /*
 
@@ -162,13 +174,13 @@ public class findthebestexample {
 
 how to do the synonym
 
+// what are the signatures public class
 
 
 
 
 
-
-
+documentation,
 
      */
 
@@ -177,43 +189,103 @@ how to do the synonym
 
 
 
-    /* query
-    what kind of doucmentations am i looking for
+
+/*
 
 
-    can i search a chunk of code
+    example https://www.google.com/#q=related:www.github.com+site:www.github.com+intext:public+intext:class+
 
-    site: www.github.com
-    keywords, documentation
-    related: keywaords:
-    waht do i want to do:
+    intext:java
+
+    keywords, public class,
+    filetype:public class
+
+
     impport:
-    pattern names:
-
-    &tbs=li:1 - Verbatim
-
-()
-
--
-
-|
-
-releated website: www.github.com
-
-allintext: java
+    datatypes, Arraylist
+    parameters$
+    variables#
+    actions%
 
 
+    related:www.github.com
+    site:www.github.com
+
+
+    Questions
+        &tbs=li:1 - Verbatim
+        ()
+        -
+        |
+        can i search a chunk of code
+
+
+    how to combine all the parameters
+
+
+    noneused
+        what kind of doucmentations am i looking for
+        waht do i want to do:
+        pattern names:
+        String wahtdodesdanienlwantodo = textStr[1].replace("what does daniel want todo^", "");
+
+
+ */
+
+
+/*
+ :.
+
+Using allintext: hacker news ycombinator looks for results with all three words in the on-page text content.
+You can use hacker news intext:ycombinator to get results with ycombinator in the text and hacker or news appearing anywhere on the page.
 
 
 
+ */
 
 
+    public void returnshowsearchquetsry() {
+
+        /*
+               String iomport = textStr[0].trim().replace("impport*", intext).replace(SPACE, "+" + intext) + "+" + intext;
+        String datatypes = textStr[1].trim().replace("datatypeps:(", intext).replace(SPACE, "+" + intext) + "+" + intext;
+        String datatypes1 = textStr[2].trim().replace("parameters$", intext).replace(SPACE, "+" + intext) + "+" + intext;
+        String datatypes2 = textStr[3].trim().replace("variables#", intext).replace(SPACE, "+" + intext) + "+" + intext;
+        String datatypes3 = textStr[4].trim().replace("actions%", intext).replace(SPACE, "+" + intext) + "+" + intext;
+        String idontwant = textStr[5].trim().replace("I dont want&", intext).replace(SPACE, "-");
+
+         */
+
+        String  inntuitive = "impport*";
+        inntuitive += "\n";
+        inntuitive += "datatypeps:(";
+        inntuitive += "\n";
+        inntuitive += "parameters$";
+        inntuitive += "\n";
+        inntuitive += "variables#";
+        inntuitive += "\n";
+        inntuitive += "actions%";
+        inntuitive += "\n";
+        inntuitive += "I dont want&";
+        textArea.setText(inntuitive);
+    }
 
 
+    public void gogolesearchgsearch() {
+        try {
+            Search searchEngines = null;
+            if (null != textArea && !("".equalsIgnoreCase(textArea.getText().trim()))) {
+                searchEngines = new Search("Google", "sg ", "http://www.google.com/#tbs=li:1&q=related:www.github.com+AND+site:www.github.com+AND+intext:public+AND+intext:class+%s", "+", textArea.getText().trim());
+                // https://www.google.com/#tbs=li:1&q=related:www.github.com+site:www.github.com+intext:public+intext:class+
+                Desktop.getDesktop().browse(searchEngines.getURIforgethebsetresultexample());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //bombine things when there are multiple instance and class rleatived activity the class  tieh the owern er ot he actitiviets
 
 
-     */
-
-
+    }
 
 }

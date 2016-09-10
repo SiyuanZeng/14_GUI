@@ -188,7 +188,7 @@ class AutoSuggestor {
                 ArrayList<String> words = new ArrayList<>();
                 solr s = new solr();
                 try {
-                    words = (ArrayList<String>) s.sendGet(typedWord);
+                    words = (ArrayList<String>) s.sendGet(typedWord, textArea);
                     setDictionary(words);
                 } catch (Exception e) {
                     e.printStackTrace();

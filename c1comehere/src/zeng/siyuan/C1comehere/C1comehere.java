@@ -1,6 +1,7 @@
 package zeng.siyuan.C1comehere;
 
 import zeng.siyuan.autocomplete.JTextAreaExample;
+import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findthebestexample;
 import zeng.siyuan.button.untoggle;
 import zeng.siyuan.howt2forgert.How2Forgert;
 import zeng.siyuan.youknowwhat.YouKnowWhat;
@@ -44,7 +45,7 @@ public class C1comehere implements Serializable {
         });
 
 //        SwingUtilities.invokeLater(() -> new buttons());
-        untoggle untog = new untoggle(frame, controlPanel);
+        untoggle untog = new untoggle(frame, controlPanel, textArea);
         untoggle = untog;
     }
 
@@ -216,6 +217,7 @@ public class C1comehere implements Serializable {
                         boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("fgt");
                         boolean isHow2ForegertCommand_u = textArea.getText().contains(" ufgt ");
                         boolean isload = buttonSelected.contains("laod");
+                        boolean codja = buttonSelected.contains("codeja");
                         boolean isShowCommand = buttonSelected.equalsIgnoreCase("sho");// shw
                         Search search = null;
                         if (searchEngines.containsKey(buttonSelected)) {
@@ -225,6 +227,12 @@ public class C1comehere implements Serializable {
                         if (deleteCommand) {
                             prop.remove(textArea.getText());
                             textArea.setText("");
+                        } else if (codja && textArea.getText().trim().isEmpty()) {
+                            findthebestexample f = new findthebestexample(textArea);
+                            f.returnshowsearchquetsry();
+                        } else if (codja && !textArea.getText().trim().isEmpty()) {
+                            findthebestexample f = new findthebestexample(textArea);
+                            f.gogolesearchgsearch();
                         } else if (isThoughtRecorderCommand) {
                             YouKnowWhat.insert(textArea.getText());
                             textArea.setText("");

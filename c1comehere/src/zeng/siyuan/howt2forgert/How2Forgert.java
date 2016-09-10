@@ -96,6 +96,7 @@ public class How2Forgert implements Serializable {
                 m.store(e1);
                 System.out.println("updates");
                 reloadTAskandrestartPopThread();
+                break;
             }
         }
     }
@@ -120,7 +121,7 @@ public class How2Forgert implements Serializable {
                                 buttonSelected=button.getText();
                             }
                         }
-                        boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt");
+                        boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt")||buttonSelected.equalsIgnoreCase("deldiary");
 
 
 
@@ -133,7 +134,7 @@ public class How2Forgert implements Serializable {
                                     buttonSelected=button.getText();
                                 }
                             }
-                            isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt");
+                            isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt")||buttonSelected.equalsIgnoreCase("deldiary");
 
 
 
@@ -169,7 +170,7 @@ public class How2Forgert implements Serializable {
                                 buttonSelected=button.getText();
                             }
                         }
-                        boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt");
+                        boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt")||buttonSelected.equalsIgnoreCase("deldiary");
 
 
 
@@ -183,7 +184,7 @@ public class How2Forgert implements Serializable {
                                     buttonSelected=button.getText();
                                 }
                             }
-                            isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt");
+                            isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt")||buttonSelected.equalsIgnoreCase("deldiary");
 
                         }
                         frame.repaint();
@@ -218,7 +219,7 @@ public class How2Forgert implements Serializable {
                             buttonSelected=button.getText();
                         }
                     }
-                    boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt");
+                    boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt")||buttonSelected.equalsIgnoreCase("deldiary");
 
 
 
@@ -231,7 +232,7 @@ public class How2Forgert implements Serializable {
                                 buttonSelected=button.getText();
                             }
                         }
-                        isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt");
+                        isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt")||buttonSelected.equalsIgnoreCase("deldiary");
 
                     }
                     frame.repaint();
@@ -333,6 +334,7 @@ public class How2Forgert implements Serializable {
     }
 
     private void reloadTAskandrestartPopThread() {
+        textArea.setText("");
         if (null != reloadandDisplayThread || reloadandDisplayThread.isAlive()) {
             reloadandDisplayThread.interrupt();
         }
