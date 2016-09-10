@@ -122,7 +122,8 @@ I dont want&50
 
         try {
             if (!c1cometome.equalsIgnoreCase("intext:")){
-                searchEngine= "http://www.google.com/#tbs=li:1&q=intext:documentation+AND+%s";
+                //"http://www.google.com/#tbs=li:1&q=related:www.github.com+AND+site:www.github.com+AND+intext:public+AND+intext:class+%s"
+                searchEngine= "http://www.google.com/#tbs=li:1&q=site:www.stackoverflow.com+AND+intext:documentation+AND+%s";
 
 
                 String  inntuitive = "(optional)First step 1:c1cometome:this is what yourwelcome want:";
@@ -146,6 +147,7 @@ I dont want&50
                 return new URL(String.format(searchEngine, c1cometome)).toURI();
             } else {
                 textArea.setText("");
+                //"http://www.google.com/#tbs=li:1&q=related:www.github.com+AND+site:www.github.com+AND+intext:public+AND+intext:class+%s"
                 return new URL(String.format(searchEngine, combinedstring)).toURI();
             }
         } catch (Exception e) {
