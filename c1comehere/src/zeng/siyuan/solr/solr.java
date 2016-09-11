@@ -45,51 +45,44 @@ public class solr {
         }
 
         boolean deleteCommand = buttonSelected.contains("delete");
-        boolean deleteCommand2 = buttonSelected.contains("deldiary");
-        boolean isThoughtRecorderCommand = buttonSelected.equalsIgnoreCase("rec");
-        boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("fgt");
-        boolean isHow2ForegertCommand_u = textArea.getText().contains(" ufgt ");
-        boolean isload = buttonSelected.contains("laod");
-        boolean codja = buttonSelected.contains("codeja");
         boolean isShowCommand = buttonSelected.equalsIgnoreCase("sho");// shw
 
+//include is better than exclude because i don't need it i only care about what i need
+        if (deleteCommand && isShowCommand) {
 
-        if (deleteCommand2 || isThoughtRecorderCommand || isHow2ForegertCommand || isHow2ForegertCommand_u || isload || codja ) {
-            return null;
-        }
+            try {
+                DefaultHttpClient httpClient = new DefaultHttpClient();
+                HttpGet getRequest = new HttpGet(
+                        url22);
+                getRequest.addHeader("accept", "application/json");
 
-        try {
-            DefaultHttpClient httpClient = new DefaultHttpClient();
-            HttpGet getRequest = new HttpGet(
-                    url22);
-            getRequest.addHeader("accept", "application/json");
+                HttpResponse response = httpClient.execute(getRequest);
 
-            HttpResponse response = httpClient.execute(getRequest);
+                BufferedReader br = new BufferedReader(
+                        new InputStreamReader((response.getEntity().getContent())));
 
-            BufferedReader br = new BufferedReader(
-                    new InputStreamReader((response.getEntity().getContent())));
+                String output;
+                String str = "";
+                while ((output = br.readLine()) != null) {
+                    str += output;
+                }
 
-            String output;
-            String str = "";
-            while ((output = br.readLine()) != null) {
-                str += output;
+                List<String> list = new ArrayList<String>();
+
+                JSONObject json = new JSONObject(str);
+                JSONArray jsonArray = json.getJSONObject("response").getJSONArray("docs");
+                for (int i = 0, size = jsonArray.length(); i < size; i++) {
+                    JSONObject objectInArray = jsonArray.getJSONObject(i);
+                    list.add(objectInArray.getString("name"));
+                }
+                System.out.println(list);
+                httpClient.getConnectionManager().shutdown();
+                return list;
+            } catch (ClientProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
-            List<String> list = new ArrayList<String>();
-
-            JSONObject json = new JSONObject(str);
-            JSONArray jsonArray = json.getJSONObject("response").getJSONArray("docs");
-            for (int i = 0, size = jsonArray.length(); i < size; i++) {
-                JSONObject objectInArray = jsonArray.getJSONObject(i);
-                list.add(objectInArray.getString("name"));
-            }
-            System.out.println(list);
-            httpClient.getConnectionManager().shutdown();
-            return list;
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         return null;
     }

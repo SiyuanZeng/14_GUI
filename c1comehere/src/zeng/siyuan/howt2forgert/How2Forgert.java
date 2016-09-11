@@ -24,8 +24,13 @@ public class How2Forgert implements Serializable {
     public transient Thread reloadandDisplayThread;
     public transient JFrame frame;
     public mappingmanager m;
+    public boolean isSearch;
+    public int count=1;
+    private ArrayList<Ebbinghaus> searchebbinghauses;
+    private ArrayList<Task> searchtasks;
+    private Task currentTaskSearch;
+    private String keywords;
 
-    
     public void load(){
         Scanner in = null;
 
@@ -42,7 +47,7 @@ public class How2Forgert implements Serializable {
                 }
             }
         }
-    
+
     public How2Forgert(C1comehere c1comehere, JTextArea textArea, JFrame frame) {
         this.c1comehere = c1comehere;
         this.textArea = textArea;
@@ -64,6 +69,23 @@ public class How2Forgert implements Serializable {
         c.add(Calendar.HOUR_OF_DAY, 1);
 
         System.out.println(format.format(c.getTime()));
+
+        // found!
+        String textinput = textArea.getText().replace(" ufgt ", "");
+        Scanner in = null;
+
+        if (!textinput.isEmpty()) {
+            StringBuilder stringBuilder1 = new StringBuilder();
+            in = new Scanner(textinput);
+            while (in.hasNext()) {
+                String line = in.nextLine();
+                if (line.contains(" found!")) {
+                } else {
+                    stringBuilder.append(line);
+                }
+            }
+            textinput=stringBuilder.toString();
+        }
 
 
         int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
@@ -88,14 +110,14 @@ public class How2Forgert implements Serializable {
                     stringBuilder.append(" pm");
                 }
                 stringBuilder.append(System.getProperty("line.separator"));
-                stringBuilder.append(textArea.getText().replace(" ufgt ", ""));
+                stringBuilder.append(textinput);
                 stringBuilder.append(System.getProperty("line.separator"));
                 e.question = stringBuilder.toString();
                 Ebbinghaus e1 = new Ebbinghaus(e.question, "");
                 m.deleteTask(e.getJavauid());
                 m.store(e1);
                 System.out.println("updates");
-                reloadTAskandrestartPopThread();
+                isSearch=false;
                 break;
             }
         }
@@ -103,40 +125,114 @@ public class How2Forgert implements Serializable {
 
     public void displayTask() {
         try {
-            for (Task t : tasks) {
-                if (!t.getIsDone() && t.getDate().after(new Date())) {
-                    Calendar calendar = Calendar.getInstance();
-                    calendar.setTime(t.getDate());
-                    long diff = calendar.getTimeInMillis() - Calendar.getInstance().getTimeInMillis();
-                    if (diff > 0) {
-                        Thread.sleep(diff);
+            if(isSearch){
+                displaysearchtasks();
+            } else {
+                for (Task t : tasks) {
+                    if (!t.getIsDone() && t.getDate().after(new Date())) {
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.setTime(t.getDate());
+                        long diff = calendar.getTimeInMillis() - Calendar.getInstance().getTimeInMillis();
+                        if (diff > 0) {
+                            Thread.sleep(diff);
 
 
+                            String buttonSelected = getString();
+                            boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt") || buttonSelected.equalsIgnoreCase("deldiary");
 
-                        String buttonSelected ="";
-                        for (Enumeration<AbstractButton> buttons = c1comehere.untoggle.bg.getElements(); buttons.hasMoreElements();) {
-                            AbstractButton button = buttons.nextElement();
 
-                            if (button.isSelected()) {
-                                buttonSelected=button.getText();
+                            while (!textArea.getText().trim().isEmpty() || !isHow2ForegertCommand) {
+                                Thread.sleep(10000);
+                                for (Enumeration<AbstractButton> buttons = c1comehere.untoggle.bg.getElements(); buttons.hasMoreElements(); ) {
+                                    AbstractButton button = buttons.nextElement();
+
+                                    if (button.isSelected()) {
+                                        buttonSelected = button.getText();
+                                    }
+                                }
+                                isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt") || buttonSelected.equalsIgnoreCase("deldiary");
+
+
                             }
-                        }
-                        boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt")||buttonSelected.equalsIgnoreCase("deldiary");
+                            frame.repaint();
+                            frame.toFront();
+                            currentTask = t;
+                            String inntuitive = System.getProperty("line.separator");
 
+                            inntuitive += (" ufgt ");
+                            inntuitive += System.getProperty("line.separator");
+                            for (Ebbinghaus e : ebbinghauses) {
+                                if (e.getJavauid().toString().equalsIgnoreCase(currentTask.getJavauuid().toString())) {
+                                    for (Task ct : e.getTasks()) {
+                                        if (ct.getDate().getTime() == currentTask.getDate().getTime()) {
+                                            ct.setIsDone(true);
+                                            inntuitive += e.question;
+                                            m.deleteTask(e.getJavauid());
+                                            m.store(e);
+                                        }
+                                    }
+                                }
+                            }
+                            inntuitive += System.getProperty("line.separator");
+                            textArea.setText(inntuitive);
+                        } else {
+
+
+                            String buttonSelected = getString();
+                            boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt") || buttonSelected.equalsIgnoreCase("deldiary");
+
+
+                            while (!textArea.getText().trim().isEmpty() || !isHow2ForegertCommand) {
+                                Thread.sleep(10000);
+
+                                for (Enumeration<AbstractButton> buttons = c1comehere.untoggle.bg.getElements(); buttons.hasMoreElements(); ) {
+                                    AbstractButton button = buttons.nextElement();
+
+                                    if (button.isSelected()) {
+                                        buttonSelected = button.getText();
+                                    }
+                                }
+                                isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt") || buttonSelected.equalsIgnoreCase("deldiary");
+
+                            }
+                            frame.repaint();
+                            frame.toFront();
+                            currentTask = t;
+                            String inntuitive = System.getProperty("line.separator");
+                            inntuitive += (" ufgt ");
+                            inntuitive += System.getProperty("line.separator");
+                            for (Ebbinghaus e : ebbinghauses) {
+                                if (e.getJavauid().toString().equalsIgnoreCase(currentTask.getJavauuid().toString())) {
+                                    for (Task ct : e.getTasks()) {
+                                        if (ct.getDate().getTime() == currentTask.getDate().getTime()) {
+                                            ct.setIsDone(true);
+                                            inntuitive += e.question;
+                                            m.deleteTask(e.getJavauid());
+                                            m.store(e);
+                                        }
+                                    }
+                                }
+                            }
+                            inntuitive += System.getProperty("line.separator");
+                            textArea.setText(inntuitive);
+                            Thread.sleep(10000);
+                        }
+                    } else if (!t.getIsDone() && t.getDate().before(new Date())) {
+
+                        String buttonSelected = getString();
+                        boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt") || buttonSelected.equalsIgnoreCase("deldiary");
 
 
                         while (!textArea.getText().trim().isEmpty() || !isHow2ForegertCommand) {
                             Thread.sleep(10000);
-                            for (Enumeration<AbstractButton> buttons = c1comehere.untoggle.bg.getElements(); buttons.hasMoreElements();) {
+                            for (Enumeration<AbstractButton> buttons = c1comehere.untoggle.bg.getElements(); buttons.hasMoreElements(); ) {
                                 AbstractButton button = buttons.nextElement();
 
                                 if (button.isSelected()) {
-                                    buttonSelected=button.getText();
+                                    buttonSelected = button.getText();
                                 }
                             }
-                            isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt")||buttonSelected.equalsIgnoreCase("deldiary");
-
-
+                            isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt") || buttonSelected.equalsIgnoreCase("deldiary");
 
                         }
                         frame.repaint();
@@ -159,106 +255,53 @@ public class How2Forgert implements Serializable {
                         }
                         inntuitive += System.getProperty("line.separator");
                         textArea.setText(inntuitive);
-                    } else {
-
-
-                        String buttonSelected ="";
-                        for (Enumeration<AbstractButton> buttons = c1comehere.untoggle.bg.getElements(); buttons.hasMoreElements();) {
-                            AbstractButton button = buttons.nextElement();
-
-                            if (button.isSelected()) {
-                                buttonSelected=button.getText();
-                            }
-                        }
-                        boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt")||buttonSelected.equalsIgnoreCase("deldiary");
-
-
-
-                        while (!textArea.getText().trim().isEmpty() || !isHow2ForegertCommand) {
-                            Thread.sleep(10000);
-
-                            for (Enumeration<AbstractButton> buttons = c1comehere.untoggle.bg.getElements(); buttons.hasMoreElements();) {
-                                AbstractButton button = buttons.nextElement();
-
-                                if (button.isSelected()) {
-                                    buttonSelected=button.getText();
-                                }
-                            }
-                            isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt")||buttonSelected.equalsIgnoreCase("deldiary");
-
-                        }
-                        frame.repaint();
-                        frame.toFront();
-                        currentTask = t;
-                        String inntuitive = System.getProperty("line.separator");
-                        inntuitive += (" ufgt ");
-                        inntuitive += System.getProperty("line.separator");
-                        for (Ebbinghaus e : ebbinghauses) {
-                            if (e.getJavauid().toString().equalsIgnoreCase(currentTask.getJavauuid().toString())) {
-                                for (Task ct : e.getTasks()) {
-                                    if (ct.getDate().getTime() == currentTask.getDate().getTime()) {
-                                        ct.setIsDone(true);
-                                        inntuitive += e.question;
-                                        m.deleteTask(e.getJavauid());
-                                        m.store(e);
-                                    }
-                                }
-                            }
-                        }
-                        inntuitive += System.getProperty("line.separator");
-                        textArea.setText(inntuitive);
-                        Thread.sleep(10000);
                     }
-                } else if (!t.getIsDone() && t.getDate().before(new Date())) {
-
-                    String buttonSelected ="";
-                    for (Enumeration<AbstractButton> buttons = c1comehere.untoggle.bg.getElements(); buttons.hasMoreElements();) {
-                        AbstractButton button = buttons.nextElement();
-
-                        if (button.isSelected()) {
-                            buttonSelected=button.getText();
-                        }
-                    }
-                    boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt")||buttonSelected.equalsIgnoreCase("deldiary");
-
-
-
-                    while (!textArea.getText().trim().isEmpty() || !isHow2ForegertCommand) {
-                        Thread.sleep(10000);
-                        for (Enumeration<AbstractButton> buttons = c1comehere.untoggle.bg.getElements(); buttons.hasMoreElements();) {
-                            AbstractButton button = buttons.nextElement();
-
-                            if (button.isSelected()) {
-                                buttonSelected=button.getText();
-                            }
-                        }
-                        isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("ufgt")||buttonSelected.equalsIgnoreCase("deldiary");
-
-                    }
-                    frame.repaint();
-                    frame.toFront();
-                    currentTask = t;
-                    String inntuitive = System.getProperty("line.separator");
-                    inntuitive += (" ufgt ");
-                    inntuitive += System.getProperty("line.separator");
-                    for (Ebbinghaus e : ebbinghauses) {
-                        if (e.getJavauid().toString().equalsIgnoreCase(currentTask.getJavauuid().toString())) {
-                            for (Task ct : e.getTasks()) {
-                                if (ct.getDate().getTime() == currentTask.getDate().getTime()) {
-                                    ct.setIsDone(true);
-                                    inntuitive += e.question;
-                                    m.deleteTask(e.getJavauid());
-                                    m.store(e);
-                                }
-                            }
-                        }
-                    }
-                    inntuitive += System.getProperty("line.separator");
-                    textArea.setText(inntuitive);
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private String getString() {
+        String buttonSelected = "";
+        for (Enumeration<AbstractButton> buttons = c1comehere.untoggle.bg.getElements(); buttons.hasMoreElements(); ) {
+            AbstractButton button = buttons.nextElement();
+
+            if (button.isSelected()) {
+                buttonSelected = button.getText();
+            }
+        }
+        return buttonSelected;
+    }
+
+    private void displaysearchtasks() {
+
+        for (Task t : searchtasks) {
+            currentTaskSearch=t;
+
+            for (Ebbinghaus e : searchebbinghauses) {
+                if (e.getJavauid().toString().equalsIgnoreCase(currentTaskSearch.getJavauuid().toString())) {
+                    String inntuitive = "";
+                    inntuitive += "\n";
+                    inntuitive += " ufgt ";
+                    inntuitive += "\n";
+
+                    inntuitive += (" found! " + count + "/" +searchtasks.size() + " " +keywords);
+                    inntuitive +="\n";
+                    inntuitive+=e.question;
+                    textArea.setText(inntuitive);
+                    while (!textArea.getText().trim().equalsIgnoreCase("")) {
+                        try {
+                            Thread.sleep(10000);
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }
+                    }
+                    count++;
+                    isSearch=true;
+                }
+            }
         }
     }
 
@@ -267,7 +310,8 @@ public class How2Forgert implements Serializable {
             if (e.getJavauid().toString().equalsIgnoreCase(currentTask.getJavauuid().toString())) {
                 m.deleteTask(e.getJavauid());
                 System.out.println("delet the " + e.getQuestion());
-                reloadTAskandrestartPopThread();
+                if(isSearch==false)reloadTAskandrestartPopThread();
+                isSearch=false;
             }
         }
     }
@@ -323,14 +367,54 @@ public class How2Forgert implements Serializable {
         Collections.sort(tasks, new Task());
     }
 
+    public void searchehabins(String a) {
+        textArea.setText("");
+        ebbinghauses = m.get();
+        searchtasks = new ArrayList<Task>();
+        searchebbinghauses=new ArrayList<Ebbinghaus>();
+
+        keywords=a.trim();
+        String[] sts=a.trim().split(" ");
+        if(sts.length==0)return;
+        for (Ebbinghaus e : ebbinghauses) {
+            boolean flag2=false;
+            for (String s : sts){
+                flag2 = e.getQuestion().contains(s);
+                if(!flag2){
+                    break;
+                }
+            }
+            if(flag2) {
+                for (Task ct : e.getTasks()) {
+                    searchtasks.add(ct);
+                    searchebbinghauses.add(e);
+                    break;
+                }
+            }
+        }
+        count=1;
+        isSearch = true;
+        if (null != searchtasks ) {
+            textArea.setText("");
+            Collections.sort(searchtasks, new Task());
+            reloadandDiskplaypopup(isSearch);
+        }
+    }
+    public void reloadandDiskplaypopup(boolean is) {
+        textArea.setText("");
+        reloadTAskandrestartPopThread();
+    }
+
     public void reloadandDiskplaypopup() {
-        loadTask();
+        if(!isSearch){
+            loadTask();
+        }
         displayTask();
     }
 
     public void inster(String word, String answer) throws IOException {
         addWord(word, answer);
-        reloadTAskandrestartPopThread();
+        isSearch=false;
     }
 
     private void reloadTAskandrestartPopThread() {

@@ -10,7 +10,7 @@ import java.io.IOException;
  * Created by SiyuanZeng's on 9/8/2016.
  */
 public class findthebestexample {
-    public JTextArea textArea;
+    public static JTextArea textArea;
 
     public findthebestexample(JTextArea textArea) {
         this.textArea = textArea;
@@ -256,22 +256,7 @@ You can use hacker news intext:ycombinator to get results with ycombinator in th
 
          */
 
-        String  inntuitive = "(optionalstackoverflow)First step 1:c1cometome:this is what yourwelcome want:";
-        inntuitive += "\n";
-        inntuitive += "(optional documentation)First step 1:c1cometome:this is what yourwelcome want:";
-        inntuitive += "\n";
-        inntuitive += "datatypeps:(";
-        inntuitive += "\n";
-        inntuitive += "I dont want&";
-        inntuitive += "\n";
-        inntuitive += "parameters$";
-        inntuitive += "\n";
-        inntuitive += "variables#";
-        inntuitive += "\n";
-        inntuitive += "actions%";
-        inntuitive += "\n";
-        inntuitive += "impport*";
-        textArea.setText(inntuitive);
+        resetfiles();
     }
 
 
@@ -291,5 +276,25 @@ You can use hacker news intext:ycombinator to get results with ycombinator in th
 
 
     }
-
+    public static void resetfiles() {
+        String  inntuitive = "";
+        inntuitive += "datatypeps:(";
+        inntuitive += "\n";
+        inntuitive += "I dont want&";
+        inntuitive += "\n";
+        inntuitive += "parameters$";
+        inntuitive += "\n";
+        inntuitive += "variables#";
+        inntuitive += "\n";
+        inntuitive += "actions%";
+        inntuitive += "\n";
+        inntuitive += "impport*";
+        inntuitive += "\n";
+        inntuitive += "(optionalstackoverflow)First step 1:c1cometome:this is what yourwelcome want:";
+        inntuitive += "\n";
+        inntuitive += "(optional documentation)First step 1:c1cometome:this is what yourwelcome want:";
+        inntuitive += "\n";
+        inntuitive += "(optional everywhere)First step 1:c1cometome:this is what yourwelcome want:";
+        textArea.setText(inntuitive);
+    }
 }

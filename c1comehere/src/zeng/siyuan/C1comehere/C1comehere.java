@@ -1,7 +1,7 @@
 package zeng.siyuan.C1comehere;
 
 import zeng.siyuan.autocomplete.JTextAreaExample;
-import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findthebestexample;
+import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.findthebestexample;
 import zeng.siyuan.button.untoggle;
 import zeng.siyuan.howt2forgert.How2Forgert;
 import zeng.siyuan.youknowwhat.YouKnowWhat;
@@ -218,10 +218,30 @@ public class C1comehere implements Serializable {
                         boolean isHow2ForegertCommand_u = textArea.getText().contains(" ufgt ");
                         boolean isload = buttonSelected.contains("laod");
                         boolean codja = buttonSelected.contains("codeja");
+                        boolean saerchdiary = buttonSelected.contains("saerchdiary");
                         boolean isShowCommand = buttonSelected.equalsIgnoreCase("sho");// shw
                         Search search = null;
+
+
+
+
+
+                        String searchTrs="";
                         if (searchEngines.containsKey(buttonSelected)) {
-                            search = searchEngines.get(buttonSelected);
+                            String text = textArea.getText().trim();
+
+                            if (!text.isEmpty()) {
+                                Scanner in = new Scanner(text);
+                                while (in.hasNext()) {
+                                    String line = in.nextLine();
+                                    if (line.length()>4) {
+                                        search = searchEngines.get(line.substring(0,3));
+                                        searchTrs=line.substring(4);
+                                    } else {
+                                    }
+                                }
+                            }
+
                         }
 
                         if (deleteCommand) {
@@ -233,6 +253,8 @@ public class C1comehere implements Serializable {
                         } else if (codja && !textArea.getText().trim().isEmpty()) {
                             findthebestexample f = new findthebestexample(textArea);
                             f.gogolesearchgsearch();
+                        } else if (saerchdiary && !textArea.getText().trim().isEmpty()) {
+                            how2Forgert.searchehabins(textArea.getText().trim());
                         } else if (isThoughtRecorderCommand) {
                             YouKnowWhat.insert(textArea.getText());
                             textArea.setText("");
@@ -253,13 +275,11 @@ public class C1comehere implements Serializable {
                             textArea.setText("");
                             How2Forgert.serialize();
                         } else if (isShowCommand) {
-                            System.out.println("Before sleep.....");
-                            System.out.println("After sleep.....");
                             textArea.setText(takeC1toMe(textArea.getText()));
                             frame.repaint();
                             frame.toFront();
                         } else if (null != search) {
-                            search.setURI(textArea.getText());
+                            search.setURI(searchTrs);
                             Desktop.getDesktop().browse(search.getURI());
                             logDictionary(search.searchName, search.keywords, search.getURIString());
                             textArea.setText("");
@@ -393,7 +413,7 @@ public class C1comehere implements Serializable {
                         } catch (URISyntaxException e) {
                             e.printStackTrace();
                         }
-                    } else if (text.contains("sd") || text.contains("shutdown")) {
+                    } else if ((text.contains("sd")&&text.startsWith("sd")) || (text.contains("shutdown")&&text.startsWith("shutdown"))) {
                         Runtime.getRuntime().exec("shutdown.exe -s -t 0");
 
                     } else {

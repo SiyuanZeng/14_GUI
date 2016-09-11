@@ -141,7 +141,7 @@ I dont want&50
                 //"http://www.google.com/#tbs=li:1&q=related:www.github.com+AND+site:www.github.com+AND+intext:public+AND+intext:class+%s"
                 searchEngine= "http://www.google.com/#tbs=li:1&q=%s";
                 findthebestexample.resetfiles();
-                return new URL(String.format(searchEngine, c1cometome2)).toURI();
+                return new URL(String.format(searchEngine, c1cometome3)).toURI();
             } else {
                 textArea.setText("");
                 //"http://www.google.com/#tbs=li:1&q=related:www.github.com+AND+site:www.github.com+AND+intext:public+AND+intext:class+%s"
