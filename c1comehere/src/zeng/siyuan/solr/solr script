@@ -25,3 +25,8 @@ java -Dtype=text/csv -Durl=http://localhost:8983/solr/jcg/update -jar post.jar  
 
 http://localhost:8080/solrautocomplete/search.html
 
+
+
+
+csv
+C:\Developer\solr-6.2.0\example\exampledocs

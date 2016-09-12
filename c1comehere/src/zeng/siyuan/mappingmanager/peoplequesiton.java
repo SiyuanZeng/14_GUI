@@ -8,16 +8,14 @@ import com.datastax.driver.mapping.MappingManager;
 import com.datastax.driver.mapping.Result;
 import zeng.siyuan.onceaday.person_question;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Created by SiyuanZeng's on 9/1/2016.
  */
 public class peoplequesiton {
-    public static final String PERSON_QUESTION1 = "person_question12";
+    public static final String PERSON_QUESTION1 = "person_question_produ";
+    public static final String LINK= "link";
     Cluster cluster;
     static Session session;
     MappingManager manager;
@@ -42,6 +40,11 @@ public class peoplequesiton {
         for(person_question e : users) {
             set.add(e);
         }
+
+        results = session.execute("SELECT * FROM keyspace1." + PERSON_QUESTION1);
+        users = mapper.map(results);
+        set.addAll((Collection<? extends person_question>) users);
+
         return set;
     }
 

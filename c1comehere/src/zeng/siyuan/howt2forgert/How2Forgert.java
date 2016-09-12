@@ -59,16 +59,9 @@ public class How2Forgert implements Serializable {
     public void updatetask() {
         StringBuilder stringBuilder = new StringBuilder();
         Date date = new Date();
-
         Calendar c = Calendar.getInstance();
-
         SimpleDateFormat format = new SimpleDateFormat("EEE, MMM d, yyyy 'at' hh:mm");
-
-        System.out.println(format.format(c.getTime()));
-
         c.add(Calendar.HOUR_OF_DAY, 1);
-
-        System.out.println(format.format(c.getTime()));
 
         // found!
         String textinput = textArea.getText().replace(" ufgt ", "");
@@ -288,6 +281,7 @@ public class How2Forgert implements Serializable {
                     inntuitive += "\n";
 
                     inntuitive += (" found! " + count + "/" +searchtasks.size() + " " +keywords);
+                    inntuitive +="\n";
                     inntuitive +="\n";
                     inntuitive+=e.question;
                     textArea.setText(inntuitive);

@@ -469,10 +469,10 @@ public class C1comehere implements Serializable {
                             }
                         }
                     } else {
-                        path = (String) prop.get(text.trim().replace(".", ""));
+                        path = (String) prop.get(text.trim().replace(".", ""))==null?"": (String) prop.get(text.trim().replace(".", ""));
                     }
 
-                    if (path.contains("http://") || path.contains("https://")) {
+                    if (null!=path && !path.isEmpty()&& path.contains("http://") || path.contains("https://")) {
                         try {
                             Desktop.getDesktop().browse(new URL(path).toURI());
                         } catch (URISyntaxException e) {
@@ -480,7 +480,9 @@ public class C1comehere implements Serializable {
                         }
                     } else if ((text.contains("sd")&&text.startsWith("sd")) || (text.contains("shutdown")&&text.startsWith("shutdown"))) {
                         Runtime.getRuntime().exec("shutdown.exe -s -t 0");
-
+                        // what the fuck si the else mean?
+                    } else if (null==path||path.trim().isEmpty()) {
+                        Desktop.getDesktop().open(new File(text.trim()));
                     } else {
                         Desktop.getDesktop().open(new File(path));
                     }

@@ -12,12 +12,12 @@ import java.util.*;
  */
 
 
-@Table(keyspace = "keyspace1", name = "person_question12",
+@Table(keyspace = "keyspace1", name = "person_question_produ",
         readConsistency = "QUORUM",
         writeConsistency = "QUORUM",
         caseSensitiveKeyspace = false,
         caseSensitiveTable = false)
-public class person_question implements Serializable {
+public class person_question implements Serializable, taskinterface {
     // column name does not match field name
 //    @Column(name = "text")
 
