@@ -6,20 +6,22 @@ import com.datastax.driver.core.Session;
 import com.datastax.driver.mapping.Mapper;
 import com.datastax.driver.mapping.MappingManager;
 import com.datastax.driver.mapping.Result;
-import zeng.siyuan.howt2forgert.Ebbinghaus;
+import zeng.siyuan.onceaday.person_question;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
  * Created by SiyuanZeng's on 9/1/2016.
  */
 public class peoplequesiton {
+    public static final String PERSON_QUESTION1 = "person_question12";
     Cluster cluster;
     static Session session;
     MappingManager manager;
-    Mapper<Ebbinghaus> mapper;
+    static Mapper<person_question> mapper;
 
 
     //todo bakup data
@@ -29,14 +31,15 @@ public class peoplequesiton {
         cluster = Cluster.builder().addContactPoint("127.0.0.1").withPort(9042).build();
         session = cluster.connect("keyspace1");
         manager = new MappingManager(session);
-        mapper = manager.mapper(Ebbinghaus.class);
+        mapper = manager.mapper(person_question.class);
     }
 
-    public Set<Ebbinghaus> get() {
-        Set<Ebbinghaus> set = new HashSet<Ebbinghaus>();
-        ResultSet results = session.execute("SELECT * FROM keyspace1.person_question;");
-        Result<Ebbinghaus> users = mapper.map(results);
-        for(Ebbinghaus e : users) {
+    public static List<person_question> getlatest() {
+        List<person_question> set = new ArrayList<person_question>();
+        person_question ps =new person_question() ;
+        ResultSet results = session.execute("SELECT * FROM keyspace1." + PERSON_QUESTION1);
+        Result<person_question> users = mapper.map(results);
+        for(person_question e : users) {
             set.add(e);
         }
         return set;
@@ -44,17 +47,19 @@ public class peoplequesiton {
 
     public static void deleteTask(UUID s) {
         System.out.println("delete task: " + s.toString());
-        session.execute(String.format("delete from keyspace1.person_question WHERE id=%s", s));
+        session.execute(String.format("delete from keyspace1." + PERSON_QUESTION1 + " WHERE id=%s", s));
     }
 
-    public void store(Ebbinghaus s) {
-        System.out.println("add task: " + s.getJavauid().toString()+" : " + s.getQuestion());
+    public static void store(person_question s) {
+        System.out.println("add p: " + s.getJavauid().toString()+" : " + s.getText());
         mapper.save(s);
     }
 
     public static void main(String[] args) {
-        peoplequesiton m = new peoplequesiton();
-        m.deleteTask(UUID.fromString("43abb0cf-b0fa-4cff-82ff-ee2b6b0cc682"));
+        peoplequesiton pq= new peoplequesiton();
+        person_question p = new person_question("25) If you could wake up tomorrow in the body of someone else, who would you pick and what would you do?\n","Person_Quesiton", new Date());
+        pq.store(p);
+        System.exit(0);
     }
 
 

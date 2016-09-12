@@ -26,6 +26,7 @@ public class C1comehere implements Serializable {
     public static transient JTextArea textArea;
     public static JFrame frame;
     public How2Forgert how2Forgert;
+    public zeng.siyuan.onceaday.How2Forgert dhow2Forgert;
     public static C1comehere c1comehere;
     public static Font font = new Font("Serif", Font.PLAIN, 20);
     public static untoggle untoggle;
@@ -37,16 +38,6 @@ public class C1comehere implements Serializable {
         configureLookAndFeel();
         c1comehere = new C1comehere();
         c1comehere.showFrame();
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new JTextAreaExample(frame, textArea, controlPanel);
-            }
-        });
-
-//        SwingUtilities.invokeLater(() -> new buttons());
-        untoggle untog = new untoggle(frame, controlPanel, textArea);
-        untoggle = untog;
     }
 
 
@@ -155,15 +146,15 @@ public class C1comehere implements Serializable {
 
 
     private void showFrame() {
+
         frame = new JFrame();
+        controlPanel = new JPanel();
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        frame.setLayout(new FlowLayout());
         frame.setTitle("c1comeherec1");
         frame.setFont(font);
         JLabel label = new JLabel("c1, com ehere , c1, come to me here.....myself MYSELF Hi meeeee....");
         label.setFont(font);
-        frame.add(label);
         frame.pack();
 
         JFrame temp = new JFrame();
@@ -172,7 +163,7 @@ public class C1comehere implements Serializable {
         temp = null;
         frame.setSize(new Dimension(insets.left + insets.right + 500,
                 insets.top + insets.bottom + 500));
-        frame.setResizable(false);
+        frame.setResizable(true);
 
 
         if (lastFrame == null) {
@@ -184,8 +175,6 @@ public class C1comehere implements Serializable {
         }
         lastFrame = frame;
 
-        controlPanel = new JPanel();
-        controlPanel.setLayout(new FlowLayout());
 
         textArea = new JTextArea(10, 36);
         textArea.setLineWrap(true);
@@ -211,18 +200,29 @@ public class C1comehere implements Serializable {
                             }
                         }
 
-                        boolean deleteCommand = buttonSelected.contains("delete");
-                        boolean deleteCommand2 = buttonSelected.contains("deldiary");
-                        boolean isThoughtRecorderCommand = buttonSelected.equalsIgnoreCase("rec");
-                        boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("fgt");
+                        boolean deleteCommand = buttonSelected.startsWith("delete");
+                        boolean deleteCommand2 = buttonSelected.startsWith("deldiary");
+                        boolean isThoughtRecorderCommand = buttonSelected.startsWith("rec");
+                        boolean isHow2ForegertCommand = buttonSelected.startsWith("fgt");
                         boolean isHow2ForegertCommand_u = textArea.getText().contains(" ufgt ");
-                        boolean isload = buttonSelected.contains("laod");
-                        boolean codja = buttonSelected.contains("codeja");
-                        boolean saerchdiary = buttonSelected.contains("saerchdiary");
-                        boolean isShowCommand = buttonSelected.equalsIgnoreCase("sho");// shw
+                        boolean isload = buttonSelected.startsWith("laod");
+                        boolean codja = buttonSelected.startsWith("codeja");
+                        boolean saerchdiary = buttonSelected.startsWith("saerchdiary");
+                        boolean isShowCommand = buttonSelected.startsWith("sho");// shw
                         Search search = null;
 
 
+
+                        boolean DdeleteCommand_X = buttonSelected.startsWith("Ddelete");
+                        boolean DdeleteCommand2 = buttonSelected.contains("Ddeldiary");
+                        boolean DisThoughtRecorderCommand_x = buttonSelected.equalsIgnoreCase("Drec");
+                        boolean DisHow2ForegertCommand = buttonSelected.equalsIgnoreCase("Dfgt");
+                        boolean DisHow2ForegertCommand_u = textArea.getText().contains(" Dufgt ");
+                        boolean Disload = buttonSelected.contains("Dlaod");
+                        boolean Dcodja_x = buttonSelected.contains("Dcodeja");
+                        boolean Dsaerchdiary = buttonSelected.contains("Dsaerchdiary");
+                        boolean DisShowCommand = buttonSelected.equalsIgnoreCase("Dsho");// shw
+                        Search Dsearch = null;
 
 
 
@@ -241,44 +241,86 @@ public class C1comehere implements Serializable {
                                     }
                                 }
                             }
-
                         }
 
                         if (deleteCommand) {
+                            System.out.println("delete command");
                             prop.remove(textArea.getText());
                             textArea.setText("");
                         } else if (codja && textArea.getText().trim().isEmpty()) {
+                            System.out.println("codja");
                             findthebestexample f = new findthebestexample(textArea);
                             f.returnshowsearchquetsry();
                         } else if (codja && !textArea.getText().trim().isEmpty()) {
+                            System.out.println("codja");
                             findthebestexample f = new findthebestexample(textArea);
                             f.gogolesearchgsearch();
                         } else if (saerchdiary && !textArea.getText().trim().isEmpty()) {
+                            System.out.println("saerchdiary ");
                             how2Forgert.searchehabins(textArea.getText().trim());
                         } else if (isThoughtRecorderCommand) {
+                            System.out.println("isThoughtRecorderCommand");
                             YouKnowWhat.insert(textArea.getText());
                             textArea.setText("");
                         } else if (isload) {
+                            System.out.println("isload");
                             how2Forgert.load();
                             textArea.setText("");
                         } else if (deleteCommand2) {
+                            System.out.println("deleteCommand2");
                             how2Forgert.deltask();
                             textArea.setText("");
                         } else if (isHow2ForegertCommand_u) {
+                            System.out.println("isHow2ForegertCommand_u");
                             //init
                             how2Forgert.updatetask();
                             textArea.setText("");
                             How2Forgert.serialize();
                         } else if (isHow2ForegertCommand) {
+                            System.out.println("isHow2ForegertCommand");
                             //init
                             how2Forgert.inster(textArea.getText(), "");
                             textArea.setText("");
                             How2Forgert.serialize();
                         } else if (isShowCommand) {
+                            System.out.println("isShowCommand");
                             textArea.setText(takeC1toMe(textArea.getText()));
                             frame.repaint();
                             frame.toFront();
                         } else if (null != search) {
+                            System.out.println("search");
+                            search.setURI(searchTrs);
+                            Desktop.getDesktop().browse(search.getURI());
+                            logDictionary(search.searchName, search.keywords, search.getURIString());
+                            textArea.setText("");
+                        } else if (Dsaerchdiary && !textArea.getText().trim().isEmpty()) {
+                            System.out.println("Dsaerchdiary");
+                            dhow2Forgert.searchehabins(textArea.getText().trim());
+                        } else if (Disload) {
+                            System.out.println("Disload");
+                            dhow2Forgert.load();
+                            textArea.setText("");
+                        } else if (DdeleteCommand2) {
+                            System.out.println("DdeleteCommand2");
+                            dhow2Forgert.deltask();
+                            textArea.setText("");
+                        } else if (DisHow2ForegertCommand_u) {
+                            System.out.println("DisHow2ForegertCommand_u");
+                            dhow2Forgert.updatetask();
+                            textArea.setText("");
+                            How2Forgert.serialize();
+                        } else if (DisHow2ForegertCommand) {
+                            System.out.println("DisHow2ForegertCommand");
+                            dhow2Forgert.inster(textArea.getText(), "");
+                            textArea.setText("");
+                            How2Forgert.serialize();
+                        } else if (DisShowCommand) {
+                            System.out.println("DisShowCommand");
+                            textArea.setText(takeC1toMe(textArea.getText()));
+                            frame.repaint();
+                            frame.toFront();
+                        } else if (null != Dsearch) {
+                            System.out.println("Dsearch");
                             search.setURI(searchTrs);
                             Desktop.getDesktop().browse(search.getURI());
                             logDictionary(search.searchName, search.keywords, search.getURIString());
@@ -301,10 +343,24 @@ public class C1comehere implements Serializable {
             }
         });
 
+
         JScrollPane scroll = new JScrollPane (textArea);
         scroll.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
         //Add Textarea in to middle panel
-        controlPanel.add(scroll);
+
+
+        untoggle= new untoggle(frame, controlPanel, textArea, label, scroll);
+
+
+
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new JTextAreaExample(frame, textArea, controlPanel);
+            }
+        });
+
+//        SwingUtilities.invokeLater(() -> new buttons());
 
         //init
         c1s();
@@ -316,6 +372,15 @@ public class C1comehere implements Serializable {
         how2Forgert.textArea = textArea;
         how2Forgert.frame = frame;
         how2Forgert.init();
+
+
+        if (null == dhow2Forgert) {
+            dhow2Forgert = new zeng.siyuan.onceaday.How2Forgert(c1comehere, textArea, frame);
+        }
+        dhow2Forgert.c1comehere = c1comehere;
+        dhow2Forgert.textArea = textArea;
+        dhow2Forgert.frame = frame;
+        dhow2Forgert.init();
     }
 
     static {

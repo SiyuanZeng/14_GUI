@@ -297,4 +297,8 @@ You can use hacker news intext:ycombinator to get results with ycombinator in th
         inntuitive += "(optional everywhere)First step 1:c1cometome:this is what yourwelcome want:";
         textArea.setText(inntuitive);
     }
+
+    //find example
+    // group layout example
+    //
 }

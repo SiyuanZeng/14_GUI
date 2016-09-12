@@ -12,22 +12,26 @@ import java.util.*;
  */
 
 
-@Table(keyspace = "keyspace1", name = "ebbinhance6",
+@Table(keyspace = "keyspace1", name = "person_question12",
         readConsistency = "QUORUM",
         writeConsistency = "QUORUM",
         caseSensitiveKeyspace = false,
         caseSensitiveTable = false)
-
 public class person_question implements Serializable {
     // column name does not match field name
-//    @Column(name = "question")
+//    @Column(name = "text")
 
-    @PartitionKey
     @Column(name = "id")
     public UUID javauid;
 
-    @Column(name = "question")
-    String question;
+    @Column(name = "txt")
+    String text;
+
+    @Column(name = "type")
+    String type;
+
+    @Column(name="target_date")
+    Date date;
 
     @FrozenValue
     @Column(name = "tasks")
@@ -57,7 +61,6 @@ public class person_question implements Serializable {
 
 
     public person_question() {
-
     }
 
     public void setUUID() {
@@ -73,8 +76,11 @@ public class person_question implements Serializable {
         }
     }
 
-    public person_question(String question, String answer) {
+    public person_question(String text, String TYPE, Date date1) {
+        this.type=TYPE;
+
         this.javauid = UUID.randomUUID();
+
 
         tasks = new HashSet<Task>();
 
@@ -87,6 +93,11 @@ public class person_question implements Serializable {
         System.out.println(format.format(c.getTime()));
 
         c.add(Calendar.HOUR_OF_DAY, 1);
+
+        Calendar d = Calendar.getInstance();
+        d.setTime(date1);
+        d.add(Calendar.DATE, 1);
+        date= new Date(d.getTimeInMillis());
 
         System.out.println(format.format(c.getTime()));
 
@@ -108,14 +119,14 @@ public class person_question implements Serializable {
         if (timeOfDay >= 0 && timeOfDay < 12) {
             stringBuilder.append(" am");
             stringBuilder.append(System.getProperty("line.separator"));
-            stringBuilder.append(question);
+            stringBuilder.append(text);
         } else if (timeOfDay >= 12 && timeOfDay < 24) {
             stringBuilder.append(" pm");
             stringBuilder.append(System.getProperty("line.separator"));
-            stringBuilder.append(question);
+            stringBuilder.append(text);
         }
 
-        this.question = stringBuilder.toString();
+        this.text = stringBuilder.toString();
 
         final long ONE_MINUTE_IN_MILLIS = 60000;//millisecs
 
@@ -141,8 +152,8 @@ public class person_question implements Serializable {
     }
 
 
-    public person_question(String question, HashSet<Task> tasks, Task first, Task second, Task third, Task fourth, Task fifth, Task sixth, Task seventh, UUID javauid) {
-        this.question = question;
+    public person_question(String text, HashSet<Task> tasks, Task first, Task second, Task third, Task fourth, Task fifth, Task sixth, Task seventh, UUID javauid) {
+        this.text = text;
         this.tasks = tasks;
         this.first = first;
         this.second = second;
@@ -155,8 +166,8 @@ public class person_question implements Serializable {
     }
 
 
-    public person_question(String question, UUID javauid, HashSet<Task> tasks, Task first, Task second, Task third, Task fourth, Task fifth, Task sixth, Task seventh) {
-        this.question = question;
+    public person_question(String text, UUID javauid, HashSet<Task> tasks, Task first, Task second, Task third, Task fourth, Task fifth, Task sixth, Task seventh) {
+        this.text = text;
         this.javauid = javauid;
         this.tasks = tasks;
         this.first = first;
@@ -168,12 +179,12 @@ public class person_question implements Serializable {
         this.seventh = seventh;
     }
 
-    public String getQuestion() {
-        return question;
+    public String getText() {
+        return text;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public UUID getJavauid() {
@@ -246,5 +257,45 @@ public class person_question implements Serializable {
 
     public void setSeventh(Task seventh) {
         this.seventh = seventh;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setUUID(UUID uuid) {
+        this.javauid=uuid;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+
+
+
+    @Override
+    public String toString() {
+        return "person_question{" +
+                "javauid=" + javauid +
+                ", text='" + text + '\'' +
+                ", date=" + date +
+                ", tasks=" + tasks +
+                ", first=" + first +
+                ", second=" + second +
+                ", third=" + third +
+                ", fourth=" + fourth +
+                ", fifth=" + fifth +
+                ", sixth=" + sixth +
+                ", seventh=" + seventh +
+                '}';
     }
 }

@@ -122,6 +122,25 @@ I dont want&50
         String c1cometome2 = textStr[7].trim().replace("how to","").replace("How to", "").replace("(optional documentation)First step 1:c1cometome:this is what yourwelcome want:", "intext:").replace(SPACE, "+AND"+intext);
         String c1cometome3 = textStr[8].trim().replace("how to","").replace("How to", "").replace("(optional everywhere)First step 1:c1cometome:this is what yourwelcome want:", "intext:").replace(SPACE, "+AND"+intext);
 
+
+        if (iomport.length()==8 || iomport.length()==7){
+            iomport="";
+        }
+        if (idontwant.length()==8 || idontwant.length()==7){
+            iomport="";
+        }
+        if (datatypes3.length()==8 || datatypes3.length()==7){
+            iomport="";
+        }
+        if (datatypes2.length()==8 || datatypes2.length()==7){
+            iomport="";
+        }
+        if (datatypes1.length()==8 || datatypes1.length()==7){
+            iomport="";
+        }
+        if (datatypes.length()==8 || datatypes.length()==7){
+            iomport="";
+        }
         String combinedstring = iomport + datatypes + datatypes1 + datatypes2 + datatypes3 + idontwant;
 
         try {
