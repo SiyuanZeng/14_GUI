@@ -643,11 +643,11 @@ public class C1comehere implements Serializable {
         boolean isHttpCommand = textUpcase.contains("http://") || textUpcase.contains("https://");
         boolean isShortcutButExe = text.contains("=") && !text.contains(".exe");
         boolean isExeShortcut = text.contains(".exe") && text.contains("=");
-        if (isHttpCommand) {
+        if (isHttpCommand&&text.contains("=")) {
             c1come2melater(textUpcase.split("=")[0], textUpcase.substring(textUpcase.indexOf("=") + 1));
-        } else if (isShortcutButExe) {
+        } else if (isShortcutButExe&&text.contains("=")) {
             c1come2melater(text.split("=")[0], text.split("=")[1]);
-        } else if (isExeShortcut) {
+        } else if (isExeShortcut&&text.contains("=")) {
             key = text.substring(text.lastIndexOf("\\") + 1, text.indexOf("."));
             c1come2melater(text.split("=")[0], text.split("=")[1]);
         } else {
@@ -655,12 +655,13 @@ public class C1comehere implements Serializable {
                 key = text.substring(text.lastIndexOf("\\") + 1, text.indexOf("."));
                 c1come2melater(key, text);
             } else {
-                if (text.contains("c:") && !key.trim().isEmpty()) {
+                if (text.contains("c:") && !key.trim().isEmpty() && text.contains("=")) {
                     if (text.contains(".") && (text.substring(text.indexOf(".") + 1).equalsIgnoreCase("exe") || text.substring(text.indexOf(".") + 1).equalsIgnoreCase("jar"))) {
                         key = text.substring(text.lastIndexOf("\\") + 1, text.indexOf("."));
                     } else {
                         key = text.substring(text.lastIndexOf("\\") + 1);
                     }
+                    if(!key.trim().isEmpty()&&text.contains("=")&&text.trim().isEmpty()!=true)
                     c1come2melater(key.toLowerCase(), text);
                 } else if (text.contains("c:") && key.trim().isEmpty()) {
                     Desktop.getDesktop().open(new File(text.trim()));
