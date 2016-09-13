@@ -29,6 +29,7 @@ public class C1comehere implements Serializable {
     public zeng.siyuan.onceaday.How2Forgert dhow2Forgert;
     public zeng.siyuan.onceaday.link.onceaday.How2Forgert dhow2Forgertl;
     public zeng.siyuan.onceaday.link.onceaday.document.onceaday.How2Forgert dhow2ForgDertl;
+    public zeng.siyuan.onceaday.link.onceaday.document.onceaday.ssdd.onceaday.How2Forgert dhow2ForgDertls;
     public static C1comehere c1comehere;
     public static Font font = new Font("Serif", Font.PLAIN, 20);
     public static untoggle untoggle;
@@ -251,6 +252,23 @@ public class C1comehere implements Serializable {
                         boolean DisShowDColmmand = buttonSelected.equalsIgnoreCase("DshoDL");// shw
                         Search DsearclhD = null;
 
+
+
+
+                        boolean SDldeleteCommandd_X = buttonSelected.startsWith("DLDdSelete");
+                        boolean SDdleleteCoDmmand2 = buttonSelected.startsWith("DdeldSLDiary");
+                        boolean SDislThoughtDRecorderCommand_x = buttonSelected.equalsIgnoreCase("Drec");
+                        boolean SDisHlow2ForeDgertCommand = buttonSelected.equalsIgnoreCase("DDLSfgt");
+                        boolean SDisHolw2ForegDertCommand_u = textArea.getText().startsWith("DuSDfLgt");
+                        boolean SDislDoald = buttonSelected.startsWith("DlaoSdLD");
+                        boolean SDcodjDa_lx = buttonSelected.startsWith("DcodeLSDja");
+                        boolean SDsaercDhdliary = buttonSelected.startsWith("DsaeSrDLchdiary");
+                        boolean SDisShowDColmmand = buttonSelected.equalsIgnoreCase("DshSoDL");// shw
+                        Search DSsearclhD = null;
+
+
+
+
                         String searchTrs = "";
                         if (searchEngines.containsKey(buttonSelected)) {
                             String text = textArea.getText().trim();
@@ -433,6 +451,43 @@ public class C1comehere implements Serializable {
 
 
 
+
+
+                        else if (SDsaercDhdliary && !textArea.getText().trim().isEmpty()) {
+                            System.out.println("Dsaerchdliary");
+                            dhow2ForgDertls.searchehabins(textArea.getText().trim());
+                        } else if (SDislDoald ) {
+                            System.out.println("Disloadl");
+                            dhow2ForgDertls.load();
+                        } else if (SDdleleteCoDmmand2 ) {
+                            System.out.println("DdeletleCommand2");
+                            dhow2ForgDertls.deltask();
+                            textArea.setText("");
+                        } else if (SDisHolw2ForegDertCommand_u ) {
+                            System.out.println("DisHolw2ForegertCommand_u");
+                            dhow2ForgDertls.updatetask();
+                            textArea.setText("");
+                            How2Forgert.serialize();
+                        } else if (SDisHlow2ForeDgertCommand ) {
+                            System.out.println("DisHlow2ForegertCommand");
+                            dhow2ForgDertls.inster(textArea.getText(), "");
+                            textArea.setText("");
+                            How2Forgert.serialize();
+                        } else if (SDisShowDColmmand) {
+                            System.out.println("DislShowCommand");
+                            textArea.setText(takeC1toMe(textArea.getText()));
+                            frame.repaint();
+                            frame.toFront();
+                        } else if (null != DSsearclhD ) {
+                            System.out.println("Dsearlch");
+                            search.setURI(searchTrs);
+                            Desktop.getDesktop().browse(search.getURI());
+                            logDictionary(search.searchName, search.keywords, search.getURIString());
+                            textArea.setText("");
+                        }
+
+
+
                         else {
                             insert();
                             textArea.setText("");
@@ -508,6 +563,19 @@ public class C1comehere implements Serializable {
         dhow2ForgDertl.textArea = textArea;
         dhow2ForgDertl.frame = frame;
         dhow2ForgDertl.init();
+
+
+
+
+
+
+        if (null == dhow2ForgDertls) {
+            dhow2ForgDertls= new zeng.siyuan.onceaday.link.onceaday.document.onceaday.ssdd.onceaday.How2Forgert(c1comehere, textArea, frame);
+        }
+        dhow2ForgDertls.c1comehere = c1comehere;
+        dhow2ForgDertls.textArea = textArea;
+        dhow2ForgDertls.frame = frame;
+        dhow2ForgDertls.init();
 
 
 

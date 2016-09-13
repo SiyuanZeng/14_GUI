@@ -35,12 +35,12 @@ public class How2Forgert implements Serializable {
             in = new Scanner(textArea.getText());
             while (in.hasNext()) {
                 String line = in.nextLine();
-                if (line.startsWith("C:")) {
-                    person_question e = new person_question(line, "Link", getdatelastday());
+                if (line.startsWith("C:") ||line.startsWith("http")) {
+                    person_question e = new person_question(line, "Link", null);
                     m.store(e);
                     textArea.setText("");
                 } else {
-                    textArea.setText("invalid input" + "\n" + str);
+                    textArea.setText("invalid input" + "\n" + line);
                 }
             }
         }
@@ -79,7 +79,7 @@ public class How2Forgert implements Serializable {
                             Thread.sleep(diff);
 
                             String buttonSelected = getString();
-                            boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("Lufgt") || buttonSelected.equalsIgnoreCase("Ldeldiary");
+                            boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("DuSDfLgt") || buttonSelected.equalsIgnoreCase("DdeldSLDiary");
 
                             while (!textArea.getText().trim().isEmpty() || !isHow2ForegertCommand) {
                                 Thread.sleep(10000);
@@ -90,7 +90,7 @@ public class How2Forgert implements Serializable {
                                         buttonSelected = button.getText();
                                     }
                                 }
-                                isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("Lufgt") || buttonSelected.equalsIgnoreCase("Ldeldiary");
+                                isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("DuSDfLgt") || buttonSelected.equalsIgnoreCase("DdeldSLDiary");
                             }
                             frame.repaint();
                             frame.toFront();
@@ -100,8 +100,9 @@ public class How2Forgert implements Serializable {
                                 if (e.getJavauid().toString().equalsIgnoreCase(currentTask.getJavauuid().toString())) {
                                     for (Task ct : e.getTasks()) {
                                         if (ct.getDate().getTime() == currentTask.getDate().getTime()) {
-                                            ct.setIsDone(true);
                                             inntuitive += e.text;
+                                            m.deleteTask(e.getJavauid());
+                                            e = new person_question(e.getText(),"ssdd", null);
                                             m.store(e);
                                         }
                                     }
@@ -110,7 +111,7 @@ public class How2Forgert implements Serializable {
                             textArea.setText(inntuitive);
                         } else {
                             String buttonSelected = getString();
-                            boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("Lufgt") || buttonSelected.equalsIgnoreCase("Ldeldiary");
+                            boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("DuSDfLgt") || buttonSelected.equalsIgnoreCase("DdeldSLDiary");
                             while (!textArea.getText().trim().isEmpty() || !isHow2ForegertCommand) {
                                 Thread.sleep(10000);
                                 for (Enumeration<AbstractButton> buttons = c1comehere.untoggle.bg.getElements(); buttons.hasMoreElements(); ) {
@@ -119,7 +120,7 @@ public class How2Forgert implements Serializable {
                                         buttonSelected = button.getText();
                                     }
                                 }
-                                isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("Lufgt") || buttonSelected.equalsIgnoreCase("Ldeldiary");
+                                isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("DuSDfLgt") || buttonSelected.equalsIgnoreCase("DdeldSLDiary");
                             }
                             frame.repaint();
                             frame.toFront();
@@ -129,8 +130,8 @@ public class How2Forgert implements Serializable {
                                 if (e.getJavauid().toString().equalsIgnoreCase(currentTask.getJavauuid().toString())) {
                                     for (Task ct : e.getTasks()) {
                                         if (ct.getDate().getTime() == currentTask.getDate().getTime()) {
-                                            ct.setIsDone(true);
-                                            inntuitive += e.text;
+                                            m.deleteTask(e.getJavauid());
+                                            e = new person_question(e.getText(),"ssdd", null);
                                             m.store(e);
                                         }
                                     }
@@ -141,7 +142,7 @@ public class How2Forgert implements Serializable {
                         }
                     } else if (!t.getIsDone() && t.getDate().before(new Date())) {
                         String buttonSelected = getString();
-                        boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("Lufgt") || buttonSelected.equalsIgnoreCase("Ldeldiary");
+                        boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("DuSDfLgt") || buttonSelected.equalsIgnoreCase("DdeldSLDiary");
                         while (!textArea.getText().trim().isEmpty() || !isHow2ForegertCommand) {
                             Thread.sleep(10000);
                             for (Enumeration<AbstractButton> buttons = c1comehere.untoggle.bg.getElements(); buttons.hasMoreElements(); ) {
@@ -151,7 +152,7 @@ public class How2Forgert implements Serializable {
                                     buttonSelected = button.getText();
                                 }
                             }
-                            isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("Lufgt") || buttonSelected.equalsIgnoreCase("Ldeldiary");
+                            isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("DuSDfLgt") || buttonSelected.equalsIgnoreCase("DdeldSLDiary");
                         }
                         frame.repaint();
                         frame.toFront();
@@ -161,8 +162,8 @@ public class How2Forgert implements Serializable {
                             if (e.getJavauid().toString().equalsIgnoreCase(currentTask.getJavauuid().toString())) {
                                 for (Task ct : e.getTasks()) {
                                     if (ct.getDate().getTime() == currentTask.getDate().getTime()) {
-                                        ct.setIsDone(true);
-                                        inntuitive += e.text;
+                                        m.deleteTask(e.getJavauid());
+                                        e = new person_question(e.getText(),"ssdd", null);
                                         m.store(e);
                                     }
                                 }
@@ -224,7 +225,7 @@ public class How2Forgert implements Serializable {
 
 
     public void addWord(String word, String answer) {
-        person_question pq = new person_question(word, answer, getdatelastday());
+        person_question pq = new person_question(word, answer, null);
         m.store(pq);
         ebbinghauses.add(pq);
         textArea.setText("");
@@ -234,7 +235,7 @@ public class How2Forgert implements Serializable {
         ebbinghauses = (ArrayList<person_question>) m.getlatest();
         tasks = new ArrayList<Task>();
         for (person_question e : ebbinghauses) {
-            if (e.text.replace("Lufgt", "").trim().isEmpty()) {
+            if (e.text.replace("DuSDfLgt", "").trim().isEmpty()) {
                 m.deleteTask(e.getJavauid());
             } else {
                 Set<Task> t = e.tasks;
@@ -251,7 +252,7 @@ public class How2Forgert implements Serializable {
         ArrayList<person_question> ebbinghauses2 = (ArrayList<person_question>) m.getlatest();
         ArrayList<DecendingTask> taskstemp = new ArrayList<DecendingTask>();
         for (person_question e : ebbinghauses2) {
-            if (e.text.replace("Lufgt", "").trim().isEmpty()) {
+            if (e.text.replace("DuSDfLgt", "").trim().isEmpty()) {
                 m.deleteTask(e.getJavauid());
             } else {
                 DecendingTask d = new DecendingTask(e.getDate());

@@ -16,7 +16,7 @@ import java.util.UUID;
  * Created by SiyuanZeng's on 9/1/2016.
  */
 public class peoplequesiton {
-    public static final String PERSON_QUESTION1 = "doc_test";
+    public static final String PERSON_QUESTION1 = "doc";
     Cluster cluster;
     static Session session;
     MappingManager manager;
