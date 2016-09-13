@@ -1,7 +1,6 @@
 package zeng.siyuan.howt2forgert;
 
  import com.datastax.driver.mapping.annotations.*;
- import zeng.siyuan.onceaday.taskinterface;
 
  import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -19,7 +18,7 @@ import java.util.*;
         caseSensitiveKeyspace = false,
         caseSensitiveTable = false)
 
-public class Ebbinghaus implements Serializable, taskinterface {
+public class Ebbinghaus implements Serializable{
     // column name does not match field name
 //    @Column(name = "question")
 

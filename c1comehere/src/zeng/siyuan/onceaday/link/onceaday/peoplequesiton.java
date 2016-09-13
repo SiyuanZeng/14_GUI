@@ -1,4 +1,4 @@
-package zeng.siyuan.mappingmanager;
+package zeng.siyuan.onceaday.link.onceaday;
 
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.ResultSet;
@@ -6,16 +6,19 @@ import com.datastax.driver.core.Session;
 import com.datastax.driver.mapping.Mapper;
 import com.datastax.driver.mapping.MappingManager;
 import com.datastax.driver.mapping.Result;
-import zeng.siyuan.onceaday.person_question;
 
-import java.util.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by SiyuanZeng's on 9/1/2016.
  */
 public class peoplequesiton {
-    public static final String PERSON_QUESTION1 = "person_question_produ";
-    public static final String LINK= "link";
+    public static final String PERSON_QUESTION1 = "link";
     Cluster cluster;
     static Session session;
     MappingManager manager;
@@ -41,10 +44,6 @@ public class peoplequesiton {
             set.add(e);
         }
 
-        results = session.execute("SELECT * FROM keyspace1." + PERSON_QUESTION1);
-        users = mapper.map(results);
-        set.addAll((Collection<? extends person_question>) users);
-
         return set;
     }
 
@@ -55,7 +54,12 @@ public class peoplequesiton {
 
     public static void store(person_question s) {
         System.out.println("add p: " + s.getJavauid().toString()+" : " + s.getText());
-        mapper.save(s);
+        try {
+            new URL(s.getText());
+            mapper.save(s);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
