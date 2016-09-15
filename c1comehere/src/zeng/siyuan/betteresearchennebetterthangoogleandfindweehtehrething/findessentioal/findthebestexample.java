@@ -10,11 +10,6 @@ import java.io.IOException;
  * Created by SiyuanZeng's on 9/8/2016.
  */
 public class findthebestexample {
-    public static JTextArea textArea;
-
-    public findthebestexample(JTextArea textArea) {
-        this.textArea = textArea;
-    }
 
 
     /*
@@ -296,6 +291,11 @@ You can use hacker news intext:ycombinator to get results with ycombinator in th
         inntuitive += "\n";
         inntuitive += "(optional everywhere)First step 1:c1cometome:this is what yourwelcome want:";
         textArea.setText(inntuitive);
+    }
+    public static JTextArea textArea;
+
+    public findthebestexample(JTextArea textArea) {
+        this.textArea = textArea;
     }
 
     //find example

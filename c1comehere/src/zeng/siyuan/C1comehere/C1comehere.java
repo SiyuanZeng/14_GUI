@@ -2,6 +2,7 @@ package zeng.siyuan.C1comehere;
 
 import zeng.siyuan.autocomplete.JTextAreaExample;
 import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.findthebestexample;
+import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.findtheshortcut;
 import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.gooogle;
 import zeng.siyuan.button.untoggle;
 import zeng.siyuan.howt2forgert.How2Forgert;
@@ -272,6 +273,9 @@ public class C1comehere implements Serializable {
                         boolean googleo = buttonSelected.equalsIgnoreCase("DsLDg");// shw
 
 
+                        boolean findtheshotcut = buttonSelected.equalsIgnoreCase("DsLg");// shw
+
+
                         String searchTrs = "";
                         if (searchEngines.containsKey(buttonSelected)) {
                             String text = textArea.getText().trim();
@@ -308,6 +312,14 @@ public class C1comehere implements Serializable {
                         } else if (googleo && !textArea.getText().trim().isEmpty()) {
                             System.out.println("codja");
                             gooogle f = new gooogle(textArea);
+                            f.gogolesearchgsearch();
+                        }  else if (findtheshotcut && textArea.getText().trim().isEmpty()) {
+                            System.out.println("codja");
+                            findtheshortcut f = new findtheshortcut (textArea);
+                            f.returnshowsearchquetsry();
+                        } else if (findtheshotcut && !textArea.getText().trim().isEmpty()) {
+                            System.out.println("codja");
+                            findtheshortcut f = new findtheshortcut(textArea);
                             f.gogolesearchgsearch();
                         } else if (saerchdiary && !textArea.getText().trim().isEmpty()) {
                             System.out.println("saerchdiary ");

@@ -5,6 +5,7 @@ package zeng.siyuan.button;
  */
 
 import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.findthebestexample;
+import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.findtheshortcut;
 import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.gooogle;
 import zeng.siyuan.routine.a;
 
@@ -153,6 +154,24 @@ public class untoggle {
 
                 bg.add(LbtnD1);
                 bg.add(LbtnD3);
+
+
+
+
+
+
+
+
+
+
+
+                btn9.addActionListener(e -> {
+                    findtheshortcut f = new findtheshortcut(jTextArea);
+                    f.returnshowsearchquetsry();
+                });
+
+
+
                 bg.add(LbtnD2);
                 bg.add(LbtnD4);
                 bg.add(LbtnD5);

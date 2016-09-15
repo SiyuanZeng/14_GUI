@@ -5,6 +5,8 @@ package zeng.siyuan.reuseutil;
  */
 public class r {
 
+    public final static String INTEXT_HYPHEN = "intext:";
+
     public static void resetfiles() {
         String inntuitive = "";
         inntuitive +=  "datatypeps:(";
@@ -49,6 +51,29 @@ public class r {
 
     public static boolean isNotEmpty(String s ){
         return !s.isEmpty();
+    }
+    public static final String plusANDplus = "+AND+";
+
+    public static String splitStringandAddOnebyone(String str){
+
+
+        StringBuilder result = new StringBuilder();
+
+        for(String s: str.split(" ")){
+                if(result.length()> 0){
+                    result.append(plusANDplus);
+                }
+
+            result.append(INTEXT_HYPHEN+s);
+
+
+
+        }
+
+
+
+        return result.toString();
+
     }
 
 
