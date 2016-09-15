@@ -46,9 +46,10 @@ public class solr {
 
         boolean deleteCommand = buttonSelected.contains("delete");
         boolean isShowCommand = buttonSelected.equalsIgnoreCase("sho");// shw
+        boolean add = buttonSelected.equalsIgnoreCase("add");// shw
 
 //include is better than exclude because i don't need it i only care about what i need
-        if (deleteCommand && isShowCommand) {
+        if (deleteCommand || add || isShowCommand) {
 
             try {
                 DefaultHttpClient httpClient = new DefaultHttpClient();

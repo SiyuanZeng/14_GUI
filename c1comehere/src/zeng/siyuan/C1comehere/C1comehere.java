@@ -219,7 +219,7 @@ public class C1comehere implements Serializable {
                         boolean DdeleteCommand2 = buttonSelected.startsWith("Ddeldiary");
                         boolean DisThoughtRecorderCommand_x = buttonSelected.startsWith("Drec");
                         boolean DisHow2ForegertCommand = buttonSelected.startsWith("Dfgt");
-                        boolean DisHow2ForegertCommand_u = textArea.getText().startsWith(" Dufgt ");
+                        boolean DisHow2ForegertCommand_u = textArea.getText().contains(" Dufgt ");
                         boolean Disload = buttonSelected.startsWith("startsWith");
                         boolean Dcodja_x = buttonSelected.startsWith("Dcodeja");
                         boolean Dsaerchdiary = buttonSelected.startsWith("Dsaerchdiary");
@@ -231,7 +231,7 @@ public class C1comehere implements Serializable {
                         boolean DdleleteCommand2 = buttonSelected.startsWith("DdeldLiary");
                         boolean DislThoughtRecorderCommand_x = buttonSelected.equalsIgnoreCase("Drec");
                         boolean DisHlow2ForegertCommand = buttonSelected.equalsIgnoreCase("DLfgt");
-                        boolean DisHolw2ForegertCommand_u = textArea.getText().startsWith("DufLgt");
+                        boolean DisHolw2ForegertCommand_u = textArea.getText().contains("DufLgt");
                         boolean Disloald = buttonSelected.startsWith("DlaodL")&&(!buttonSelected.startsWith("DlaodLD"));
                         boolean Dcodja_lx = buttonSelected.startsWith("DcodeLja");
                         boolean Dsaerchdliary = buttonSelected.startsWith("DsaerLchdiary");
@@ -245,7 +245,7 @@ public class C1comehere implements Serializable {
                         boolean DdleleteCoDmmand2 = buttonSelected.startsWith("DdeldLDiary");
                         boolean DislThoughtDRecorderCommand_x = buttonSelected.equalsIgnoreCase("Drec");
                         boolean DisHlow2ForeDgertCommand = buttonSelected.equalsIgnoreCase("DDLfgt");
-                        boolean DisHolw2ForegDertCommand_u = textArea.getText().startsWith("DuDfLgt");
+                        boolean DisHolw2ForegDertCommand_u = textArea.getText().contains("DuDfLgt");
                         boolean DislDoald = buttonSelected.startsWith("DlaodLD");
                         boolean DcodjDa_lx = buttonSelected.startsWith("DcodeLDja");
                         boolean DsaercDhdliary = buttonSelected.startsWith("DsaerDLchdiary");
@@ -256,10 +256,11 @@ public class C1comehere implements Serializable {
 
 
                         boolean SDldeleteCommandd_X = buttonSelected.startsWith("DLDdSelete");
+                        boolean DsLSDg = buttonSelected.startsWith("DsLSDg");
                         boolean SDdleleteCoDmmand2 = buttonSelected.startsWith("DdeldSLDiary");
                         boolean SDislThoughtDRecorderCommand_x = buttonSelected.equalsIgnoreCase("Drec");
                         boolean SDisHlow2ForeDgertCommand = buttonSelected.equalsIgnoreCase("DDLSfgt");
-                        boolean SDisHolw2ForegDertCommand_u = textArea.getText().startsWith("DuSDfLgt");
+                        boolean SDisHolw2ForegDertCommand_u = textArea.getText().contains("DuSDfLgt");
                         boolean SDislDoald = buttonSelected.startsWith("DlaoSdLD");
                         boolean SDcodjDa_lx = buttonSelected.startsWith("DcodeLSDja");
                         boolean SDsaercDhdliary = buttonSelected.startsWith("DsaeSrDLchdiary");
@@ -456,6 +457,8 @@ public class C1comehere implements Serializable {
                         else if (SDsaercDhdliary && !textArea.getText().trim().isEmpty()) {
                             System.out.println("Dsaerchdliary");
                             dhow2ForgDertls.searchehabins(textArea.getText().trim());
+                        } else if (DsLSDg) {
+                            System.out.println("Disloadl");
                         } else if (SDislDoald ) {
                             System.out.println("Disloadl");
                             dhow2ForgDertls.load();
@@ -507,6 +510,13 @@ public class C1comehere implements Serializable {
         });
 
 
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new JTextAreaExample(frame, textArea, controlPanel);
+            }
+        });
+
         JScrollPane scroll = new JScrollPane(textArea);
         scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         //Add Textarea in to middle panel
@@ -514,13 +524,6 @@ public class C1comehere implements Serializable {
 
         untoggle = new untoggle(frame, controlPanel, textArea, label, scroll);
 
-
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new JTextAreaExample(frame, textArea, controlPanel);
-            }
-        });
 
 //        SwingUtilities.invokeLater(() -> new buttons());
 
@@ -585,6 +588,7 @@ public class C1comehere implements Serializable {
 
 
     }
+
 
     static {
         searchEngines.put("sg ", new Search("Google", "sg ", "http://www.google.com/search?q=%s", "+"));

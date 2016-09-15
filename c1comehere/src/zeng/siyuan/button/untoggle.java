@@ -5,13 +5,12 @@ package zeng.siyuan.button;
  */
 
 import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.findthebestexample;
+import zeng.siyuan.routine.a;
 
 import javax.swing.*;
 import java.awt.*;
 
-import static javax.swing.GroupLayout.Alignment.BASELINE;
-import static javax.swing.GroupLayout.Alignment.LEADING;
-import static javax.swing.GroupLayout.Alignment.TRAILING;
+import static javax.swing.GroupLayout.Alignment.*;
 
 public class untoggle {
     public static ButtonGroup bg = new ButtonGroup();
@@ -177,6 +176,13 @@ public class untoggle {
 
                 bg.add(SDLbtnD1);
                 bg.add(LSDbtnD3);
+
+
+                LbSDtnD2.addActionListener(e -> {
+                    a f = new a(jTextArea);
+                    f.returnshowsearchquetsry();
+                });
+
                 bg.add(LbSDtnD2);
                 bg.add(LbtSDnD4);
                 bg.add(LbtnSDD5);

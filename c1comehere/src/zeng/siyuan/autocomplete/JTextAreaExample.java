@@ -197,9 +197,6 @@ class AutoSuggestor {
                 suggestionsPanel.removeAll();//remove previos words/jlabels that were added
 
                 //used to calcualte size of JWindow as new Jlabels are added
-                tW = 0;
-                tH = 0;
-
                 boolean added = wordTyped(typedWord);
 
                 if (!added) {

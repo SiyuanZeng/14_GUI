@@ -13,6 +13,12 @@ public class findthetrikcs {
     nothing but
 
 
+    think like a master
+
+    java in 5 minutes
+
+
+
     google search techniques
 
     you have to know
