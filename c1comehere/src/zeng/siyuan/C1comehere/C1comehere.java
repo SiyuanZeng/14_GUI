@@ -2,6 +2,7 @@ package zeng.siyuan.C1comehere;
 
 import zeng.siyuan.autocomplete.JTextAreaExample;
 import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.findthebestexample;
+import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.gooogle;
 import zeng.siyuan.button.untoggle;
 import zeng.siyuan.howt2forgert.How2Forgert;
 import zeng.siyuan.youknowwhat.YouKnowWhat;
@@ -268,6 +269,7 @@ public class C1comehere implements Serializable {
                         Search DSsearclhD = null;
 
 
+                        boolean googleo = buttonSelected.equalsIgnoreCase("DsLDg");// shw
 
 
                         String searchTrs = "";
@@ -298,6 +300,14 @@ public class C1comehere implements Serializable {
                         } else if (codja && !textArea.getText().trim().isEmpty()) {
                             System.out.println("codja");
                             findthebestexample f = new findthebestexample(textArea);
+                            f.gogolesearchgsearch();
+                        } else if (googleo && textArea.getText().trim().isEmpty()) {
+                            System.out.println("codja");
+                            gooogle f = new gooogle (textArea);
+                            f.returnshowsearchquetsry();
+                        } else if (googleo && !textArea.getText().trim().isEmpty()) {
+                            System.out.println("codja");
+                            gooogle f = new gooogle(textArea);
                             f.gogolesearchgsearch();
                         } else if (saerchdiary && !textArea.getText().trim().isEmpty()) {
                             System.out.println("saerchdiary ");

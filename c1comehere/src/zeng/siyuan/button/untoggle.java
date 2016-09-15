@@ -5,6 +5,7 @@ package zeng.siyuan.button;
  */
 
 import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.findthebestexample;
+import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.gooogle;
 import zeng.siyuan.routine.a;
 
 import javax.swing.*;
@@ -164,6 +165,21 @@ public class untoggle {
 
                 bg.add(DLbtnD1);
                 bg.add(LDbtnD3);
+
+
+
+
+
+
+
+
+
+                LbDtnD2.addActionListener(e -> {
+                    gooogle f = new gooogle(jTextArea);
+                    f.returnshowsearchquetsry();
+                });
+
+
                 bg.add(LbDtnD2);
                 bg.add(LbtDnD4);
                 bg.add(LbtnDD5);
