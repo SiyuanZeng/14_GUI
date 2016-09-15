@@ -3,6 +3,7 @@ package zeng.siyuan.C1comehere;
 import zeng.siyuan.autocomplete.JTextAreaExample;
 import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.findthebestexample;
 import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.findtheshortcut;
+import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.findtutroial.findtheshortcutyoutututouiral;
 import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.gooogle;
 import zeng.siyuan.button.untoggle;
 import zeng.siyuan.howt2forgert.How2Forgert;
@@ -276,6 +277,11 @@ public class C1comehere implements Serializable {
                         boolean findtheshotcut = buttonSelected.equalsIgnoreCase("DsLg");// shw
 
 
+
+
+                        boolean findtheshotcutviode = buttonSelected.equalsIgnoreCase("Dsg");// shw
+
+
                         String searchTrs = "";
                         if (searchEngines.containsKey(buttonSelected)) {
                             String text = textArea.getText().trim();
@@ -320,6 +326,14 @@ public class C1comehere implements Serializable {
                         } else if (findtheshotcut && !textArea.getText().trim().isEmpty()) {
                             System.out.println("codja");
                             findtheshortcut f = new findtheshortcut(textArea);
+                            f.gogolesearchgsearch();
+                        } else if (findtheshotcutviode && textArea.getText().trim().isEmpty()) {
+                            System.out.println("codja");
+                            findtheshortcutyoutututouiral f = new findtheshortcutyoutututouiral(textArea);
+                            f.returnshowsearchquetsry();
+                        } else if (findtheshotcutviode&& !textArea.getText().trim().isEmpty()) {
+                            System.out.println("codja");
+                            findtheshortcutyoutututouiral f = new findtheshortcutyoutututouiral(textArea);
                             f.gogolesearchgsearch();
                         } else if (saerchdiary && !textArea.getText().trim().isEmpty()) {
                             System.out.println("saerchdiary ");

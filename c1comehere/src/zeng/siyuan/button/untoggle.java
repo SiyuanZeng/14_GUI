@@ -4,11 +4,11 @@ package zeng.siyuan.button;
  * Created by SiyuanZeng's on 9/5/2016.
  */
 
-import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.findthebestexample;
+import  zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.findthebestexample;
 import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.findtheshortcut;
 import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.gooogle;
 import zeng.siyuan.routine.a;
-
+import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.findtutroial.findtheshortcutyoutututouiral;
 import javax.swing.*;
 import java.awt.*;
 
@@ -29,7 +29,7 @@ public class untoggle {
     public static JToggleButton btn10 = new JToggleButton("saerchdiary");
     public static JToggleButton btnD1 = new JToggleButton("Ddelete");
     public static JToggleButton btnD3 = new JToggleButton("Dfgt");
-    public static JToggleButton btnD2 = new JToggleButton("Dsg ");
+    public static JToggleButton btnD2 = new JToggleButton("Dsg");
     public static JToggleButton btnD4 = new JToggleButton("Dufgt");
     public static JToggleButton btnD5 = new JToggleButton("Dsho");
     public static JToggleButton btnD6 = new JToggleButton("Dadd");
@@ -142,6 +142,29 @@ public class untoggle {
 
                 bg.add(btnD1);
                 bg.add(btnD3);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                btnD2.addActionListener(e -> {
+                    findtheshortcutyoutututouiral f = new findtheshortcutyoutututouiral(jTextArea);
+                    f.returnshowsearchquetsry();
+                });
+
+
+
+
+
                 bg.add(btnD2);
                 bg.add(btnD4);
                 bg.add(btnD5);

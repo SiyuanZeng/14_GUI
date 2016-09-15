@@ -6,6 +6,7 @@ package zeng.siyuan.reuseutil;
 public class r {
 
     public final static String INTEXT_HYPHEN = "intext:";
+    public static final String PLUGS = "+";
 
     public static void resetfiles() {
         String inntuitive = "";
@@ -53,6 +54,7 @@ public class r {
         return !s.isEmpty();
     }
     public static final String plusANDplus = "+AND+";
+    public static final String plus= "+";
 
     public static String splitStringandAddOnebyone(String str){
 
@@ -75,6 +77,29 @@ public class r {
         return result.toString();
 
     }
+
+
+    public static String splitStringandAddOnebyoneonlyplussign(String str){
+
+
+        StringBuilder result = new StringBuilder();
+
+        for(String s: str.split(" ")){
+            if(result.length()> 0){
+                result.append("+");
+            }
+
+            result.append(s);
+
+
+
+        }
+
+        return result.toString();
+
+    }
+
+
 
 
     public static String generate(String str) {
