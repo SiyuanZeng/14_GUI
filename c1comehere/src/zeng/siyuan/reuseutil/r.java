@@ -71,7 +71,7 @@ public class r {
                     result.append(plusANDplusintextcolon);
                 }
 
-            result.append(s);
+            result.append(generateStringSplitAndCombine(keysearchstring, keyword));
 
 
 
@@ -94,7 +94,7 @@ public class r {
                 result.append("+");
             }
 
-            result.append(s);
+            result.append(generateStringSplitAndCombine(keysearchstring, keyword));
 
 
 
@@ -114,37 +114,61 @@ public class r {
         for (int i = 0; i < textStr.length; i++) {
             String s  = textStr[i];
 
-            if (s.split("")[1].trim().isEmpty()!=true) {
-                if(stringBuilder.length()> 0 && i < textStr.length-1){
+            if (s.split(":")[1].trim().isEmpty()!=true) {
+                if(stringBuilder.length()> 0){
                     stringBuilder.append(plus);
                 }
+                
+                String keyword = s.split(":")[0];
+                String keysearchstring = s.split(":")[0];
+
                 switch (s.split("")[0]) {
-                    case "filetype": stringBuilder.append(s); break;
-                    case "Restrict a search to a given type of file": stringBuilder.append(s); break;
-                    case "link": stringBuilder.append(s); break;
-                    case "related": stringBuilder.append(s); break;
-                    case "info": stringBuilder.append(s); break;
-                    case "define": stringBuilder.append(s); break;
-                    case "site": stringBuilder.append(s); break;
-                    case "allintitle": stringBuilder.append(s); break;
-                    case "intitle": stringBuilder.append(s); break;
-                    case "allintext": stringBuilder.append(s); break;
-                    case "allinurl": stringBuilder.append(s); break;
-                    case "inurl": stringBuilder.append(s); break;
-                    case "OR": stringBuilder.append(s); break;
-                    case "+": stringBuilder.append(s); break;
-                    case "-": stringBuilder.append(s); break;
-                    case "~": stringBuilder.append(s); break;
-                    case "*": stringBuilder.append(s); break;
-                    case "[#]...[#]": stringBuilder.append(s); break;
-                    case "daterange": stringBuilder.append(s); break;
-                    case "\"\"": stringBuilder.append(s); break;
-                    case "date": stringBuilder.append(s); break;
-                    case "safesearch": stringBuilder.append(s); break;
-                    case "cache": stringBuilder.append(s); break;
-                    case "stocks": stringBuilder.append(s); break;
+                    case "filetype": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "Restrict a search to a given type of file": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "link": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "related": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "info": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "define": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "site": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "allintitle": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "intitle": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "allintext": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "allinurl": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "inurl": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "OR": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "+": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "-": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "~": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "*": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "[#]...[#]": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "daterange": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "\"\"": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "date": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "safesearch": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "cache": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "stocks": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
                 }
         }
     }
         return String.format("http://www.google.com/#tbs=li:1&q=%s", stringBuilder.toString());
-}}
+}
+
+    private static String generateStringSplitAndCombine(String s, String keyword) {
+            StringBuilder result = new StringBuilder();
+            result.append(keyword);
+
+        for (int i = 0; i < s.trim().split(" ").length; i++) {
+                result.append(s.trim().split(" ")[i]);
+
+            if(i<s.trim().split(" ").length-1)
+            result.append(plusANDplus+keyword);
+
+            }
+
+
+
+            return result.toString();
+
+
+    }
+}
