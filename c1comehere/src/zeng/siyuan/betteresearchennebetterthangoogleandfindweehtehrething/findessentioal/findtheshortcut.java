@@ -72,15 +72,16 @@ public class findtheshortcut {
 
         for (int i = 0; i < textStr.length; i++) {
             String s  = textStr[i];
-            if(stringBuilder.length()> 0 ){
-                stringBuilder.append(r.plusANDplus);
-            }
-
-            switch (s.split(":")[0]) {
-                case "subjects": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(r.INTEXT_HYPHEN+s); break;
-                case "operation": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(r.INTEXT_HYPHEN+s); break;
-                case "os": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(r.INTEXT_HYPHEN+s); break;
-                case "filetype": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(r.INTEXT_HYPHEN+s); break;
+            if(s.split(":").length>1 ){
+                switch (s.split(":")[0]) {
+                    case "subjects": if (s.split(":")[1].trim().isEmpty()!=true)stringBuilder.append(r.INTEXT_HYPHEN+s.split(":")[1].replace(r.SPACE, r.plusANDplus)); break;
+                    case "operation": if (s.split(":")[1].trim().isEmpty()!=true)stringBuilder.append(r.INTEXT_HYPHEN+s.split(":")[1].replace(r.SPACE,  r.plusANDplus)); break;
+                    case "os": if (s.split(":")[1].trim().isEmpty()!=true)stringBuilder.append(r.INTEXT_HYPHEN+s.split(":")[1].replace(r.SPACE,  r.plusANDplus)); break;
+                    case "filetype": if (s.split(":")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
+                }
+                if(stringBuilder.length() > 0  && i < textStr.length -1 ){
+                    stringBuilder.append(r.plusANDplus);
+                }
             }
         }
 

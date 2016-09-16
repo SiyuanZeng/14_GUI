@@ -41,7 +41,7 @@ public class untoggle {
 
     public static JToggleButton LbtnD1 = new JToggleButton("LDdelete");
     public static JToggleButton LbtnD3 = new JToggleButton("DLfgt");
-    public static JToggleButton LbtnD2 = new JToggleButton("DsLg ");
+    public static JToggleButton LbtnD2 = new JToggleButton("DsLg");
     public static JToggleButton LbtnD4 = new JToggleButton("DufLgt");
     public static JToggleButton LbtnD5 = new JToggleButton("DshoL");
     public static JToggleButton bLtnD6 = new JToggleButton("DaddL");
@@ -188,7 +188,7 @@ public class untoggle {
 
 
 
-                btn9.addActionListener(e -> {
+                LbtnD2.addActionListener(e -> {
                     findtheshortcut f = new findtheshortcut(jTextArea);
                     f.returnshowsearchquetsry();
                 });

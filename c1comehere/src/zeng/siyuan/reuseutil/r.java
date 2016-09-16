@@ -7,6 +7,7 @@ public class r {
 
     public final static String INTEXT_HYPHEN = "intext:";
     public static final String PLUGS = "+";
+    public static final String SPACE = " ";
 
     public static void resetfiles() {
         String inntuitive = "";
@@ -108,9 +109,6 @@ public class r {
 
         for (int i = 0; i < textStr.length; i++) {
             String s  = textStr[i];
-            if(stringBuilder.length()> 0){
-                stringBuilder.append("+");
-            }
 
             switch (s.split("")[0]) {
                 case "filetype": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
@@ -137,6 +135,9 @@ public class r {
                 case "safesearch": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
                 case "cache": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
                 case "stocks": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
+            }
+            if(stringBuilder.length()> 0 && i < textStr.length-1){
+                stringBuilder.append(plus);
             }
         }
 
