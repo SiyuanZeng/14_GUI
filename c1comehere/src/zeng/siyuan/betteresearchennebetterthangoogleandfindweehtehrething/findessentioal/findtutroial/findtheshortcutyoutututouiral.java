@@ -73,15 +73,16 @@ public class findtheshortcutyoutututouiral {
 
         for (int i = 0; i < textStr.length; i++) {
             String s  = textStr[i];
-            if (r.isNotEmpty(s.split(":")[1])) {
-                switch (s.split(":")[0]) {
-                    case "subjects": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(r.plus+r.splitStringandAddOnebyoneonlyplussign(s.split("")[1].trim())); break;
-                    case "operation": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(r.plus+r.splitStringandAddOnebyoneonlyplussign(s.split("")[1].trim())); break;
-                    case "os": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(r.plus+r.splitStringandAddOnebyoneonlyplussign(s.split("")[1].trim())); break;
-                    case "filetype": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(r.plus+s.split("")[1].trim()); break;
-                }
-                if(stringBuilder.length() > 0 && i < textStr.length -1 ){
+            if (r.isNotNullOrEmpty(s.split(":")[1])) {
+                if(stringBuilder.length() > 0){
                     stringBuilder.append(r.plus);
+                }
+                String trim = s.split(":")[1].trim();
+                switch (s.split(":")[0]) {
+                    case "subjects": stringBuilder.append(r.plus+r.splitStringandAddOnebyoneonlyplussign(trim)); break;
+                    case "operation": stringBuilder.append(r.plus+r.splitStringandAddOnebyoneonlyplussign(trim)); break;
+                    case "os": stringBuilder.append(r.plus+r.splitStringandAddOnebyoneonlyplussign(trim)); break;
+                    case "filetype": stringBuilder.append(r.plus+ trim); break;
                 }
 
             }

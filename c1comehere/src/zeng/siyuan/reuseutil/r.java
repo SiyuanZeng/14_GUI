@@ -51,10 +51,14 @@ public class r {
 */
 
 
-    public static boolean isNotEmpty(String s ){
+    public static boolean isNotNullOrEmpty(String s){
+        if(null==s){
+            return false;
+        }
         return !s.isEmpty();
     }
     public static final String plusANDplus = "+AND+";
+    public static final String plusANDplusintextcolon = "+AND+intext:";
     public static final String plus= "+";
 
     public static String splitStringandAddOnebyone(String str){
@@ -64,10 +68,10 @@ public class r {
 
         for(String s: str.split(" ")){
                 if(result.length()> 0){
-                    result.append(plusANDplus);
+                    result.append(plusANDplusintextcolon);
                 }
 
-            result.append(INTEXT_HYPHEN+s);
+            result.append(s);
 
 
 
@@ -110,39 +114,37 @@ public class r {
         for (int i = 0; i < textStr.length; i++) {
             String s  = textStr[i];
 
-            switch (s.split("")[0]) {
-                case "filetype": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "Restrict a search to a given type of file": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "link": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "related": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "info": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "define": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "site": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "allintitle": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "intitle": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "allintext": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "allinurl": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "inurl": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "OR": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "+": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "-": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "~": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "*": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "[#]...[#]": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "daterange": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "\"\"": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "date": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "safesearch": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "cache": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                case "stocks": if (s.split("")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-            }
-            if(stringBuilder.length()> 0 && i < textStr.length-1){
-                stringBuilder.append(plus);
-            }
+            if (s.split("")[1].trim().isEmpty()!=true) {
+                if(stringBuilder.length()> 0 && i < textStr.length-1){
+                    stringBuilder.append(plus);
+                }
+                switch (s.split("")[0]) {
+                    case "filetype": stringBuilder.append(s); break;
+                    case "Restrict a search to a given type of file": stringBuilder.append(s); break;
+                    case "link": stringBuilder.append(s); break;
+                    case "related": stringBuilder.append(s); break;
+                    case "info": stringBuilder.append(s); break;
+                    case "define": stringBuilder.append(s); break;
+                    case "site": stringBuilder.append(s); break;
+                    case "allintitle": stringBuilder.append(s); break;
+                    case "intitle": stringBuilder.append(s); break;
+                    case "allintext": stringBuilder.append(s); break;
+                    case "allinurl": stringBuilder.append(s); break;
+                    case "inurl": stringBuilder.append(s); break;
+                    case "OR": stringBuilder.append(s); break;
+                    case "+": stringBuilder.append(s); break;
+                    case "-": stringBuilder.append(s); break;
+                    case "~": stringBuilder.append(s); break;
+                    case "*": stringBuilder.append(s); break;
+                    case "[#]...[#]": stringBuilder.append(s); break;
+                    case "daterange": stringBuilder.append(s); break;
+                    case "\"\"": stringBuilder.append(s); break;
+                    case "date": stringBuilder.append(s); break;
+                    case "safesearch": stringBuilder.append(s); break;
+                    case "cache": stringBuilder.append(s); break;
+                    case "stocks": stringBuilder.append(s); break;
+                }
         }
-
-        return String.format("http://www.google.com/#tbs=li:1&q=%s", stringBuilder.toString());
     }
-
-
-}
+        return String.format("http://www.google.com/#tbs=li:1&q=%s", stringBuilder.toString());
+}}

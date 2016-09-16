@@ -70,22 +70,26 @@ public class findtheshortcut {
         String textStr[] = str.split("\\r\\n|\\n|\\r");
         StringBuilder stringBuilder = new StringBuilder();
 
+        // fin dthe first tone that doesn't have content
+
+
         for (int i = 0; i < textStr.length; i++) {
             String s  = textStr[i];
             if(s.split(":").length>1 ){
-                switch (s.split(":")[0]) {
-                    case "subjects": if (s.split(":")[1].trim().isEmpty()!=true)stringBuilder.append(r.INTEXT_HYPHEN+s.split(":")[1].replace(r.SPACE, r.plusANDplus)); break;
-                    case "operation": if (s.split(":")[1].trim().isEmpty()!=true)stringBuilder.append(r.INTEXT_HYPHEN+s.split(":")[1].replace(r.SPACE,  r.plusANDplus)); break;
-                    case "os": if (s.split(":")[1].trim().isEmpty()!=true)stringBuilder.append(r.INTEXT_HYPHEN+s.split(":")[1].replace(r.SPACE,  r.plusANDplus)); break;
-                    case "filetype": if (s.split(":")[1].trim().isEmpty()!=true)stringBuilder.append(s); break;
-                }
-                if(stringBuilder.length() > 0  && i < textStr.length -1 ){
+                if (s.split(":")[1].trim().isEmpty()!=true) {
+                if(stringBuilder.length() > 0 ){
                     stringBuilder.append(r.plusANDplus);
                 }
-            }
+                switch (s.split(":")[0]) {
+                    case "subjects": stringBuilder.append(r.INTEXT_HYPHEN + s.split(":")[1].trim().replace(r.SPACE, r.plusANDplusintextcolon)); break;
+                    case "operation": stringBuilder.append(r.INTEXT_HYPHEN+s.split(":")[1].trim().replace(r.SPACE, r.plusANDplusintextcolon)); break;
+                    case "os": stringBuilder.append(r.INTEXT_HYPHEN+s.split(":")[1].trim().replace(r.SPACE,  r.plusANDplusintextcolon)); break;
+                    case "filetype": stringBuilder.append(s); break;
+                }
+            }}
         }
 
-        stringBuilder.append(r.plusANDplus+r.splitStringandAddOnebyone(predefined));
+        stringBuilder.append(r.plusANDplusintextcolon+r.splitStringandAddOnebyone(predefined));
 
         return String.format("http://www.google.com/#tbs=li:1&q=%s", stringBuilder.toString());
     }
