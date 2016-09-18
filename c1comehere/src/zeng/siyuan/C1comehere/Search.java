@@ -57,7 +57,11 @@ public class Search {
         try {
             String normalized = keywords.replace(key, EMPTY_STRING);
             this.keywords = normalized;
-            URI = new URL(String.format(searchEngine, normalized.replace(SPACE, "+"))).toURI();
+            if (key.equalsIgnoreCase("sl ") || key.equalsIgnoreCase("mv ")){
+                URI = new URL(searchEngine + normalized.replace(SPACE, "+")).toURI();
+            } else {
+                URI = new URL(String.format(searchEngine, normalized.replace(SPACE, "+"))).toURI();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

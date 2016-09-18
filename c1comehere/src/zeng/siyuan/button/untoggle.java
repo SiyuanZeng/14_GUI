@@ -107,6 +107,8 @@ public class untoggle {
                     inntuitive += "\n";
                     inntuitive += "sl :";
                     inntuitive += "\n";
+                    inntuitive += "mv :";
+                    inntuitive += "\n";
                     inntuitive += "sb :";
                     inntuitive += "\n";
 

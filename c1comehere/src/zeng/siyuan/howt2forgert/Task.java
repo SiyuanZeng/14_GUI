@@ -13,11 +13,14 @@ import java.util.UUID;
  */
 @UDT(keyspace = "keyspace1", name = "type4")
 public class Task implements Comparator<Task>, Serializable {
-//    @Field
+    @org.apache.solr.client.solrj.beans.Field
     @Field(name="date")
     Date date;
+    @org.apache.solr.client.solrj.beans.Field
     @Field(name="isdone")
+
     public boolean isDone = false;// 20 munites
+    @org.apache.solr.client.solrj.beans.Field
     @Field(name="javauuid")
     public UUID Javauuid;
 

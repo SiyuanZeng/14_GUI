@@ -73,7 +73,7 @@ public class findtheshortcutyoutututouiral {
 
         for (int i = 0; i < textStr.length; i++) {
             String s  = textStr[i];
-            if (r.isNotNullOrEmpty(s.split(":")[1])) {
+            if (s.split(":").length > 1 && r.isNotNullOrEmpty(s.split(":")[1])) {
                 if(stringBuilder.length() > 0){
                     stringBuilder.append(r.plus);
                 }

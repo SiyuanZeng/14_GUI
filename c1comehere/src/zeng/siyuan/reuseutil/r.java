@@ -62,25 +62,15 @@ public class r {
     public static final String plus= "+";
 
     public static String splitStringandAddOnebyone(String str){
-
-
         StringBuilder result = new StringBuilder();
 
         for(String s: str.split(" ")){
                 if(result.length()> 0){
                     result.append(plusANDplusintextcolon);
                 }
-
-            result.append(generateStringSplitAndCombine(keysearchstring, keyword));
-
-
-
+            result.append(s);
         }
-
-
-
         return result.toString();
-
     }
 
 
@@ -90,16 +80,13 @@ public class r {
         StringBuilder result = new StringBuilder();
 
         for(String s: str.split(" ")){
-            if(result.length()> 0){
-                result.append("+");
+                if (result.length() > 0) {
+                    result.append(plus);
+                }
+
+                result.append(s);
+
             }
-
-            result.append(generateStringSplitAndCombine(keysearchstring, keyword));
-
-
-
-        }
-
         return result.toString();
 
     }
@@ -114,15 +101,15 @@ public class r {
         for (int i = 0; i < textStr.length; i++) {
             String s  = textStr[i];
 
-            if (s.split(":")[1].trim().isEmpty()!=true) {
+            if (s.split(":").length >1 && s.split(":")[1].trim().isEmpty()!=true) {
                 if(stringBuilder.length()> 0){
                     stringBuilder.append(plus);
                 }
-                
-                String keyword = s.split(":")[0];
-                String keysearchstring = s.split(":")[0];
 
-                switch (s.split("")[0]) {
+                String keyword = s.split(":")[0];
+                String keysearchstring = s.split(":")[1];
+
+                switch (s.split(":")[0]) {
                     case "filetype": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
                     case "Restrict a search to a given type of file": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
                     case "link": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
@@ -142,7 +129,7 @@ public class r {
                     case "*": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
                     case "[#]...[#]": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
                     case "daterange": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
-                    case "\"\"": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
+                    case "\"\"": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, r.INTEXT_HYPHEN)); break;
                     case "date": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
                     case "safesearch": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
                     case "cache": stringBuilder.append(generateStringSplitAndCombine(keysearchstring, keyword)); break;
@@ -164,11 +151,6 @@ public class r {
             result.append(plusANDplus+keyword);
 
             }
-
-
-
             return result.toString();
-
-
     }
 }

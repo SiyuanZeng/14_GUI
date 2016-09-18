@@ -5,6 +5,7 @@ import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import zeng.siyuan.C1comehere.C1comehere;
 import zeng.siyuan.mappingmanager.mappingmanager;
+import zeng.siyuan.solr.test.param.dao.SolrDataDAO;
 
 import javax.swing.*;
 import java.io.FileWriter;
@@ -345,10 +346,17 @@ public class How2Forgert implements Serializable {
         textArea.setText("");
     }
 
-    public void loadTask() {
+    public void loadTask() throws Exception {
         ebbinghauses = m.get();
+
+
+        //solr
+
+        SolrDataDAO solrDataDAO = new SolrDataDAO();
+
         tasks = new ArrayList<Task>();
         for (Ebbinghaus e : ebbinghauses) {
+            solrDataDAO.addData(e.javauid,e.getQuestion());
             if (e.getQuestion().replace("ufgt","").trim().isEmpty()){
                 m.deleteTask(e.getJavauid());
             } else {
@@ -399,7 +407,7 @@ public class How2Forgert implements Serializable {
         reloadTAskandrestartPopThread();
     }
 
-    public void reloadandDiskplaypopup() {
+    public void reloadandDiskplaypopup() throws Exception {
         if(!isSearch){
             loadTask();
         }
@@ -422,7 +430,7 @@ public class How2Forgert implements Serializable {
     }
 
 
-    public void init() {
+    public void init() throws Exception {
         loadTask();
         d = new Display(this);
         reloadandDisplayThread = new Thread(d);

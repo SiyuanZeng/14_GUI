@@ -45,7 +45,11 @@ public class findtheshortcut {
     }
     public static void resetfiles() {
         String  inntuitive = "";
-        inntuitive += "subjects:";
+        inntuitive += "subjects(why does):";
+        inntuitive += "\n";
+        inntuitive += "subjects(what is):";
+        inntuitive += "\n";
+        inntuitive += "subjects(how to):";
         inntuitive += "\n";
         inntuitive += "operation:";
         inntuitive += "\n";
@@ -81,7 +85,9 @@ public class findtheshortcut {
                     stringBuilder.append(r.plusANDplus);
                 }
                 switch (s.split(":")[0]) {
-                    case "subjects": stringBuilder.append(r.INTEXT_HYPHEN + s.split(":")[1].trim().replace(r.SPACE, r.plusANDplusintextcolon)); break;
+                    case "subjects(why does)": stringBuilder.append(r.INTEXT_HYPHEN + s.split(":")[1].trim().replace(r.SPACE, r.plusANDplusintextcolon)); break;
+                    case "subjects(what is)": stringBuilder.append(r.INTEXT_HYPHEN + s.split(":")[1].trim().replace(r.SPACE, r.plusANDplusintextcolon)); break;
+                    case "subjects(how to)": stringBuilder.append(r.INTEXT_HYPHEN + s.split(":")[1].trim().replace(r.SPACE, r.plusANDplusintextcolon)); break;
                     case "operation": stringBuilder.append(r.INTEXT_HYPHEN+s.split(":")[1].trim().replace(r.SPACE, r.plusANDplusintextcolon)); break;
                     case "os": stringBuilder.append(r.INTEXT_HYPHEN+s.split(":")[1].trim().replace(r.SPACE,  r.plusANDplusintextcolon)); break;
                     case "filetype": stringBuilder.append(s); break;

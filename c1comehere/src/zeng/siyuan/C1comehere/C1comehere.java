@@ -40,7 +40,7 @@ public class C1comehere implements Serializable {
     public transient static Map<String, Search> searchEngines = new HashMap<String, Search>();
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         configureLookAndFeel();
         c1comehere = new C1comehere();
         c1comehere.showFrame();
@@ -151,7 +151,7 @@ public class C1comehere implements Serializable {
     }
 
 
-    private void showFrame() {
+    private void showFrame() throws Exception {
 
         frame = new JFrame();
         controlPanel = new JPanel();
@@ -271,7 +271,7 @@ public class C1comehere implements Serializable {
                         Search DSsearclhD = null;
 
 
-                        boolean googleo = buttonSelected.equalsIgnoreCase("DsLDg");// shw
+                        boolean googleo = buttonSelected.startsWith("DsLDg");// shw
 
 
                         boolean findtheshotcut = buttonSelected.equalsIgnoreCase("DsLg");// shw
@@ -372,7 +372,6 @@ public class C1comehere implements Serializable {
                             search.setURI(searchTrs);
                             Desktop.getDesktop().browse(search.getURI());
                             logDictionary(search.searchName, search.keywords, search.getURIString());
-                            textArea.setText("");
                         }
 
 
@@ -635,6 +634,7 @@ public class C1comehere implements Serializable {
         searchEngines.put("sm ", new Search("Gmail", "sm ", "https://mail.google.com/mail/u/0/#search/%s", "+"));
         searchEngines.put("si ", new Search("Image", "si ", "https://www.google.com/search?site=&tbm=isch&source=hp&biw=1920&bih=965&q=%s", "+"));
         searchEngines.put("sl ", new Search("I'm Feeling Lucky", "sl ", "http://www.google.com/search?btnI=I%27m+Feeling+Lucky&ie=UTF-8&oe=UTF-8&q=%s", "+"));
+        searchEngines.put("mv ", new Search("I'm Feeling Lucky", "mv ", "http://www.google.com/search?btnI=I%27m+Feeling+Lucky&ie=UTF-8&oe=UTF-8&q=maven+repository+", "+"));
         searchEngines.put("sb ", new Search("Baidu", "sb ", "https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=0&rsv_idx=1&tn=baidu&wd=%s", "%20"));
     }
 

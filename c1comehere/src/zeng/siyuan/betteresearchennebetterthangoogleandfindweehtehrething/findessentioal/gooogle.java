@@ -18,7 +18,7 @@ public class gooogle {
         String  inntuitive = "";
         inntuitive += "site:"; inntuitive += "\n"; inntuitive += "Restrict a search to a single site"; inntuitive += "\n\n";
         inntuitive += "related:"; inntuitive += "\n"; inntuitive += "List pages which Google consider to be related to another"; inntuitive += "\n\n";
-        inntuitive += "\"\""; inntuitive += "\n"; inntuitive += "Restrict a search so that the keywords must appear consecutively in a phrase";
+        inntuitive += "\"\":"; inntuitive += "\n"; inntuitive += "Restrict a search so that the keywords must appear consecutively in a phrase";
         inntuitive += "intext:"; inntuitive += "\n"; inntuitive += "Restrict a search so that some keywords must appear in the page text"; inntuitive += "\n\n";
         inntuitive += "inurl:"; inntuitive += "\n"; inntuitive += "Restrict a search so that some keywords must appear in the page address"; inntuitive += "\n\n";
         inntuitive += "intitle:"; inntuitive += "\n"; inntuitive += "Restrict a search so that some of the keywords must appear in the title"; inntuitive += "\n\n";

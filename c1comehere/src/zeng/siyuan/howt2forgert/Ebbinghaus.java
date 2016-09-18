@@ -1,6 +1,6 @@
 package zeng.siyuan.howt2forgert;
 
- import com.datastax.driver.mapping.annotations.*;
+ import  com.datastax.driver.mapping.annotations.*;
 
  import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -22,13 +22,17 @@ public class Ebbinghaus implements Serializable{
     // column name does not match field name
 //    @Column(name = "question")
 
+//    @Field
+@org.apache.solr.client.solrj.beans.Field
     @PartitionKey
     @Column(name = "id")
     public UUID javauid;
-
+//    @Field
+@org.apache.solr.client.solrj.beans.Field
     @Column(name = "question")
     String question;
-
+//    @Field
+@org.apache.solr.client.solrj.beans.Field
     @FrozenValue
     @Column(name = "tasks")
     Set<Task> tasks;
