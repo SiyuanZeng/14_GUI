@@ -346,17 +346,67 @@ public class How2Forgert implements Serializable {
         textArea.setText("");
     }
 
-    public void loadTask() throws Exception {
+    public void loadTask() {
         ebbinghauses = m.get();
 
 
-        //solr
 
-        SolrDataDAO solrDataDAO = new SolrDataDAO();
+        Thread thread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                //solr
+
+                SolrDataDAO solrDataDAO = null;
+                try {
+                    solrDataDAO = new SolrDataDAO();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                tasks = new ArrayList<Task>();
+                for (Ebbinghaus e : ebbinghauses) {
+                    try {
+                        solrDataDAO.addData(e.javauid,e.getQuestion());
+                    } catch (Exception e1) {
+                        e1.printStackTrace();
+                    }
+                    if (e.getQuestion().replace("ufgt","").trim().isEmpty()){
+                        m.deleteTask(e.getJavauid());
+                    } else {
+                        Set<Task> t = e.tasks;
+                        for (Task task : t) {
+                            tasks.add(task);
+                        }
+                    }
+                }
+            }
+
+        });
+
+        thread.start();
+
+
+
+        //solr
+/*
+
+        SolrDataDAO solrDataDAO = null;
+        try {
+            solrDataDAO = new SolrDataDAO();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            solrDataDAO.addData(e.javauid,e.getQuestion());
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+*/
+
 
         tasks = new ArrayList<Task>();
         for (Ebbinghaus e : ebbinghauses) {
-            solrDataDAO.addData(e.javauid,e.getQuestion());
             if (e.getQuestion().replace("ufgt","").trim().isEmpty()){
                 m.deleteTask(e.getJavauid());
             } else {

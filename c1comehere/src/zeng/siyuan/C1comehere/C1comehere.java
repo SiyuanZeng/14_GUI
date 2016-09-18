@@ -7,6 +7,7 @@ import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findes
 import zeng.siyuan.betteresearchennebetterthangoogleandfindweehtehrething.findessentioal.gooogle;
 import zeng.siyuan.button.untoggle;
 import zeng.siyuan.howt2forgert.How2Forgert;
+import zeng.siyuan.solr.test.param.dao.SolrDataDAO;
 import zeng.siyuan.youknowwhat.YouKnowWhat;
 
 import javax.swing.*;
@@ -36,7 +37,7 @@ public class C1comehere implements Serializable {
     public static C1comehere c1comehere;
     public static Font font = new Font("Serif", Font.PLAIN, 20);
     public static untoggle untoggle;
-    public transient Properties prop;
+    public static transient Properties prop;
     public transient static Map<String, Search> searchEngines = new HashMap<String, Search>();
 
 
@@ -44,6 +45,7 @@ public class C1comehere implements Serializable {
         configureLookAndFeel();
         c1comehere = new C1comehere();
         c1comehere.showFrame();
+
     }
 
 
@@ -109,6 +111,33 @@ public class C1comehere implements Serializable {
                 prop.put(key, v);
             }
             System.out.println("Done Propertiesy loading");
+
+/*
+            SolrDataDAO solrBaseDAO = null;
+            try {
+                solrBaseDAO = new SolrDataDAO();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+            int count =1;
+            for (Map.Entry<Object, Object> e : prop.entrySet()) {
+                System.out.println(count);
+                String key = ((String) e.getKey()).replace("%20", " ");
+                String v = (String) e.getValue();
+                try {
+                    solrBaseDAO.addData(count, key,v);
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                count++;
+            }
+            System.out.println("stop");
+
+*/
+
+
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -685,15 +714,109 @@ public class C1comehere implements Serializable {
         boolean isExeShortcut = text.contains(".exe") && text.contains("=");
         if (isHttpCommand&&text.contains("=")) {
             c1come2melater(textUpcase.split("=")[0], textUpcase.substring(textUpcase.indexOf("=") + 1));
+
+
+            SolrDataDAO solrBaseDAO = null;
+            try {
+                solrBaseDAO = new SolrDataDAO();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+            int count =1;
+            for (Map.Entry<Object, Object> e : prop.entrySet()) {
+                System.out.println(count);
+                try {
+                    solrBaseDAO.addData(prop.size()+1, textUpcase.split("=")[0], textUpcase.substring(textUpcase.indexOf("=") + 1));
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                count++;
+            }
+            System.out.println("stop");
+
+
+
         } else if (isShortcutButExe&&text.contains("=")) {
             c1come2melater(text.split("=")[0], text.split("=")[1]);
+
+
+            SolrDataDAO solrBaseDAO = null;
+            try {
+                solrBaseDAO = new SolrDataDAO();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+            int count =1;
+            for (Map.Entry<Object, Object> e : prop.entrySet()) {
+                System.out.println(count);
+                try {
+                    solrBaseDAO.addData(prop.size()+1, text.split("=")[0], text.split("=")[1]);
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                count++;
+            }
+            System.out.println("stop");
         } else if (isExeShortcut&&text.contains("=")) {
             key = text.substring(text.lastIndexOf("\\") + 1, text.indexOf("."));
             c1come2melater(text.split("=")[0], text.split("=")[1]);
+
+
+            SolrDataDAO solrBaseDAO = null;
+            try {
+                solrBaseDAO = new SolrDataDAO();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+            int count =1;
+            for (Map.Entry<Object, Object> e : prop.entrySet()) {
+                System.out.println(count);
+                try {
+                    solrBaseDAO.addData(prop.size()+1, text.split("=")[0], text.split("=")[1]);
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                count++;
+            }
+            System.out.println("stop");
+
+
         } else {
             if (text.contains(".exe") && !text.contains("=")) {
                 key = text.substring(text.lastIndexOf("\\") + 1, text.indexOf("."));
                 c1come2melater(key, text);
+
+
+
+                SolrDataDAO solrBaseDAO = null;
+                try {
+                    solrBaseDAO = new SolrDataDAO();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+                int count =1;
+                for (Map.Entry<Object, Object> e : prop.entrySet()) {
+                    System.out.println(count);
+                    try {
+                        solrBaseDAO.addData(prop.size()+1, key, text);
+                    } catch (Exception e1) {
+                        e1.printStackTrace();
+                    }
+                    count++;
+                }
+                System.out.println("stop");
+
+
+
+
             } else {
                 if (text.contains("c:") && !key.trim().isEmpty() && text.contains("=")) {
                     if (text.contains(".") && (text.substring(text.indexOf(".") + 1).equalsIgnoreCase("exe") || text.substring(text.indexOf(".") + 1).equalsIgnoreCase("jar"))) {
@@ -703,6 +826,32 @@ public class C1comehere implements Serializable {
                     }
                     if(!key.trim().isEmpty()&&text.contains("=")&&text.trim().isEmpty()!=true)
                     c1come2melater(key.toLowerCase(), text);
+
+
+
+                    SolrDataDAO solrBaseDAO = null;
+                    try {
+                        solrBaseDAO = new SolrDataDAO();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+
+                    int count =1;
+                    for (Map.Entry<Object, Object> e : prop.entrySet()) {
+                        System.out.println(count);
+                        try {
+                            solrBaseDAO.addData(prop.size()+1, key.toLowerCase(), text);
+                        } catch (Exception e1) {
+                            e1.printStackTrace();
+                        }
+                        count++;
+                    }
+                    System.out.println("stop");
+
+
+
+
                 } else if (text.contains("c:") && key.trim().isEmpty()) {
                     Desktop.getDesktop().open(new File(text.trim()));
                 } else {
