@@ -5,7 +5,6 @@ import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import zeng.siyuan.C1comehere.C1comehere;
 import zeng.siyuan.mappingmanager.mappingmanager;
-import zeng.siyuan.solr.test.param.dao.SolrDataDAO;
 
 import javax.swing.*;
 import java.io.FileWriter;
@@ -346,45 +345,18 @@ public class How2Forgert implements Serializable {
         textArea.setText("");
     }
 
+    loadolr loadolr;
+
+
     public void loadTask() {
         ebbinghauses = m.get();
 
-
-
-        Thread thread = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                //solr
-
-                SolrDataDAO solrDataDAO = null;
-                try {
-                    solrDataDAO = new SolrDataDAO();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                tasks = new ArrayList<Task>();
-                for (Ebbinghaus e : ebbinghauses) {
-                    try {
-                        solrDataDAO.addData(e.javauid,e.getQuestion());
-                    } catch (Exception e1) {
-                        e1.printStackTrace();
-                    }
-                    if (e.getQuestion().replace("ufgt","").trim().isEmpty()){
-                        m.deleteTask(e.getJavauid());
-                    } else {
-                        Set<Task> t = e.tasks;
-                        for (Task task : t) {
-                            tasks.add(task);
-                        }
-                    }
-                }
-            }
-
-        });
-
-        thread.start();
+        if (null == loadolr) {
+            loadolr = new loadolr(ebbinghauses);
+        } else {
+        }
+        if (!loadolr .isAlive()&&loadolr .open())
+            loadolr .start();
 
 
 
