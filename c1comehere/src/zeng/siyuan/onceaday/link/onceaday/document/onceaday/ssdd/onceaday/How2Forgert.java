@@ -73,7 +73,7 @@ public class How2Forgert implements Serializable {
                 for (Task t : tasks) {
                     if (!t.getIsDone() && t.getDate().after(new Date())) {
                         Calendar calendar = Calendar.getInstance();
-                        calendar.setTime(t.getDate());
+                        calendar.setTime(t.getDate());//1474356339826
                         long diff = calendar.getTimeInMillis() - Calendar.getInstance().getTimeInMillis();
                         if (diff > 0) {
                             Thread.sleep(diff);
@@ -104,11 +104,12 @@ public class How2Forgert implements Serializable {
                                             m.deleteTask(e.getJavauid());
                                             e = new person_question(e.getText(),"ssdd", null);
                                             m.store(e);
+                            textArea.setText(inntuitive);
+                                            break;
                                         }
                                     }
                                 }
                             }
-                            textArea.setText(inntuitive);
                         } else {
                             String buttonSelected = getString();
                             boolean isHow2ForegertCommand = buttonSelected.equalsIgnoreCase("DuSDfLgt") || buttonSelected.equalsIgnoreCase("DdeldSLDiary");
@@ -133,11 +134,12 @@ public class How2Forgert implements Serializable {
                                             m.deleteTask(e.getJavauid());
                                             e = new person_question(e.getText(),"ssdd", null);
                                             m.store(e);
+                            textArea.setText(inntuitive);
+                                            break;
                                         }
                                     }
                                 }
                             }
-                            textArea.setText(inntuitive);
                             Thread.sleep(10000);
                         }
                     } else if (!t.getIsDone() && t.getDate().before(new Date())) {
@@ -165,11 +167,12 @@ public class How2Forgert implements Serializable {
                                         m.deleteTask(e.getJavauid());
                                         e = new person_question(e.getText(),"ssdd", null);
                                         m.store(e);
+                                        textArea.setText(inntuitive);
+                                        break;
                                     }
                                 }
                             }
                         }
-                        textArea.setText(inntuitive);
                     }
                 }
             }

@@ -724,17 +724,11 @@ public class C1comehere implements Serializable {
             }
 
 
-            int count =1;
-            for (Map.Entry<Object, Object> e : prop.entrySet()) {
-                System.out.println(count);
-                try {
-                    solrBaseDAO.addData(prop.size()+1, textUpcase.split("=")[0], textUpcase.substring(textUpcase.indexOf("=") + 1));
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
-                count++;
+            try {
+                solrBaseDAO.addData(prop.size()+1, textUpcase.split("=")[0], textUpcase.substring(textUpcase.indexOf("=") + 1));
+            } catch (Exception e1) {
+                e1.printStackTrace();
             }
-            System.out.println("stop");
 
 
 
@@ -750,17 +744,11 @@ public class C1comehere implements Serializable {
             }
 
 
-            int count =1;
-            for (Map.Entry<Object, Object> e : prop.entrySet()) {
-                System.out.println(count);
                 try {
                     solrBaseDAO.addData(prop.size()+1, text.split("=")[0], text.split("=")[1]);
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
-                count++;
-            }
-            System.out.println("stop");
         } else if (isExeShortcut&&text.contains("=")) {
             key = text.substring(text.lastIndexOf("\\") + 1, text.indexOf("."));
             c1come2melater(text.split("=")[0], text.split("=")[1]);
@@ -774,18 +762,11 @@ public class C1comehere implements Serializable {
             }
 
 
-            int count =1;
-            for (Map.Entry<Object, Object> e : prop.entrySet()) {
-                System.out.println(count);
                 try {
                     solrBaseDAO.addData(prop.size()+1, text.split("=")[0], text.split("=")[1]);
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
-                count++;
-            }
-            System.out.println("stop");
-
 
         } else {
             if (text.contains(".exe") && !text.contains("=")) {
@@ -802,20 +783,11 @@ public class C1comehere implements Serializable {
                 }
 
 
-                int count =1;
-                for (Map.Entry<Object, Object> e : prop.entrySet()) {
-                    System.out.println(count);
                     try {
                         solrBaseDAO.addData(prop.size()+1, key, text);
                     } catch (Exception e1) {
                         e1.printStackTrace();
                     }
-                    count++;
-                }
-                System.out.println("stop");
-
-
-
 
             } else {
                 if (text.contains("c:") && !key.trim().isEmpty() && text.contains("=")) {
@@ -837,17 +809,11 @@ public class C1comehere implements Serializable {
                     }
 
 
-                    int count =1;
-                    for (Map.Entry<Object, Object> e : prop.entrySet()) {
-                        System.out.println(count);
                         try {
                             solrBaseDAO.addData(prop.size()+1, key.toLowerCase(), text);
                         } catch (Exception e1) {
                             e1.printStackTrace();
                         }
-                        count++;
-                    }
-                    System.out.println("stop");
 
 
 

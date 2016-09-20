@@ -30,3 +30,7 @@ http://localhost:8080/solrautocomplete/search.html
 
 csv
 C:\Developer\solr-6.2.0\example\exampledocs
+
+
+most common words
+http://localhost:8983/solr/#/coolection/select?facet.field=name&facet=on&indent=on&q=*:*&wt=json
