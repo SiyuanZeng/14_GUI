@@ -820,6 +820,12 @@ public class C1comehere implements Serializable {
 
                 } else if (text.contains("c:") && key.trim().isEmpty()) {
                     Desktop.getDesktop().open(new File(text.trim()));
+                } else if ((text.contains("http:")||text.contains("https:")) && key.trim().isEmpty()) {
+                    try {
+                        Desktop.getDesktop().browse(new URL(text).toURI());
+                    } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                    }
                 } else {
                     if (!prop.containsKey(text.trim()) && !text.contains(".")) {
                         for (Object e : prop.keySet()) {
@@ -831,8 +837,8 @@ public class C1comehere implements Serializable {
                     } else {
                         path = (String) prop.get(text.trim().replace(".", "")) == null ? "" : (String) prop.get(text.trim().replace(".", ""));
                     }
-
-                    if (null != path && !path.isEmpty() && path.contains("http://") || path.contains("https://")) {
+// so deep ho w am i supposed to find it here
+                    if ((null != path && !path.isEmpty()) && (path.contains("http://") || path.contains("https://"))) {
                         try {
                             Desktop.getDesktop().browse(new URL(path).toURI());
                         } catch (URISyntaxException e) {
