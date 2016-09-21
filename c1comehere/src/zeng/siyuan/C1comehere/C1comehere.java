@@ -750,7 +750,7 @@ public class C1comehere implements Serializable {
                     e1.printStackTrace();
                 }
         } else if (isExeShortcut&&text.contains("=")) {
-            key = text.substring(text.lastIndexOf("\\") + 1, text.indexOf("."));
+            key = text.substring(text.lastIndexOf("\\") + 1, text.lastIndexOf("."));
             c1come2melater(text.split("=")[0], text.split("=")[1]);
 
 
@@ -810,7 +810,7 @@ public class C1comehere implements Serializable {
 
 
                         try {
-                            solrBaseDAO.addData(prop.size()+1, key.toLowerCase(), text);
+                            solrBaseDAO.addData(prop.size() + 1, key.toLowerCase(), text);
                         } catch (Exception e1) {
                             e1.printStackTrace();
                         }
