@@ -111,6 +111,7 @@ public class untoggle {
                     inntuitive += "\n";
                     inntuitive += "sb :";
                     inntuitive += "\n";
+                    inntuitive += "sb :\n";
 
                     jTextArea.setText(inntuitive);
 

@@ -706,6 +706,7 @@ public class C1comehere implements Serializable {
         searchEngines.put("sl ", new Search("I'm Feeling Lucky", "sl ", "http://www.google.com/search?btnI=I%27m+Feeling+Lucky&ie=UTF-8&oe=UTF-8&q=", "+"));
         searchEngines.put("mv ", new Search("I'm Feeling Lucky", "mv ", "http://www.google.com/search?btnI=I%27m+Feeling+Lucky&ie=UTF-8&oe=UTF-8&q=maven+repository+", "+"));
         searchEngines.put("sb ", new Search("Baidu", "sb ", "https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=0&rsv_idx=1&tn=baidu&wd=%s", "%20"));
+        searchEngines.put("gi ", new Search("Baidu", "gi ", "https://github.com/search?utf8=%E2%9C%93&q=%s", "+"));
     }
 
     public static void logDictionary(String search, String word, String uri) throws IOException, ParseException {
