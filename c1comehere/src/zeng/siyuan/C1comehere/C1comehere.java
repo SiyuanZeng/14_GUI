@@ -328,6 +328,47 @@ public class C1comehere implements Serializable {
                             }
                         }
 
+
+
+                        /* this can have one more layer of abstraction so that the function can work wfor any strings
+                        one
+                        group
+                        any
+
+
+                        public static String generate(String str) {
+        String textStr[] = str.split("\\r\\n|\\n|\\r");
+        StringBuilder stringBuilder = new StringBuilder();
+
+        // fin dthe first tone that doesn't have content
+
+
+        for (int i = 0; i < textStr.length; i++) {
+            String s  = textStr[i];
+            if(s.split(":").length>1 ){
+                if (s.split(":")[1].trim().isEmpty()!=true) {
+                if(stringBuilder.length() > 0 ){
+                    stringBuilder.append(r.plusANDplus);
+                }
+                switch (s.split(":")[0]) {
+                    case "subjects(why does)": stringBuilder.append(r.INTEXT_HYPHEN + s.split(":")[1].trim().replace(r.SPACE, r.plusANDplusintextcolon)); break;
+                    case "subjects(what is)": stringBuilder.append(r.INTEXT_HYPHEN + s.split(":")[1].trim().replace(r.SPACE, r.plusANDplusintextcolon)); break;
+                    case "subjects(how to)": stringBuilder.append(r.INTEXT_HYPHEN + s.split(":")[1].trim().replace(r.SPACE, r.plusANDplusintextcolon)); break;
+                    case "operation": stringBuilder.append(r.INTEXT_HYPHEN+s.split(":")[1].trim().replace(r.SPACE, r.plusANDplusintextcolon)); break;
+                    case "os": stringBuilder.append(r.INTEXT_HYPHEN+s.split(":")[1].trim().replace(r.SPACE,  r.plusANDplusintextcolon)); break;
+                    case "filetype": stringBuilder.append(s); break;
+                }
+            }}
+        }
+
+        stringBuilder.append(r.plusANDplusintextcolon+r.splitStringandAddOnebyone(predefined));
+
+        return String.format("http://www.google.com/#tbs=li:1&q=%s", stringBuilder.toString());
+    }
+
+                         */
+
+
                         if (deleteCommand) {
                             System.out.println("delete command");
                             prop.remove(textArea.getText());
@@ -662,7 +703,7 @@ public class C1comehere implements Serializable {
         searchEngines.put("sy ", new Search("Youtube", "sy ", "https://www.youtube.com/results?search_query=%s", "+"));
         searchEngines.put("sm ", new Search("Gmail", "sm ", "https://mail.google.com/mail/u/0/#search/%s", "+"));
         searchEngines.put("si ", new Search("Image", "si ", "https://www.google.com/search?site=&tbm=isch&source=hp&biw=1920&bih=965&q=%s", "+"));
-        searchEngines.put("sl ", new Search("I'm Feeling Lucky", "sl ", "http://www.google.com/search?btnI=I%27m+Feeling+Lucky&ie=UTF-8&oe=UTF-8&q=%s", "+"));
+        searchEngines.put("sl ", new Search("I'm Feeling Lucky", "sl ", "http://www.google.com/search?btnI=I%27m+Feeling+Lucky&ie=UTF-8&oe=UTF-8&q=", "+"));
         searchEngines.put("mv ", new Search("I'm Feeling Lucky", "mv ", "http://www.google.com/search?btnI=I%27m+Feeling+Lucky&ie=UTF-8&oe=UTF-8&q=maven+repository+", "+"));
         searchEngines.put("sb ", new Search("Baidu", "sb ", "https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=0&rsv_idx=1&tn=baidu&wd=%s", "%20"));
     }
