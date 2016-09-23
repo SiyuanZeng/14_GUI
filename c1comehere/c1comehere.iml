@@ -202,5 +202,14 @@
     <orderEntry type="library" name="Maven: com.datastax.cassandra:cassandra-driver-dse:2.1.7.1" level="project" />
     <orderEntry type="library" name="Maven: com.datastax.cassandra:cassandra-driver-core:2.1.7.1" level="project" />
     <orderEntry type="library" name="Maven: com.codahale.metrics:metrics-core:3.0.2" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/related jar/nativecall-0.4.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
