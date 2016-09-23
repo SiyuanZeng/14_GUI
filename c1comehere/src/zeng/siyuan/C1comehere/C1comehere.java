@@ -42,6 +42,30 @@ public class C1comehere implements Serializable {
 
 
     public static void main(String[] args) throws Exception {
+
+        try
+        {
+            Process p=Runtime.getRuntime().exec("cmd /c C:\\solr-6.2.0\\bin\\solr start");
+            p.waitFor();
+            BufferedReader reader=new BufferedReader(
+                    new InputStreamReader(p.getInputStream())
+            );
+            String line;
+            while((line = reader.readLine()) != null)
+            {
+                System.out.println(line);
+            }
+
+        }
+        catch(IOException e1) {}
+        catch(InterruptedException e2) {}
+
+        System.out.println("Done");
+
+
+
+
+
         configureLookAndFeel();
         c1comehere = new C1comehere();
         c1comehere.showFrame();
@@ -684,14 +708,6 @@ public class C1comehere implements Serializable {
         dhow2ForgDertls.textArea = textArea;
         dhow2ForgDertls.frame = frame;
         dhow2ForgDertls.init();
-
-
-
-
-
-
-
-
     }
 
 

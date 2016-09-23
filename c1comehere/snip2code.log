@@ -1,0 +1,9 @@
+21Sep 06:08:10,599 INFO  com.snip2code.utils.AppConfig            - Reading configuration from C:\Developer\IDE\eclipse-jee-luna-SR1-win32-x86_64\eclipse\plugins\com.snip2code.client_2.0.0
+21Sep 06:08:12,531 INFO  com.snip2code.plugin.utils.ProxyManager  - Setting proxy...
+21Sep 06:08:12,810 INFO  com.snip2code.plugin.utils.ProxyManager  - proxyDataForHost not null; size=0
+21Sep 06:08:12,835 INFO  com.snip2code.plugin.Activator           - Starting plugin on base path: C:\Developer\IDE\eclipse-jee-luna-SR1-win32-x86_64\eclipse\plugins\com.snip2code.client_2.0.0;color blue is Color {0, 0, 255}
+21Sep 06:08:40,659 INFO  com.snip2code.plugin.utils.LoginPoller   - Starting Login Poller
+21Sep 06:08:41,355 INFO  com.snip2code.wsframework.BaseWS         - Trying to connect to web server...1
+21Sep 06:08:43,274 INFO  com.snip2code.utils.WebConnector         - Response:{"RequestToken":null,"request_token":null,"AccessToken":"bb5e5502aaf64b62afa0a098f1f44bb1","access_token":"bb5e5502aaf64b62afa0a098f1f44bb1","Expires":1800,"expires_in":1800,"RefreshToken":"d080db5ef4ff40c5aabe30f737884faf","refresh_token":"d080db5ef4ff40c5aabe30f737884faf","Scope":null,"scope":null,"Error":null,"error":null,"Success":true,"success":true,"RequireSsl":false,"token_type":"bearer","require_ssl":false}
+21Sep 06:08:51,137 INFO  com.snip2code.plugin.utils.LoginPoller   - Restarting polling with period (PERIOD_LOGGED): 1500000
+21Sep 06:08:51,138 INFO  com.snip2code.plugin.utils.LoginPoller   - Ending Login Poller
