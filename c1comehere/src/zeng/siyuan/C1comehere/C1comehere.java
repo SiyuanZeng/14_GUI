@@ -34,6 +34,7 @@ public class C1comehere implements Serializable {
     public zeng.siyuan.onceaday.link.onceaday.How2Forgert dhow2Forgertl;
     public zeng.siyuan.onceaday.link.onceaday.document.onceaday.How2Forgert dhow2ForgDertl;
     public zeng.siyuan.onceaday.link.onceaday.document.onceaday.ssdd.onceaday.How2Forgert dhow2ForgDertls;
+    public zeng.siyuan.onceaday.link.onceaday.document.onceaday.ssdd.onceaday.onceaday.How2Forgert dhow2ForgDertlsf;
     public static C1comehere c1comehere;
     public static Font font = new Font("Serif", Font.PLAIN, 20);
     public static untoggle untoggle;
@@ -323,6 +324,19 @@ public class C1comehere implements Serializable {
                         boolean SDsaercDhdliary = buttonSelected.startsWith("DsaeSrDLchdiary");
                         boolean SDisShowDColmmand = buttonSelected.equalsIgnoreCase("DshSoDL");// shw
                         Search DSsearclhD = null;
+
+
+                        boolean SDldeleteCommandd_Xf = buttonSelected.startsWith("DLDdSelete");
+                        boolean DsLSDgf = buttonSelected.startsWith("DsLSDg");
+                        boolean SDdleleteCoDmmand2f = buttonSelected.startsWith("DdeldSLDiary");
+                        boolean SDislThoughtDRecorderCommand_xf = buttonSelected.equalsIgnoreCase("Drec");
+                        boolean SDisHlow2ForeDgertCommandf = buttonSelected.equalsIgnoreCase("DDLSfgt");
+                        boolean SDisHolw2ForegDertCommand_uf = textArea.getText().contains("DuSDfLgt");
+                        boolean SDislDoaldf = buttonSelected.startsWith("DlaoSdLD");
+                        boolean SDcodjDa_lxf = buttonSelected.startsWith("DcodeLSDja");
+                        boolean SDsaercDhdliaryf = buttonSelected.startsWith("DsaeSrDLchdiary");
+                        boolean SDisShowDColmmandf = buttonSelected.equalsIgnoreCase("DshSoDL");// shw
+                        Search DSsearclhDf = null;
 
 
                         boolean googleo = buttonSelected.startsWith("DsLDg");// shw
@@ -621,6 +635,48 @@ public class C1comehere implements Serializable {
                             logDictionary(search.searchName, search.keywords, search.getURIString());
                             textArea.setText("");
                         }
+
+
+
+
+
+
+
+                        else if (SDsaercDhdliaryf && !textArea.getText().trim().isEmpty()) {
+                            System.out.println("Dsaerchdliary");
+                            dhow2ForgDertls.searchehabins(textArea.getText().trim());
+                        } else if (DsLSDgf) {
+                            System.out.println("Disloadl");
+                        } else if (SDislDoaldf ) {
+                            System.out.println("Disloadl");
+                            dhow2ForgDertls.load();
+                        } else if (SDdleleteCoDmmand2f ) {
+                            System.out.println("DdeletleCommand2");
+                            dhow2ForgDertls.deltask();
+                            textArea.setText("");
+                        } else if (SDisHolw2ForegDertCommand_uf ) {
+                            System.out.println("DisHolw2ForegertCommand_u");
+                            dhow2ForgDertls.updatetask();
+                            textArea.setText("");
+                            How2Forgert.serialize();
+                        } else if (SDisHlow2ForeDgertCommandf ) {
+                            System.out.println("DisHlow2ForegertCommand");
+                            dhow2ForgDertls.inster(textArea.getText(), "");
+                            textArea.setText("");
+                            How2Forgert.serialize();
+                        } else if (SDisShowDColmmandf) {
+                            System.out.println("DislShowCommand");
+                            textArea.setText(takeC1toMe(textArea.getText()));
+                            frame.repaint();
+                            frame.toFront();
+                        } else if (null != DSsearclhDf ) {
+                            System.out.println("Dsearlch");
+                            search.setURI(searchTrs);
+                            Desktop.getDesktop().browse(search.getURI());
+                            logDictionary(search.searchName, search.keywords, search.getURIString());
+                            textArea.setText("");
+                        }
+
 
 
 

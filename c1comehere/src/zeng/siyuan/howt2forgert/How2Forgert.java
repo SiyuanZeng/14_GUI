@@ -123,6 +123,8 @@ public class How2Forgert implements Serializable {
                 displaysearchtasks();
             } else if(isSearchCombine){
                 displaysearchtaskscombine();
+                isSearchCombine=false;
+                isSearch=false;
             } else {
                 for (Task t : tasks) {
                     if (!t.getIsDone() && t.getDate().after(new Date())) {

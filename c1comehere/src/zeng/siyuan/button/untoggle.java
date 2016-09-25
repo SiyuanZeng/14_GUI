@@ -81,6 +81,21 @@ public class untoggle {
     public static JToggleButton btn1011111 = new JToggleButton("saerchdiaryall");
 
 
+
+
+    public static JToggleButton SDLbtnD1f = new JToggleButton("DLDdSelete");
+    public static JToggleButton LSDbtnD3f = new JToggleButton("DDLSfgt");
+    public static JToggleButton LbSDtnD2f = new JToggleButton("DsLSDg ");
+    public static JToggleButton LbtSDnD4f = new JToggleButton("DuSDfLgt");
+    public static JToggleButton LbtnSDD5f = new JToggleButton("DshSoDL");
+    public static JToggleButton bLtnDSSD6f = new JToggleButton("DadSdLD");
+    public static JToggleButton DbLtnDS7f = new JToggleButton("DdeldSLDiary");
+    public static JToggleButton bDLtSnD8f = new JToggleButton("DlaoSdLD");
+    public static JToggleButton bLDtSnD9f = new JToggleButton("DcodeLSDja");
+    public static JToggleButton bLtSDnD10f = new JToggleButton("DsaeSrDLchdiary");
+    public static JToggleButton btn1011111af = new JToggleButton("saerchdiaryall");
+
+
     public static void main(String[] args) {
 //        new untoggle();
     }
@@ -265,6 +280,31 @@ public class untoggle {
                 bg.add(bLtSDnD10);
 
 
+
+
+
+
+                bg.add(SDLbtnD1f);
+                bg.add(LSDbtnD3f);
+
+
+                LbSDtnD2f.addActionListener(e -> {
+                    a f = new a(jTextArea);
+                    f.returnshowsearchquetsry();
+                });
+
+                bg.add(LbSDtnD2f);
+                bg.add(LbtSDnD4f);
+                bg.add(LbtnSDD5f);
+                bg.add(bLtnDSSD6f);
+                bg.add(DbLtnDS7f);
+                bg.add(bDLtSnD8f);
+                bg.add(bLDtSnD9f);
+                bg.add(bLtSDnD10f);
+                bg.add(btn1011111af );
+
+
+
                 Container contentPane = frame.getContentPane();
 
 
@@ -322,6 +362,9 @@ public class untoggle {
                         )
                         .addGroup(groupLayout.createParallelGroup(TRAILING)
                                         .addComponent(SDLbtnD1).addComponent(LSDbtnD3).addComponent(LbSDtnD2).addComponent(LbtSDnD4).addComponent(LbtnSDD5).addComponent(bLtnDSSD6).addComponent(DbLtnDS7).addComponent(bDLtSnD8).addComponent(bLDtSnD9).addComponent(bLtSDnD10)                                        .addComponent(btn1011111)
+                        )
+                        .addGroup(groupLayout.createParallelGroup(TRAILING)
+                                        .addComponent(SDLbtnD1f).addComponent(LSDbtnD3f).addComponent(LbSDtnD2f).addComponent(LbtSDnD4f).addComponent(LbtnSDD5f).addComponent(bLtnDSSD6f).addComponent(DbLtnDS7f).addComponent(bDLtSnD8f).addComponent(bLDtSnD9f).addComponent(bLtSDnD10f)                                        .addComponent(btn1011111af)
                         )
                         .addGroup(groupLayout.createParallelGroup(TRAILING).addComponent(panel)));
 
