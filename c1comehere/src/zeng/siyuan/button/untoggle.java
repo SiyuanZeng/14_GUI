@@ -27,6 +27,8 @@ public class untoggle {
     public static JToggleButton btn8 = new JToggleButton("laod");
     public static JToggleButton btn9 = new JToggleButton("codeja");
     public static JToggleButton btn10 = new JToggleButton("saerchdiary");
+    public static JToggleButton btn101 = new JToggleButton("saerchdiaryall");
+
     public static JToggleButton btnD1 = new JToggleButton("Ddelete");
     public static JToggleButton btnD3 = new JToggleButton("Dfgt");
     public static JToggleButton btnD2 = new JToggleButton("Dsg");
@@ -37,6 +39,7 @@ public class untoggle {
     public static JToggleButton btnD8 = new JToggleButton("Dlaod");
     public static JToggleButton btnD9 = new JToggleButton("Dcodeja");
     public static JToggleButton btnD10 = new JToggleButton("Dsaerchdiary");
+    public static JToggleButton btn1011 = new JToggleButton("saerchdiaryall");
 
 
     public static JToggleButton LbtnD1 = new JToggleButton("LDdelete");
@@ -49,6 +52,7 @@ public class untoggle {
     public static JToggleButton bLtnD8 = new JToggleButton("DlaodL");
     public static JToggleButton bLtnD9 = new JToggleButton("DcodeLja");
     public static JToggleButton bLtnD10 = new JToggleButton("DsaerLchdiary");
+    public static JToggleButton btn10111 = new JToggleButton("saerchdiaryall");
 
 
     public static JToggleButton DLbtnD1 = new JToggleButton("DLDdelete");
@@ -61,6 +65,7 @@ public class untoggle {
     public static JToggleButton bDLtnD8 = new JToggleButton("DlaodLD");
     public static JToggleButton bLDtnD9 = new JToggleButton("DcodeLDja");
     public static JToggleButton bLtDnD10 = new JToggleButton("DsaerDLchdiary");
+    public static JToggleButton btn101111 = new JToggleButton("saerchdiaryall");
 
 
     public static JToggleButton SDLbtnD1 = new JToggleButton("DLDdSelete");
@@ -73,6 +78,7 @@ public class untoggle {
     public static JToggleButton bDLtSnD8 = new JToggleButton("DlaoSdLD");
     public static JToggleButton bLDtSnD9 = new JToggleButton("DcodeLSDja");
     public static JToggleButton bLtSDnD10 = new JToggleButton("DsaeSrDLchdiary");
+    public static JToggleButton btn1011111 = new JToggleButton("saerchdiaryall");
 
 
     public static void main(String[] args) {
@@ -135,6 +141,11 @@ public class untoggle {
 
                 bg.add(btn9);
                 bg.add(btn10);
+                bg.add(btn101);
+                bg.add(btn1011);
+                bg.add(btn10111);
+                bg.add(btn101111);
+                bg.add(btn1011111);
 
 // i need to textarea but i odn't have so i have to pass the parameter helel ot here
                 btnD9.addActionListener(e -> {
@@ -277,6 +288,7 @@ public class untoggle {
                                         .addComponent(btn8)
                                         .addComponent(btn9)
                                         .addComponent(btn10)
+                                        .addComponent(btn101)
                         )
                         .addGroup(groupLayout.createParallelGroup(TRAILING)
                                         .addComponent(btnD1)
@@ -289,6 +301,7 @@ public class untoggle {
                                         .addComponent(btnD8)
                                         .addComponent(btnD9)
                                         .addComponent(btnD10)
+                                        .addComponent(btn1011)
                         )
                         .addGroup(groupLayout.createParallelGroup(TRAILING)
                                         .addComponent(LbtnD3)
@@ -301,13 +314,14 @@ public class untoggle {
                                         .addComponent(bLtnD9)
                                         .addComponent(bLtnD10)
                                         .addComponent(LbtnD1)
+                                        .addComponent(btn10111)
                         )
                         .addGroup(groupLayout.createParallelGroup(TRAILING)
-                                        .addComponent(DLbtnD1).addComponent(LDbtnD3).addComponent(LbDtnD2).addComponent(LbtDnD4).addComponent(LbtnDD5).addComponent(bLtnDD6).addComponent(DbLtnD7).addComponent(bDLtnD8).addComponent(bLDtnD9).addComponent(bLtDnD10)
+                                        .addComponent(DLbtnD1).addComponent(LDbtnD3).addComponent(LbDtnD2).addComponent(LbtDnD4).addComponent(LbtnDD5).addComponent(bLtnDD6).addComponent(DbLtnD7).addComponent(bDLtnD8).addComponent(bLDtnD9).addComponent(bLtDnD10)                                        .addComponent(btn101111)
 
                         )
                         .addGroup(groupLayout.createParallelGroup(TRAILING)
-                                        .addComponent(SDLbtnD1).addComponent(LSDbtnD3).addComponent(LbSDtnD2).addComponent(LbtSDnD4).addComponent(LbtnSDD5).addComponent(bLtnDSSD6).addComponent(DbLtnDS7).addComponent(bDLtSnD8).addComponent(bLDtSnD9).addComponent(bLtSDnD10)
+                                        .addComponent(SDLbtnD1).addComponent(LSDbtnD3).addComponent(LbSDtnD2).addComponent(LbtSDnD4).addComponent(LbtnSDD5).addComponent(bLtnDSSD6).addComponent(DbLtnDS7).addComponent(bDLtSnD8).addComponent(bLDtSnD9).addComponent(bLtSDnD10)                                        .addComponent(btn1011111)
                         )
                         .addGroup(groupLayout.createParallelGroup(TRAILING).addComponent(panel)));
 
@@ -316,9 +330,10 @@ public class untoggle {
                         .addGroup(groupLayout.createParallelGroup(BASELINE).addComponent(label))
                         .addGroup(groupLayout.createParallelGroup(BASELINE).
                                 addComponent(btn1).
-                                addComponent(btnD1))
-                        .addComponent(LbtnD1)
-                        .addComponent(DLbtnD1).addComponent(SDLbtnD1)
+                                addComponent(btnD1)
+                                .addComponent(LbtnD1)
+                                .addComponent(DLbtnD1).addComponent(SDLbtnD1)
+                        )
 
                         .addGroup(groupLayout.createParallelGroup(BASELINE).
                                         addComponent(btn2).
@@ -365,6 +380,11 @@ public class untoggle {
                                         addComponent(btn10).
                                         addComponent(btnD10).addComponent(bLtDnD10)
                                         .addComponent(bLtnD10).addComponent(bLtSDnD10)
+                        )
+                        .addGroup(groupLayout.createParallelGroup(BASELINE).
+                                        addComponent(btn101).
+                                        addComponent(btn1011).addComponent(btn10111)
+                                        .addComponent(btn101111).addComponent(btn1011111)
                         )
                         .addGroup(groupLayout.createParallelGroup(BASELINE).addComponent(panel)));
 

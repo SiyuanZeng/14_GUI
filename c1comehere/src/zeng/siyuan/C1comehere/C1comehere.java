@@ -266,7 +266,8 @@ public class C1comehere implements Serializable {
                         boolean isHow2ForegertCommand_u = textArea.getText().contains(" ufgt ");
                         boolean isload = buttonSelected.startsWith("laod");
                         boolean codja = buttonSelected.startsWith("codeja");
-                        boolean saerchdiary = buttonSelected.startsWith("saerchdiary");
+                        boolean saerchdiary = buttonSelected.startsWith("saerchdiary") && !buttonSelected.contains("saerchdiaryall");
+                        boolean saerchdiaryall = buttonSelected.contains("saerchdiaryall");
                         boolean isShowCommand = buttonSelected.startsWith("sho");// shw
                         Search search = null;
 
@@ -432,6 +433,9 @@ public class C1comehere implements Serializable {
                         } else if (saerchdiary && !textArea.getText().trim().isEmpty()) {
                             System.out.println("saerchdiary ");
                             how2Forgert.searchehabins(textArea.getText().trim());
+                        }  else if (saerchdiaryall && !textArea.getText().trim().isEmpty()) {
+                            System.out.println("saerchdiary ");
+                            how2Forgert.searchehabinsCombined(textArea.getText().trim());
                         } else if (isThoughtRecorderCommand) {
                             System.out.println("isThoughtRecorderCommand");
                             YouKnowWhat.insert(textArea.getText());

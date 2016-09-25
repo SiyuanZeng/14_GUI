@@ -25,6 +25,7 @@ public class How2Forgert implements Serializable {
     public transient JFrame frame;
     public mappingmanager m;
     public boolean isSearch;
+    public boolean isSearchCombine;
     public int count=1;
     private ArrayList<Ebbinghaus> searchebbinghauses;
     private ArrayList<Task> searchtasks;
@@ -120,6 +121,8 @@ public class How2Forgert implements Serializable {
         try {
             if(isSearch){
                 displaysearchtasks();
+            } else if(isSearchCombine){
+                displaysearchtaskscombine();
             } else {
                 for (Task t : tasks) {
                     if (!t.getIsDone() && t.getDate().after(new Date())) {
@@ -217,7 +220,11 @@ public class How2Forgert implements Serializable {
 
 
                         while (!textArea.getText().trim().isEmpty() || !isHow2ForegertCommand) {
-                            Thread.sleep(10000);
+                            try {
+                                Thread.sleep(10000);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             for (Enumeration<AbstractButton> buttons = c1comehere.untoggle.bg.getElements(); buttons.hasMoreElements(); ) {
                                 AbstractButton button = buttons.nextElement();
 
@@ -294,9 +301,42 @@ public class How2Forgert implements Serializable {
                     }
                     count++;
                     isSearch=true;
+                    isSearchCombine=false;
+
                 }
             }
         }
+    }
+
+    private void displaysearchtaskscombine() {
+
+        String inntuitive = "";
+        for (Task t : searchtasks) {
+            currentTaskSearch=t;
+            for (Ebbinghaus e : searchebbinghauses) {
+                if (e.getJavauid().toString().equalsIgnoreCase(currentTaskSearch.getJavauuid().toString())) {
+                    inntuitive += "\n";
+                    inntuitive += " ufgtalls ";
+                    inntuitive += "\n";
+
+                    inntuitive += (" found! " + count + "/" +searchtasks.size() + " " +keywords);
+                    inntuitive +="\n";
+                    inntuitive +="\n";
+                    inntuitive+=e.question;
+                    count++;
+                    isSearchCombine=true;
+                    isSearch=false;
+                }
+            }
+        }
+        while (!textArea.getText().trim().equalsIgnoreCase("")) {
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+        }
+        textArea.setText(inntuitive);
     }
 
     public void deltask() {
@@ -424,12 +464,59 @@ public class How2Forgert implements Serializable {
             reloadandDiskplaypopup(isSearch);
         }
     }
+
+
+    public void searchehabinsCombined(String a) {
+        textArea.setText("");
+        ebbinghauses = m.get();
+        searchtasks = new ArrayList<Task>();
+        searchebbinghauses=new ArrayList<Ebbinghaus>();
+
+        keywords=a.trim();
+        String[] sts=a.trim().split(" ");
+        if(sts.length==0)return;
+        for (Ebbinghaus e : ebbinghauses) {
+            boolean flag2=false;
+            for (String s : sts){
+                flag2 = e.getQuestion().contains(s);
+                if(!flag2){
+                    break;
+                }
+            }
+            if(flag2) {
+                for (Task ct : e.getTasks()) {
+                    searchtasks.add(ct);
+                    searchebbinghauses.add(e);
+                    break;
+                }
+            }
+        }
+        count=1;
+        isSearch = false;
+        isSearchCombine = true;
+        if (null != searchtasks ) {
+            textArea.setText("");
+            Collections.sort(searchtasks, new Task());
+            reloadandDiskplaypopupcinbome(isSearchCombine);
+        }
+
+        // there is people there si love
+        // there is somethign
+
+    }
+
+
     public void reloadandDiskplaypopup(boolean is) {
         textArea.setText("");
         reloadTAskandrestartPopThread();
     }
 
-    public void reloadandDiskplaypopup() throws Exception {
+    public void reloadandDiskplaypopupcinbome(boolean is) {
+        textArea.setText("");
+        reloadTAskandrestartPopThread();
+    }
+
+    public void reloadandDiskplaypopup(){
         if(!isSearch){
             loadTask();
         }
