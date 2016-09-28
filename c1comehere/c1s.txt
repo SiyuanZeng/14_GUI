@@ -1,0 +1,179 @@
+#Mon Sep 26 02:32:36 EDT 2016
+mac\ os\ x\ terminal\ linux\ unix\ command\ shortcuts=c\:\\shortxuts\\mrj0s.png
+onenote=c\:/program files (x86)/microsoft office/root/office16/onenote.exe
+start\ solr=C\:\\Developer\\solr-6.2.0\\bin
+http\://displays.tpet.co.uk/?resource=1560\#/ViewResource/id1560
+Mac\ OS\ X\ Linux\ Terminal\ Command\ Reference=https\://community.linuxmint.com/tutorial/view/244
+macro\ for\ performing\ more\ than\ one\ find\ and\ replace\ procedure\ at\ the\ same\ time=http\://answers.microsoft.com/en-us/msoffice/forum/msoffice_word-mso_other/macro-for-performing-more-than-one-find-and/bd931bf7-5ebe-4650-924c-d15c9512129c
+iq_threading=c\:/users/siyuanzeng's/desktop/application/job hunting/interview/interviewquestions/threading.docx
+google\ hangouts=https\://hangouts.google.com/
+Keyboard\ Shortcuts\ You\ Cannot\ Miss=https\://www.jetbrains.com/help/idea/2016.2/keyboard-shortcuts-you-cannot-miss.html
+oracle=https\://wsr.pearsonvue.com/testtaker/signin/SignInPage.htm?clientCode\=ORACLE&conversationId\=238165
+multitabsexplorer=C\:\\Program Files\\QTTabBar\\Tools\\ExplorerSafeMode.exe
+qttabbar=C\:\\Program Files\\QTTabBar\\Tools\\ExplorerSafeMode.exe
+laws\ of\ the\ universe=http\://lawsoftheuniverse.weebly.com/12-immutable-universal-laws.html
+sony\ control\ center="c\:\\program files (x86)\\sony\\vaio control center\\vaio control center.exe" /vcc
+Java\ Word\ (.docx)\ documents\ with\ docx4j=https\://www.javacodegeeks.com/2012/07/java-word-docx-documents-with-docx4j.html
+video=c\:/program files (x86)/techsmith/camtasia studio 8/camtasiastudio.exe
+jw=http\://www.javaworld.com/
+dead\ people=https\://www.youtube.com/watch?v\=rxnRJSte3fE
+idea\ shortcut=c\:/users/siyuanzeng's/desktop/application/intellijidea_referencecard.pdf
+crop=c\:/windows/system32/snippingtool.exe
+Manipulating\ Microsoft\ Docx\ Files\ With\ Docx4j=http\://muammeryucel.blogspot.com/2011/01/manipulating-microsoft-docx-files-with.html
+design\ pattern=http\://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm
+Online\ conversion\ between\ a\ java.util.Date\ and\ milliseconds=http\://www.fileformat.info/tip/java/date2millis.htm
+interjections=https\://www.vidarholen.net/contents/interjections/
+resume=c\:/users/siyuanzeng's/desktop/application/job hunting/resume/20160808/20160824/daniel zeng - resume .doc
+https\://www.blogger.com/blogger.g?blogID=5889245863220470098\#allposts
+shit=c\:/development_base/14_gui/youdontnowshit/out/artifacts/youdontnowshit_jar/youdontnowshit.13.updated.jar
+texttospeech=c\:/softwareinstallation/media/tingwangye/startapp.exe
+i\ am\ the\ best=daniel
+Generate\ code\ intellij\ autocomoplete\ autocomplete=C\:\\Users\\SiyuanZeng's\\Documents\\Note_Backup_June_4th\\OneNote\\Intellij\\Generate code.one
+java\ world=http\://www.javaworld.com/
+notepad=c\:/softwareinstallation/office/notepad++/notepad++.exe
+snipping=c\:/windows/system32/snippingtool.exe
+allmystuffs=https\://github.com/SiyuanZeng/allmystuffs
+git\ version\ command=git --version
+solr\ start\ folder=C\:\\Developer\\solr-6.2.0\\bin
+Cassandra\ Solr\ Spark\ Love\ Triangle\ Using\ DataStax\ Enterprise=http\://www.slideshare.net/patrickmcfadin/a-cassandra-solr-spark-love-triangle-using-datastax-enterprise-50051760
+export\ import\ data\ in\ cassandra\ table=http\://techie-matter.blogspot.com/2014/02/exportimport-data-in-cassandra-table.html
+gitbash=c\:/developer/git/bin/sh.exe
+youtube=https\://www.youtube.com/
+mindsource=http\://mindsource.force.com/timesheet
+How\ do\ I\ replace\ text\ in\ Microsoft\ Word\ document\ using\ Apache\ POI=https\://kodejava.org/how-do-i-replace-text-in-microsoft-word-document-using-apache-poi/
+iq_lazyloading=c\:/users/siyuanzeng's/desktop/application/job hunting/interview/interviewquestions/lazy loading.docx
+chrome=c\:/program files (x86)/google/chrome/application/chrome.exe
+gitdd\ add\ commit\ git\ push\ command=git acp "commit messages here\!"
+ho=https\://hangouts.google.com/
+c1comehere=c\:/Development_Base\\14_GUI\\c1comehere
+audio=c\:/softwareinstallation/media/audacity/audacity.exe
+install=c\:/software
+dic=c\:/users/siyuanzeng's/desktop/application/dicref.jar
+Goole\ search\ tricks=https\://www.maketecheasier.com/google-search-hacks/
+Intellij\ refactoring\ refactor=C\:\\Users\\SiyuanZeng's\\Documents\\Note_Backup_June_4th\\OneNote\\Intellij\\Refactoring.one
+autocomplete=C\:\\Users\\SiyuanZeng's\\Documents\\Note_Backup_June_4th\\OneNote\\Intellij\\Generate code.one
+psy=https\://listenonrepeat.com/?v\=9bZkp7q19f0\#PSY_-_GANGNAM_STYLE(%EA%B0%95%EB%82%A8%EC%8A%A4%ED%83%80%EC%9D%BC)_M%2FV
+gv=https\://www.google.com/voice\#inbox
+gs=C\:/Users/SiyuanZeng's/Desktop/gs.jar
+HOW\ TO\ COPY\ A\ SELECTION\ +\ PAGE\ TITLE\ +\ URL\ ALL\ AT\ ONCE\ WITH\ CLIPS\ ON\ IOS=https\://finertech.com/2014/10/10/featuredhow-to-copy-a-selection-page-title-url-all-at-once-with-clips-on-ios/
+listenonrepeat=https\://listenonrepeat.com/?v\=geCQ53zHbVQ\#%E5%B0%8F%E8%99%8E%E9%9A%8A_%E9%9D%92%E8%98%8B%E6%9E%9C%E6%A8%82%E5%9C%92
+solr=https\://cwiki.apache.org/confluence/display/solr/Installing+Solr
+Apache\ Cassandra\ and\ Java=https\://academy.datastax.com/resources/getting-started-apache-cassandra-and-java-part-i
+multi\ tabs=c\:/developer/conemu/conemu64.exe
+sy=c\:/users/siyuanzeng's/desktop/sy
+whistle=https\://www.youtube.com/watch?v\=NwL98zzdEXo
+Kafka\ demo\ beginner=https\://www.youtube.com/watch?v\=ArUHr3Czx-8
+dbpassword=password
+ABC=ABC
+Google\ search\ techniques=http\://www.johntedesco.net/blog/2012/06/21/how-to-solve-impossible-problems-daniel-russells-awesome-google-search-techniques/
+github=https\://github.com/SiyuanZeng
+i\ love\ you\ my\ dear\ jinglin\ baby\ bunny\ queeen=1 2 3
+Google\ task=https\://mail.google.com/tasks/canvas
+45+\ Most\ Useful\ Java\ Libraries\ Java\ developer\ have\ to\ know\ must\ know=http\://www.fromdev.com/2014/10/most-widely-used-java-libraries.html\#comment-form
+idea=c\:/developer/jetbrains/intellij idea 14.1.6/bin/idea.exe
+kungfu=https\://www.youtube.com/watch?v\=9_oON2x8R3I&t\=681s
+mind\ source=http\://mindsource.force.com/timesheet
+solr\ documents=C\:\\Developer\\solr-6.2.0\\example\\exampledocs
+sd=c\:/windows/system32/shutdown.exe
+How\ do\ I\ replace\ text\ in\ Microsoft\ Word\ document\ using\ Apache\ POI?=https\://kodejava.org/how-do-i-replace-text-in-microsoft-word-document-using-apache-poi/
+naruto=https\://www.youtube.com/results?search_query\=naruto+shippuden+episode+english+sub
+dbuser=mkyong
+newboy=c\:/users/siyuanzeng's/music/music/selection/newboy.wma
+cal=https\://calendar.google.com/calendar/render?tab\=mc&pli\=1\#main_7
+Mac\ OS\ X\ Unix\ Linux\ bash\ commands\ shorcuts\ makeuseof=https\://cheat-sheets.s3.amazonaws.com/linux-commands-cheat-sheet-new.pdf
+listenonrepreat=https\://listenonrepeat.com/?v\=geCQ53zHbVQ\#%E5%B0%8F%E8%99%8E%E9%9A%8A_%E9%9D%92%E8%98%8B%E6%9E%9C%E6%A8%82%E5%9C%92
+res=c\:/users/siyuanzeng's/desktop/application/job hunting/resume/20160808/20160824/daniel zeng - resume .doc
+quora=https\://www.quora.com/What-exactly-is-Apache-Spark-and-how-does-it-work
+Mac\ OS\ X\ Word\ Keyboard\ shortcuts\ in\ Word\ 2016\ for\ Mac=https\://support.office.com/en-us/article/Keyboard-shortcuts-in-Word-2016-for-Mac-3256d48a-7967-475d-be81-a6e3e1284b25
+45+\ Most\ Useful\ Java\ Libraries\ java\ developers\ have\ to\ know\ must\ know=http\://www.fromdev.com/2014/10/most-widely-used-java-libraries.html
+ted=http\://www.ted.com/
+Intellij\ tooltips\ popup\ windows\ tool\ window=C\:\\Users\\SiyuanZeng's\\Documents\\Note_Backup_June_4th\\Intellij_May_28\\Intellij\\Tool Window.one
+gui\ unix\ pah=C\:/Development_Base/17_GUI
+Intellij\ navigate\ Navigating\ Through\ the\ Source\ Code=C\:\\Users\\SiyuanZeng's\\Documents\\Note_Backup_June_4th\\Intellij_May_28\\Intellij\\Navigating Through the Source Code.one
+rec=c\:/users/siyuanzeng's/desktop/application/thoughtrecorder.v2.jar
+baidu=http\://www.baidu.com/
+windows10=http\://www.digitalcare.org/wp-content/uploads/2016/01/Windows-10-Shortcut-infographic.pdf
+gangnam\ style=https\://listenonrepeat.com/?v\=9bZkp7q19f0\#PSY_-_GANGNAM_STYLE(%EA%B0%95%EB%82%A8%EC%8A%A4%ED%83%80%EC%9D%BC)_M%2FV
+solr\ start=C\:\\Developer\\solr-6.2.0\\bin\n\n\n\n\nsolr create -c jcg -d basic_configs\n\n\n\nsolr stop -all\n\n\n\nsolr start\n\n\n\njava -jar post.jar -h\n\n\n\njava -Dtype\=text/csv -Durl\=http\://localhost\:8983/solr/jcg/update -jar post.jar  books.csv\n\n\n\nhttp\://localhost\:8080/solrautocomplete/search.html\n\n\n\n\ncsv\nC\:\\Developer\\solr-6.2.0\\example\\exampledocs
+zhen\ de\ ai\ ni=https\://listenonrepeat.com/?v\=tjCHafQIhFk\#Beyond_%E7%9C%9F%E7%9A%84%E7%88%B1%E4%BD%A0
+google\ voice=https\://www.google.com/voice\#inbox
+clover=C\:\\Program Files (x86)\\Clover\\3.1\\clover.exe
+outlook=c\:/program files (x86)/microsoft office/root/office16/outlook.exe
+textpad=c\:/windows/system32/notepad.exe
+rest\ advanced=https\://www.youtube.com/playlist?list\=PLqq-6Pq4lTTY40IcG584ynNqibMc1heIa
+tde=http\://www.ted.com/
+Apache\ Kafka\ interview\ questions=http\://www.tuicool.com/articles/Ab2YBze
+software=c\:/software
+ppt=c\:/program files (x86)/microsoft office/root/office16/powerpnt.exe
+idea.exe=c\:/developer/jetbrains/intellij idea 14.1.6/bin/idea.exe
+solr\ docs=C\:\\Developer\\solr-6.2.0\\example\\exampledocs
+Google\ advanced\ search\ operators=https\://supple.com.au/tools/google-advanced-search-operators/
+why\ kafka=https\://prezi.com/jqsmaukaya0c/why-kafka/
+hello\ word=good
+gui\ hui\ sui\ yue=https\://listenonrepeat.com/?v
+Google\ Search\ Hacks=https\://www.themuse.com/advice/these-google-search-hacks-are-going-to-change-your-life-or-at-the-very-least-make-it-easier
+excel=c\:/program files (x86)/microsoft office/root/office16/excel.exe
+mac\ os\ x\ shortcuts\ simple\ version=c\:\\shortxuts\\mackbookshortcust.jpg
+ZooKeeper\ Documentation=http\://zookeeper.apache.org/doc/trunk/zookeeperOver.html
+devcenter=c\:\\developer\\devcenter\\devcenter.exe
+urban=c\:/users/siyuanzeng's/desktop/application/urbandicti.jar
+The\ Zing\ Song\ Extended=https\://listenonrepeat.com/?v\=z_hXbiAB1lc\#The_Zing_Song_Extended
+top\ 100\ java\ libraries\ java\ developers\ should\ know\ must\ know=http\://blog.takipi.com/the-top-100-java-libraries-in-2016-after-analyzing-47251-dependencies/
+c\:/users/siyuanzeng's/desktop/application/intellijidea_referencecard.pdf=c\:/users/siyuanzeng's/desktop/application/intellijidea_referencecard.pdf
+Zookeeper=http\://zookeeper.apache.org/doc/trunk/zookeeperOver.html
+m=https\://mail.google.com/mail/u/0/\#inbox
+restful\ basic\ tutorial=https\://www.youtube.com/playlist?list\=PLqq-6Pq4lTTZh5U8RbdXq0WaYvZBz2rbn
+Google\ Yahhoo\ Yahoo\ Microsoft\ search\ commands=http\://www.searchcommands.com/
+Mac\ OS\ X\ Keyboard\ Shortcuts=http\://cheat-sheets.s3.amazonaws.com/for-mobile/osx-shortcuts-new.pdf
+lor=https\://listenonrepeat.com/?v\=geCQ53zHbVQ\#%E5%B0%8F%E8%99%8E%E9%9A%8A_%E9%9D%92%E8%98%8B%E6%9E%9C%E6%A8%82%E5%9C%92
+f=c\:/program files (x86)/mozilla firefox/firefox.exe
+Mac\ OS\ X\ Excel\ Keyboard\ shortcuts=http\://www.exceltip.com/tips/150-mac-excel-keyboard-shortcuts.html
+database=localhost
+c=c\:/
+critical\ thinking\ standards=http\://www.criticalthinking.org/image/pimage/Standards-Elems-Traits.jpg
+Apache\ Kafka\ JAVA\ tutorial\ \#1\ with\ source\ code=http\://khangaonkar.blogspot.com/2014/05/apache-kafka-java-tutorial.html
+git=C\:\\programdata\\microsoft\\Windows\\start menu\\Programs\\Git
+videos=c\:/users/siyuanzeng's/videos/video
+word=c\:/program files (x86)/microsoft office/root/office16/winword.exe
+solr\ admin=http\://localhost\:8983/solr/\#/jcp/query
+itune=c\:/program files/itunes/itunes.exe
+Microsoft\ Word\ Macro\ for\ highlighting\ multiple\ words=http\://stackoverflow.com/questions/9399655/microsoft-word-macro-for-highlighting-multiple-words
+snag=c\:/softwareinstallation/media/techsmith/snagit/snagit32.exe
+multiptabexploerer=C\:\\Program Files\\QTTabBar\\Tools\\ExplorerSafeMode.exe
+gui=C\:\\Development_Base\\17_GUI
+skype=c\:/program files (x86)/skype/phone/skype.exe
+f_interviewquestions=c\:/users/siyuanzeng's/desktop/application/job hunting/interview/interviewquestions
+Mac\ OS\ X\ keyboard\ shorcuts\ makeuseof=http\://cheat-sheets.s3.amazonaws.com/for-mobile/osx-shortcuts-new.pdf
+gho=https\://hangouts.google.com/
+sticky\ note=c\:/windows/system32/stikynot.exe
+all\ my\ stuffs=https\://github.com/SiyuanZeng/allmystuffs
+c1=c\:/c1
+friends51=c\:/users/siyuanzeng's/videos/movie/friends/friends  season05/friends - s05ep01 - after ross says rachel.mkv
+best\ song\ ever\ megan=https\://listenonrepeat.com/?v\=Uhj0ymhgK9E\#Best_Song_Ever_-_Megan_Nicole_(cover)_One_Direction
+whistle6=https\://www.youtube.com/watch?v\=nwl98zzdexo
+ms=http\://mindsource.force.com/timesheet
+Zookeeper\ Documentation=http\://zookeeper.apache.org/doc/trunk/zookeeperOver.html
+whistle5=https\://www.youtube.com/watch?v\=nwl98zzdexo
+programs=c\:/programdata/microsoft/windows/start menu/programs
+gitgui=c\:/developer/git/bin/wish.exe
+whistle3=https\://www.youtube.com/watch?v\=nwl98zzdexo
+best\ song\ ever=ac
+1)\ What\ was\ the\ last\ picture\ you\ took\ with\ your\ phone?\n2)\ Do\ you\ know\ any\ big\ gossips?\n3)\ Have\ you\ been\ pulled\ over\ by\ a\ cop?\n4)\ Do\ you\ know\ your\ heritage?\n5)\ What\ have\ you\ always\ wanted?\ Did\ you\ ever\ get\ it?\n6)\ What\ kind\ of\ sickness\ have\ you\ lied\ about\ so\ you\ wouldn&rsquo;t\ go\ to\ work?\n7)\ What\ was\ the\ last\ lie\ you\ told?\n8)\ Have\ you\ ever\ danced\ in\ the\ rain?\n9)\ What\ is\ your\ blood\ type?\n10)\ Have\ you\ ever\ been\ in\ a\ car\ accident?\n11)\ What\ was\ the\ weirdest\ prank\ call\ that\ you\ have\ made?\n12)\ Best\ compliment\ you\ have\ received?\n13)\ Do\ you\ trust\ anyone\ with\ your\ life?\n14)\ What\ is\ your\ greatest\ strength\ or\ weakness?\n15)\ What\ is\ your\ perfect\ pizza?\n16)\ What\ was\ your\ first\ thought\ when\ you\ woke\ up\ this\ morning\n17)\ Do\ you\ get\ along\ with\ your\ family?\ Why\ or\ why\ not?\n18)\ Ugly\ and\ live\ forever,\ or\ attractive\ and\ die\ in\ a\ year?\n19)\ You\ discover\ that\ your\ wonderful\ one\ year\ old\ child\ is\ because\ of\ a\ mix\ up\ at\ the\ hospital\ and&nbsp;not\ yours.\ Would\ you\ want\ to\ exchange\ the\ child\ to\ correct\ the\ mistake?\n20)\ Would\ you\ be\ willing\ to\ lie\ to\ a\ court\ for\ a\ close\ friend\ if\ it\ meant\ saving\ your\ friend\ from\ going\ to\ jail\ for\ life?\n21)\ Would\ you\ be\ willing\ to\ eat\ a\ bowl\ of\ crickets\ for\ $40,000?\n22)\ If\ you\ could\ have\ anyone\ locked\ in\ a\ room\ so\ that\ you\ could\ torment\ them\ for\ a\ day,\ whom\ would\ you\ choose\ ad\ how\ would\ you\ torment\ them?\n23)\ Do\ you\ feel\ that\ children\ should\ be\ sheltered\ from\ unhappiness?\n24)\ If\ you\ could\ have\ personally\ witnessed\ anything,\ what\ would\ you\ want\ to\ have\ seen?<div\ class="buzz-ads buzz-ad-post buzz-ad-post-middle" ><center>\n<\!-- /86823367/BK_Post_336x280_MiddleArticle -->\n<div id
+whistle2=https\://www.youtube.com/watch?v\=nwl98zzdexo
+eclipse=c\:/developer/ide/eclipse-jee-luna-sr1-win32-x86_64/eclipse/eclipse.exe
+Big\ data\ messaging\ with\ Kafka,\ Part\ 1=http\://www.javaworld.com/article/3060078/big-data/big-data-messaging-with-kafka-part-1.html
+txt=c\:/windows/system32/notepad.exe
+tcpview=C\:\\Developer\\TCPView\\Tcpview.exe
+Hadoop\ in\ 5\ minutes=https\://www.youtube.com/watch?v\=xLUhZ3MO2oE
+walmart\ timesheet=https\://www.fieldglass.net/time_sheet_list.do
+dropbox=c\:\\users\\siyuanzeng's\\appdata\\roaming\\dropbox\\bin\\dropbox.exe
+javabrains=https\://www.youtube.com/user/koushks/playlists
+git\ credential\ account\ password\ store\ \ cache=\ git config --global credential.helper store
+powerpoint=c\:/program files (x86)/microsoft office/root/office16/powerpnt.exe
+shutdown=c\:/windows/system32/shutdown.exe
+idea\ shortcuts\ online=https\://resources.jetbrains.com/assets/products/intellij-idea/IntelliJIDEA_ReferenceCard.pdf
+OLTP-OLAP-CRUD-ACID\ and\ other\ acronyms=https\://webcache.googleusercontent.com/search?q\=cache\:YDGupCDmNBgJ\:https\://rcbsql.wordpress.com/2013/10/30/oltp-olap/+&cd\=8&hl\=zh-CN&ct\=clnk&gl\=cn
+c1comehere\ logs=C\:\\c1\\c1comehere\\c1s.txt
+guang\ hui\ sui\ yue=https\://listenonrepeat.com/?v\=PwSQQoWqeBs\#Beyond_05%3A_%E5%85%89%E8%BC%9D%E6%AD%B2%E6%9C%88
+solr\ youtube=https\://www.youtube.com/playlist?list\=PLJbE6j2EG1pZ7YfU05bCqdv5bDkKo75nQ
+blog=https\://www.blogger.com/blogger.g?blogID\=5889245863220470098\#allposts
